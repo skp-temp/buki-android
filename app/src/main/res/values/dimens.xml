@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="horizontal_margin_medium">16dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="toolbar_vertical_margin">16dp</dimen>
+    <dimen name="toolbar_button">24dp</dimen>
+</resources>
