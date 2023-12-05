@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    dataBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -49,6 +53,9 @@ dependencies {
     // hilt
     implementation ("com.google.dagger:hilt-android:2.48")
     kapt ("com.google.dagger:hilt-android-compiler:2.48")
+
+    //splashscreen
+    implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
 }
 
 kapt {
