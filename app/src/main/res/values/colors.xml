@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#007AFF</color>
+    <color name="green">#35C759</color>
+    <color name="red">#FF3B2F</color>
+    <color name="orange">#FF9500</color>
+
+    <color name="yellowgreen_100">#EBFD73</color>
+    <color name="yellowgreen_300">#B7CA39</color>
+    <color name="yellowgreen_500">#00724F</color>
+
+    <color name="orange_100">#FEC1A5</color>
+    <color name="orange_300">#FF8B56</color>
+    <color name="orange_500">#BA0000</color>
+
+    <color name="purple_100">#CEC2FF</color>
+    <color name="purple_300">#9148FF</color>
+    <color name="purple_500">#3D00BF</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray_100">#F9F9FB</color>
+    <color name="gray_200">#F2F2F6</color>
+    <color name="gray_300">#E4E4EA</color>
+    <color name="gray_400">#B1B1BB</color>
+    <color name="gray_500">#8E8E93</color>
+    <color name="gray_600">#636366</color>
+    <color name="gray_700">#48484A</color>
+    <color name="gray_800">#3A3A3C</color>
+    <color name="gray_900">#1C1C1E</color>
+    <color name="black">#000000</color>
+
+    <color name="dim_100">#1A1C1C1E</color>
+    <color name="dim_500">#80000000</color>
+    <color name="dim_700">#B3000000</color>
 </resources>
