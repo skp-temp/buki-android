@@ -11,4 +11,6 @@
     <dimen name="toolbar_button_margin">16dp</dimen>
     <dimen name="toolbar_title_margin">8dp</dimen>
     <dimen name="toolbar_button">24dp</dimen>
+
+    <dimen name="button_bottom_margin">32dp</dimen>
 </resources>
