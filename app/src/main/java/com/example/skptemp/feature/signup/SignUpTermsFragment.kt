@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.skptemp.R
 import com.example.skptemp.databinding.FragmentSignUpTermsBinding
 
 
@@ -20,6 +21,12 @@ class SignUpTermsFragment : Fragment() {
     ): View {
         _binding = FragmentSignUpTermsBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as SignUpActivity)
+            .setToolbarTitleText(resources.getString(R.string.terms_agreement))
     }
 
     override fun onDestroyView() {
