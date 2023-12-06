@@ -52,7 +52,6 @@
             <ImageView
                 android:id="@+id/bell_button"
                 style="@style/toolbar_button_style"
-                android:layout_marginEnd="@dimen/toolbar_button_margin"
                 android:src="@drawable/ic_bell"
                 android:visibility="gone" />
 

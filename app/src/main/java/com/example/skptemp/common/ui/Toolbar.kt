@@ -1,16 +1,22 @@
 package com.example.skptemp.common.ui
 
 import android.content.Context
+import android.content.res.TypedArray
+import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.skptemp.R
+import com.example.skptemp.common.util.ViewUtil.convertPXtoDP
 import com.example.skptemp.databinding.ToolbarBinding
-import dagger.hilt.android.qualifiers.ActivityContext
-import javax.inject.Inject
 
-class Toolbar @Inject constructor(@ActivityContext context: Context) : ConstraintLayout(context) {
+class Toolbar @JvmOverloads constructor(
+    private val context: Context,
+    attrs: AttributeSet? = null,
+    defStyleArr: Int = 0,
+) : ConstraintLayout(context, attrs, defStyleArr) {
 
     private val binding = ToolbarBinding.inflate(LayoutInflater.from(context), this, true)
     private val mButtonMap = mapOf(
@@ -20,54 +26,80 @@ class Toolbar @Inject constructor(@ActivityContext context: Context) : Constrain
         ACTION_BUTTON to binding.actionButton
     )
 
-    fun setTitleCenter(gravity: Int) = with(binding) {
-        title.gravity = Gravity.CENTER_VERTICAL or gravity
-        title.textSize = resources.getDimension(R.dimen.text_medium_size)
+    init {
+        val typedArray = context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.Toolbar,
+            0,
+            0
+        )
+
+        initializeView(typedArray)
+    }
+
+    private fun initializeView(typedArray: TypedArray) = with(typedArray) {
+        getString(R.styleable.Toolbar_title_text)?.let { titleText ->
+            setTitleText(titleText)
+        }
+
+        getBoolean(R.styleable.Toolbar_title_center, false).let { visibility ->
+            if (!visibility) return@let
+            binding.title.setGravityCenter()
+        }
+
+        getBoolean(R.styleable.Toolbar_back_button_visibility, false).let { visibility ->
+            if (!visibility) return@let
+            visibleButton(BACK_BUTTON)
+        }
+    }
+
+    private fun TextView.setGravityCenter() {
+        gravity = Gravity.CENTER
+        textSize = resources.getDimension(R.dimen.text_medium_size).convertPXtoDP(context)
     }
 
     fun setTitleText(text: String) {
         binding.title.text = text
     }
 
-    fun visibleButton(buttonType: Int) = mButtonMap[buttonType]?.let { button ->
-        button.visibility = View.VISIBLE
+    fun visibleButton(buttonType: Int) = with(binding) {
+        mButtonMap[buttonType]?.visibility = View.VISIBLE
 
         when (buttonType) {
             // 백 버튼과 타이틀이 연속적으로 있는 경우 마진 설정
             BACK_BUTTON -> {
-                if (binding.title.gravity == Gravity.CENTER) return@let
+                if (title.gravity == Gravity.CENTER) {
+                    return@with
+                }
 
                 val marginDp = resources.getDimension(R.dimen.toolbar_title_margin) +
                         resources.getDimension(R.dimen.toolbar_button)
-                binding.title.layoutParams =
-                    (binding.title.layoutParams as MarginLayoutParams).apply {
-                        marginStart = marginDp.toInt()
-                    }
+                title.setMarginStart(marginDp.toInt())
             }
 
             // 벨 버튼과 미트볼 버튼이 연속적으로 있는 경우 마진 설정
-            BELL_BUTTON -> {
-                if (mButtonMap[MEATBALL_BUTTON]?.visibility == View.VISIBLE) return@let
-
-                button.layoutParams = (button.layoutParams as MarginLayoutParams).apply {
-                    marginEnd = 0
+            BELL_BUTTON, MEATBALL_BUTTON -> {
+                if (mButtonMap[MEATBALL_BUTTON]?.visibility == View.INVISIBLE ||
+                    mButtonMap[BELL_BUTTON]?.visibility == View.INVISIBLE) {
+                    return@with
                 }
+
+                val marginDp = resources.getDimension(R.dimen.toolbar_button_margin).toInt()
+                meatballButton.setMarginStart(marginDp)
             }
 
-            MEATBALL_BUTTON -> {
-                if (mButtonMap[BELL_BUTTON]?.visibility == View.INVISIBLE) return@let
-
-                button.layoutParams = (button.layoutParams as MarginLayoutParams).apply {
-                    marginStart = resources.getDimension(R.dimen.toolbar_button_margin).toInt()
-                }
-            }
-
-            else -> return@let
+            else -> return@with
         }
     }
 
     fun setButtonOnClickListener(buttonType: Int, listener: (View) -> Unit) {
         mButtonMap[buttonType]?.setOnClickListener(listener)
+    }
+
+    private fun View.setMarginStart(marginDp: Int) {
+        layoutParams = (layoutParams as MarginLayoutParams).apply {
+            marginStart = marginDp
+        }
     }
 
     companion object {

@@ -25,4 +25,9 @@
         <item name="android:fontFamily">@font/pretendard_bold</item>
     </style>
 
+    <style name="toolbar_size">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/toolbar_height</item>
+    </style>
+
 </resources>
