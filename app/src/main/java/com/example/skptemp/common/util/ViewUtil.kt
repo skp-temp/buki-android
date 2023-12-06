@@ -5,14 +5,13 @@ import android.util.DisplayMetrics
 import kotlin.math.round
 
 object ViewUtil {
-    fun convertPXtoDP(context: Context, px: Int): Int {
+    fun Float.convertPXtoDP(context: Context): Float {
         val metrics = context.resources.displayMetrics
-        return round(px / (metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT.toFloat()))
-            .toInt()
+        return round(this / (metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT.toFloat()))
     }
 
-    fun convertDPtoPX(context: Context, dp: Int): Int {
+    fun Float.convertDPtoPX(context: Context): Float {
         val density = context.resources.displayMetrics.density
-        return round(dp * density).toInt()
+        return round(this * density)
     }
 }
