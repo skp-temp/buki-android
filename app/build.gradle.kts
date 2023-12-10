@@ -39,6 +39,10 @@ android {
     dataBinding {
         enable = true
     }
+
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -51,8 +55,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // hilt
-    implementation ("com.google.dagger:hilt-android:2.48")
-    kapt ("com.google.dagger:hilt-android-compiler:2.48")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
     //splashscreen
     implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
