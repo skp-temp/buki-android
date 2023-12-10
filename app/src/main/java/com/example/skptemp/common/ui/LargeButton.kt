@@ -18,8 +18,6 @@ class LargeButton @JvmOverloads constructor(
     private var _binding: LargeButtonBinding? = null
     private val binding get() = _binding!!
 
-    private var mIsFillType = true
-
     // styleAttr, styleRes, defStyleAttr, defStyleRes
     private val mTypedArray = context.theme.obtainStyledAttributes(
         attrs, R.styleable.LargeButton, 0, 0
@@ -31,23 +29,19 @@ class LargeButton @JvmOverloads constructor(
         _binding = LargeButtonBinding.inflate(LayoutInflater.from(context), this, true)
 
         initializeViewAttrs(mTypedArray)
+        setColor()
     }
 
     private fun initializeViewAttrs(typedArray: TypedArray) = with(typedArray) {
         getString(R.styleable.LargeButton_text)?.let { text ->
             binding.textView.text = text
         }
-        getBoolean(R.styleable.LargeButton_fill_type, true).let { isFillType ->
-            mIsFillType = isFillType
-            if (mIsFillType) setColor()
-            else setTextColor(LINE_TEXT)
-        }
     }
 
-    // fill 타입인 경우 버튼 활성화/비활성화 될 때마다 컬러 변경
+    // 버튼 활성화/비활성화 될 때마다 컬러 변경
     fun setEnabledButton(isEnabled: Boolean) {
         this.isEnabled = isEnabled
-        if (mIsFillType) setColor()
+        setColor()
     }
 
     private fun setColor() {
@@ -57,12 +51,9 @@ class LargeButton @JvmOverloads constructor(
 
     private fun setButtonColor(colorId: Int) = with(binding) {
         val color = getColor(colorId)
-        fillLeft.setColorFilter(color)
-        fillMiddle.setColorFilter(color)
-        fillRight.setColorFilter(color)
-        lineLeft.setColorFilter(color)
-        lineMiddle.setColorFilter(color)
-        lineRight.setColorFilter(color)
+        left.setColorFilter(color)
+        middle.setColorFilter(color)
+        right.setColorFilter(color)
     }
 
     private fun setTextColor(colorId: Int) {
@@ -78,13 +69,9 @@ class LargeButton @JvmOverloads constructor(
     }
 
     companion object {
-        // fill type
         private val ENABLED_BUTTON = R.color.gray_900
         private val ENABLED_TEXT = R.color.white
         private val DISABLED_BUTTON = R.color.gray_300
         private val DISABLED_TEXT = R.color.gray_400
-
-        // line type
-        private val LINE_TEXT = R.color.gray_900
     }
 }

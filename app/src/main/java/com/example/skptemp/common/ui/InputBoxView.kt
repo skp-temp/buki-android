@@ -14,7 +14,7 @@ import com.example.skptemp.R
 import com.example.skptemp.databinding.InputBoxBinding
 
 class InputBoxView @JvmOverloads constructor(
-    private val context: Context,
+    context: Context,
     attrs: AttributeSet? = null,
     defStyleArr: Int = 0,
 ) : LinearLayout(context, attrs, defStyleArr) {

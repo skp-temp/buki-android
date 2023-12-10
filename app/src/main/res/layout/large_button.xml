@@ -4,46 +4,24 @@
     android:layout_height="@dimen/large_button_height"
     android:orientation="horizontal">
 
-    <FrameLayout
-        android:id="@+id/left_layout"
+    <ImageView
+        android:id="@+id/left"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/line_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/pixel_view_margin"
-            android:src="@drawable/button_line_left" />
-
-        <ImageView
-            android:id="@+id/fill_left"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/pixel_view_margin"
-            android:src="@drawable/button_fill_left" />
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:src="@drawable/large_button_left" />
 
     <FrameLayout
         android:id="@+id/middle_layout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1">
 
         <ImageView
-            android:id="@+id/line_middle"
+            android:id="@+id/middle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/button_line" />
-
-        <ImageView
-            android:id="@+id/fill_middle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="@dimen/pixel_view_margin"
-            android:scaleType="fitXY"
-            android:src="@drawable/button_fill" />
+            android:src="@drawable/large_button" />
 
         <TextView
             android:id="@+id/text_view"
@@ -51,26 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center" />
-
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/right_layout"
+    <ImageView
+        android:id="@+id/right"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/line_right"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/button_line_right" />
-
-        <ImageView
-            android:id="@+id/fill_right"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/pixel_view_margin"
-            android:src="@drawable/button_fill_right" />
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:src="@drawable/large_button_right" />
 
 </LinearLayout>

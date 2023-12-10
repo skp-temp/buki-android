@@ -13,6 +13,5 @@
 
     <declare-styleable name="LargeButton">
         <attr name="text" format="reference|string" />
-        <attr name="fill_type" format="boolean" />
     </declare-styleable>
 </resources>

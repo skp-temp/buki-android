@@ -3,6 +3,7 @@ package com.example.skptemp.common.ui
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +14,18 @@ import com.example.skptemp.common.util.ViewUtil.convertPXtoDP
 import com.example.skptemp.databinding.ToolbarBinding
 
 class Toolbar @JvmOverloads constructor(
-    private val context: Context,
+    context: Context,
     attrs: AttributeSet? = null,
     defStyleArr: Int = 0,
 ) : ConstraintLayout(context, attrs, defStyleArr) {
 
     private val binding = ToolbarBinding.inflate(LayoutInflater.from(context), this, true)
+
+    // styleAttr, styleRes, defStyleAttr, defStyleRes
+    private val mTypedArray = context.theme.obtainStyledAttributes(
+        attrs, R.styleable.Toolbar, 0, 0
+    )
+
     private val mButtonMap = mapOf(
         BACK_BUTTON to binding.backButton,
         BELL_BUTTON to binding.bellButton,
@@ -26,27 +33,20 @@ class Toolbar @JvmOverloads constructor(
         ACTION_BUTTON to binding.actionButton
     )
 
-    init {
-        val typedArray = context.theme.obtainStyledAttributes(
-            attrs,
-            R.styleable.Toolbar,
-            0,
-            0
-        )
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
 
-        initializeView(typedArray)
+        initializeViewAttrs(mTypedArray)
     }
 
-    private fun initializeView(typedArray: TypedArray) = with(typedArray) {
+    private fun initializeViewAttrs(typedArray: TypedArray) = with(typedArray) {
         getString(R.styleable.Toolbar_title_text)?.let { titleText ->
             setTitleText(titleText)
         }
-
         getBoolean(R.styleable.Toolbar_title_center, false).let { visibility ->
             if (!visibility) return@let
             binding.title.setGravityCenter()
         }
-
         getBoolean(R.styleable.Toolbar_back_button_visibility, false).let { visibility ->
             if (!visibility) return@let
             visibleButton(BACK_BUTTON)
@@ -55,7 +55,10 @@ class Toolbar @JvmOverloads constructor(
 
     private fun TextView.setGravityCenter() {
         gravity = Gravity.CENTER
-        textSize = resources.getDimension(R.dimen.text_medium_size).convertPXtoDP(context)
+        setTextSize(
+            TypedValue.COMPLEX_UNIT_DIP,
+            resources.getDimension(R.dimen.text_medium_size).convertPXtoDP(context)
+        )
     }
 
     fun setTitleText(text: String) {
@@ -80,7 +83,8 @@ class Toolbar @JvmOverloads constructor(
             // 벨 버튼과 미트볼 버튼이 연속적으로 있는 경우 마진 설정
             BELL_BUTTON, MEATBALL_BUTTON -> {
                 if (mButtonMap[MEATBALL_BUTTON]?.visibility == View.INVISIBLE ||
-                    mButtonMap[BELL_BUTTON]?.visibility == View.INVISIBLE) {
+                    mButtonMap[BELL_BUTTON]?.visibility == View.INVISIBLE
+                ) {
                     return@with
                 }
 
