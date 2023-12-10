@@ -5,4 +5,9 @@
         <attr name="title_center" format="boolean" />
         <attr name="back_button_visibility" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="InputBoxView">
+        <attr name="hint" format="reference|string" />
+        <attr name="maxLength" format="reference|integer" />
+    </declare-styleable>
 </resources>

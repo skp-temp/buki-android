@@ -30,4 +30,18 @@
         <item name="android:layout_height">@dimen/toolbar_height</item>
     </style>
 
+    <style name="medium_text_style">
+        <item name="android:textSize">@dimen/text_medium_size</item>
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="input_box_message_style">
+        <item name="android:textSize">@dimen/text_small_size</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:layout_marginStart">@dimen/input_box_message_start_margin</item>
+        <item name="android:layout_marginTop">@dimen/input_box_message_top_margin</item>
+    </style>
+
 </resources>
