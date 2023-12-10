@@ -2,9 +2,10 @@ package com.example.skptemp.feature.signup
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.skptemp.R
 import com.example.skptemp.common.ui.Toolbar
 import com.example.skptemp.common.ui.ViewPagerAdapter
@@ -22,7 +23,9 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
+
+        _binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     override fun onResume() {
@@ -34,7 +37,10 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun composeUI() {
         setupViewPager()
-        setupToolbar()
+
+        binding.toolbar.setButtonOnClickListener(Toolbar.BACK_BUTTON) {
+            moveToPreviousPage()
+        }
 
         binding.nextButton.setOnClickListener {
             moveToNextPage()
@@ -42,25 +48,23 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-        val fragments = listOf(
-            SignUpTermsFragment(),
-            SignUpNameFragment()
-        )
-
         val adapter = ViewPagerAdapter(
-            fragments,
             supportFragmentManager,
             lifecycle
         )
 
+        adapter.addFragment(SignUpTermsFragment(), resources.getString(R.string.terms_agreement))
+        adapter.addFragment(SignUpNameFragment(), resources.getString(R.string.sign_up))
+
         mViewPager.adapter = adapter
         mViewPager.isUserInputEnabled = false // 스와이프 막기
-    }
 
-    private fun setupToolbar() {
-        binding.toolbar.setButtonOnClickListener(Toolbar.BACK_BUTTON) {
-            moveToPreviousPage()
-        }
+        mViewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                Log.d(TAG, "ViewPager changed page $position")
+                binding.toolbar.setTitleText(adapter.getTitle(position))
+            }
+        })
     }
 
     private fun addOnBackPressedCallback() {
@@ -74,8 +78,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun moveToNextPage() {
-        if (mViewPager.currentItem++ < mViewPager.childCount - 1) return
-
+        if (mViewPager.currentItem++ < mViewPager.childCount) return
         // TODO: 서버 통신
         startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
     }
@@ -85,7 +88,8 @@ class SignUpActivity : AppCompatActivity() {
         finish()
     }
 
-    fun setToolbarTitleText(text: String) = binding.toolbar.setTitleText(text)
+    fun enabledNextButton(isEnabled: Boolean) =
+        binding.nextButton.setEnabledButton(isEnabled)
 
     override fun onDestroy() {
         super.onDestroy()

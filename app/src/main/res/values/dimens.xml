@@ -13,6 +13,9 @@
     <dimen name="toolbar_title_margin">8dp</dimen>
     <dimen name="toolbar_button">24dp</dimen>
 
+    <dimen name="large_button_bottom_margin">16dp</dimen>
+    <dimen name="large_button_height">56dp</dimen>
+
     <dimen name="input_box_height">48dp</dimen>
     <dimen name="input_box_message_top_margin">8dp</dimen>
     <dimen name="input_box_message_start_margin">12dp</dimen>

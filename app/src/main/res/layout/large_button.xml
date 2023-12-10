@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/large_button_height"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:id="@+id/left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/line_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pixel_view_margin"
+            android:src="@drawable/button_line_left" />
+
+        <ImageView
+            android:id="@+id/fill_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/pixel_view_margin"
+            android:src="@drawable/button_fill_left" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/middle_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/line_middle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/button_line" />
+
+        <ImageView
+            android:id="@+id/fill_middle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/pixel_view_margin"
+            android:scaleType="fitXY"
+            android:src="@drawable/button_fill" />
+
+        <TextView
+            android:id="@+id/text_view"
+            style="@style/medium_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/right_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/line_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/button_line_right" />
+
+        <ImageView
+            android:id="@+id/fill_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/pixel_view_margin"
+            android:src="@drawable/button_fill_right" />
+    </FrameLayout>
+
+</LinearLayout>
