@@ -3,8 +3,8 @@
     <dimen name="horizontal_margin_large">24dp</dimen>
     <dimen name="horizontal_margin_medium">16dp</dimen>
 
-    <dimen name="text_large_size">20sp</dimen>
-    <dimen name="text_medium_size">16sp</dimen>
+    <dimen name="text_large_size">20dp</dimen>
+    <dimen name="text_medium_size">16dp</dimen>
 
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="toolbar_vertical_margin">16dp</dimen>
