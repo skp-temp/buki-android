@@ -13,7 +13,9 @@ import com.example.skptemp.common.ui.InputBoxView
 import com.example.skptemp.common.ui.OnInputFocusListener
 import com.example.skptemp.common.ui.OnInputRegexListener
 import com.example.skptemp.databinding.FragmentSignUpNameBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpNameFragment : Fragment() {
 
     private var _binding: FragmentSignUpNameBinding? = null

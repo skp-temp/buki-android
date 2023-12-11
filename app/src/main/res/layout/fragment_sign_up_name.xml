@@ -14,13 +14,12 @@
         app:layout_constraintHeight_percent="0.07"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 20 / 800 -->
     <TextView
         android:id="@+id/name_input_text"
         style="@style/large_text_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/name_input"
+        android:text="@string/name_input_message"
         app:layout_constraintBottom_toTopOf="@+id/space2"
         app:layout_constraintTop_toBottomOf="@+id/space1" />
 
