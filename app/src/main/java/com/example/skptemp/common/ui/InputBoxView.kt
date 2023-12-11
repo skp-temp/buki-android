@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.example.skptemp.R
+import com.example.skptemp.common.util.ColorUtil.getColorStateList
 import com.example.skptemp.databinding.InputBoxBinding
 
 class InputBoxView @JvmOverloads constructor(
@@ -78,10 +79,10 @@ class InputBoxView @JvmOverloads constructor(
     }
 
     private fun setLineColor(colorId: Int) = with(binding) {
-        ContextCompat.getColor(context, colorId).let { color ->
-            lineLeft.setColorFilter(color)
-            lineMiddle.setColorFilter(color)
-            lineRight.setColorFilter(color)
+        getColorStateList(context, colorId).let { color ->
+            lineLeft.imageTintList = color
+            lineMiddle.imageTintList = color
+            lineRight.imageTintList = color
         }
     }
 

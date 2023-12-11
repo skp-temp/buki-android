@@ -5,8 +5,9 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import com.example.skptemp.R
+import com.example.skptemp.common.util.ColorUtil.getColor
+import com.example.skptemp.common.util.ColorUtil.getColorStateList
 import com.example.skptemp.databinding.LargeButtonBinding
 
 class LargeButton @JvmOverloads constructor(
@@ -50,18 +51,17 @@ class LargeButton @JvmOverloads constructor(
     }
 
     private fun setButtonColor(colorId: Int) = with(binding) {
-        val color = getColor(colorId)
-        left.setColorFilter(color)
-        middle.setColorFilter(color)
-        right.setColorFilter(color)
+        getColorStateList(context, colorId).let { color ->
+            left.imageTintList = color
+            middle.imageTintList = color
+            right.imageTintList = color
+        }
     }
 
     private fun setTextColor(colorId: Int) {
-        val color = getColor(colorId)
+        val color = getColor(context, colorId)
         binding.textView.setTextColor(color)
     }
-
-    private fun getColor(colorId: Int) = ContextCompat.getColor(context, colorId)
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
