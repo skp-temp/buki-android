@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">SkpTemp</string>
+    <string name="home">홈</string>
+    <string name="report">분석</string>
+    <string name="friends">친구</string>
+    <string name="my">마이</string>
 
     <string name="next_button">다음</string>
 
