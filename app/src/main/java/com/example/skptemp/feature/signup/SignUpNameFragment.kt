@@ -25,6 +25,9 @@ class SignUpNameFragment : Fragment() {
     private var mLastNameIsCorrect = false
     private var mFirstNameIsCorrect = false
 
+    private var mFirstSpaceHeight = 0
+    private var mSecondSpaceHeight = 0
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,7 +36,14 @@ class SignUpNameFragment : Fragment() {
         _binding = FragmentSignUpNameBinding.inflate(inflater, container, false)
         mActivity = requireActivity() as SignUpActivity
 
+        setSpaceHeight()
+
         return binding.root
+    }
+
+    private fun setSpaceHeight() {
+        binding.space1.post { mFirstSpaceHeight = binding.space1.height }
+        binding.space2.post { mSecondSpaceHeight = binding.space2.height }
     }
 
     override fun onResume() {
@@ -82,6 +92,8 @@ class SignUpNameFragment : Fragment() {
         // inputbox focus 변경 리스너 등록
         addOnInputFocusListener(object : OnInputFocusListener {
             override fun onChangeFocus(hasFocus: Boolean, isEmpty: Boolean) {
+                resizeSpaceHeight(hasFocus)
+
                 if (!hasFocus || isEmpty) {
                     textView.setMessage(true)
                     return
@@ -94,6 +106,17 @@ class SignUpNameFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun resizeSpaceHeight(visibleKeyBoard: Boolean) {
+        if (!visibleKeyBoard) return
+
+        binding.space1.resizeHeight(mFirstSpaceHeight)
+        binding.space2.resizeHeight(mSecondSpaceHeight)
+    }
+
+    private fun View.resizeHeight(changeHeight: Int) {
+        layoutParams = layoutParams.apply { height = changeHeight }
     }
 
     private fun updateNextButton() {

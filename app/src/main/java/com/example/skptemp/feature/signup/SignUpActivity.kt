@@ -80,7 +80,8 @@ class SignUpActivity : AppCompatActivity() {
     private fun moveToNextPage() {
         if (mViewPager.currentItem++ < mViewPager.childCount) return
         // TODO: 서버 통신
-        startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
+        setResult(RESULT_OK)
+        finish()
     }
 
     private fun moveToPreviousPage() {
