@@ -1,5 +1,6 @@
 package com.example.skptemp.feature
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,6 +12,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.databinding.DataBindingUtil
 import com.example.skptemp.R
 import com.example.skptemp.databinding.ActivityMainBinding
+import com.example.skptemp.feature.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         startSplashScreen()
+
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 
     private fun startSplashScreen() {
@@ -55,6 +59,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private val TAG = MainActivity::class.simpleName
-        private const val SPLASH_DURATION: Long = 700
+        private const val SPLASH_DURATION: Long = 1000
     }
 }
