@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 56 / 800 -->
+    <Space
+        android:id="@+id/space1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/name_input_text"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_input_text"
+        style="@style/large_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/name_input_message"
+        app:layout_constraintBottom_toTopOf="@+id/space2"
+        app:layout_constraintTop_toBottomOf="@+id/space1" />
+
+    <!-- 32 / 800 -->
+    <Space
+        android:id="@+id/space2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/input_layout"
+        app:layout_constraintHeight_percent="0.04"
+        app:layout_constraintTop_toBottomOf="@+id/name_input_text" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_box_height"
+        app:layout_constraintBottom_toTopOf="@+id/input_text_layout"
+        app:layout_constraintTop_toBottomOf="@+id/space2">
+
+        <com.example.skptemp.common.ui.InputBoxView
+            android:id="@+id/last_name_input"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/input_box_between_margin"
+            app:hint="@string/last_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/first_name_input"
+            app:layout_constraintWidth_percent="0.4"
+            app:maxLength="4" />
+
+        <com.example.skptemp.common.ui.InputBoxView
+            android:id="@+id/first_name_input"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:hint="@string/first_name"
+            app:layout_constraintLeft_toRightOf="@+id/last_name_input"
+            app:layout_constraintRight_toRightOf="parent"
+            app:maxLength="9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/input_text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout">
+
+        <TextView
+            android:id="@+id/last_name_text"
+            style="@style/input_box_message_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:id="@+id/space3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/input_box_between_margin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/first_name_text"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <TextView
+                android:id="@+id/first_name_text"
+                style="@style/input_box_message_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@+id/space3"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 56 / 800 -->
+    <Space
+        android:id="@+id/space1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/terms_agreement_text"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/terms_agreement_text"
+        style="@style/large_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/terms_agreement_message"
+        app:layout_constraintBottom_toTopOf="@+id/space2"
+        app:layout_constraintTop_toBottomOf="@+id/space1" />
+
+    <!-- 48 / 800 -->
+    <Space
+        android:id="@+id/space2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/all_agree_layout"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintTop_toBottomOf="@+id/terms_agreement_text" />
+
+    <LinearLayout
+        android:id="@+id/all_agree_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintTop_toBottomOf="@+id/space2">
+
+        <include
+            android:id="@+id/all_agree_view"
+            layout="@layout/terms_list_item" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/terms_list_margin"
+        android:background="@color/gray_300"
+        app:layout_constraintBottom_toTopOf="@+id/terms_list"
+        app:layout_constraintTop_toBottomOf="@+id/all_agree_layout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/terms_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

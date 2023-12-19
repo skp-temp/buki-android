@@ -58,8 +58,15 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
 
-    //splashscreen
+    // splashscreen
     implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
+
+    // viewpager2
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // by viewModels()
+    implementation("androidx.activity:activity-ktx:1.8.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 }
 
 kapt {

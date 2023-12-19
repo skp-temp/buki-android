@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="splash_icon_size">208dp</dimen>
+    <dimen name="splash_bottom_margin">106dp</dimen>
+
     <dimen name="horizontal_margin_large">24dp</dimen>
     <dimen name="horizontal_margin_medium">16dp</dimen>
 
     <dimen name="text_large_size">20dp</dimen>
     <dimen name="text_medium_size">16dp</dimen>
+    <dimen name="text_small_size">12dp</dimen>
 
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="toolbar_vertical_margin">16dp</dimen>
     <dimen name="toolbar_button_margin">16dp</dimen>
     <dimen name="toolbar_title_margin">8dp</dimen>
     <dimen name="toolbar_button">24dp</dimen>
+
+    <dimen name="button_bottom_margin">16dp</dimen>
+    <dimen name="large_button_height">56dp</dimen>
+
+    <dimen name="input_box_height">48dp</dimen>
+    <dimen name="input_box_message_top_margin">8dp</dimen>
+    <dimen name="input_box_message_start_margin">12dp</dimen>
+    <dimen name="input_box_between_margin">12dp</dimen>
+
+    <dimen name="terms_list_height">24dp</dimen>
+    <dimen name="terms_list_margin">20dp</dimen>
+    <dimen name="pixel_view_margin">2dp</dimen>
 </resources>
