@@ -4,28 +4,28 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@animator/navigation_home_icon_selector"
+        android:icon="@animator/navigation_home_selector"
         android:menuCategory="secondary"
         android:title="@string/home"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/navigation_report"
-        android:icon="@animator/navigation_report_icon_selector"
+        android:icon="@animator/navigation_report_selector"
         android:menuCategory="secondary"
         android:title="@string/report"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/navigation_friends"
-        android:icon="@animator/navigation_friends_icon_selector"
+        android:icon="@animator/navigation_friends_selector"
         android:menuCategory="secondary"
         android:title="@string/friends"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/navigation_my"
-        android:icon="@animator/navigation_my_icon_selector"
+        android:icon="@animator/navigation_my_selector"
         android:menuCategory="secondary"
         android:title="@string/my"
         app:showAsAction="always" />

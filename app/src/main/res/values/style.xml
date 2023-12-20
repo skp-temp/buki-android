@@ -39,4 +39,9 @@
         <item name="android:layout_marginTop">@dimen/input_box_message_top_margin</item>
     </style>
 
+    <style name="bottom_navigation_text_style">
+        <item name="android:textSize">@dimen/text_small_size</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
 </resources>
