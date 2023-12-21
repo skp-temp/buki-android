@@ -6,26 +6,5 @@
     <path
         android:fillColor="@color/gray_900"
         android:fillType="evenOdd"
-        android:pathData="M17,21V19H19V17H21V7H19V5H17V3H7V5H5V7H3V17H5V19H7V21H17Z" />
-    <path
-        android:fillColor="@color/white"
-        android:pathData="M10,5h2v2h-2z" />
-    <path
-        android:fillColor="@color/white"
-        android:pathData="M14,13h2v2h-2z" />
-    <path
-        android:fillColor="@color/white"
-        android:pathData="M8,7h2v2h-2z" />
-    <path
-        android:fillColor="@color/white"
-        android:pathData="M12,7h2v2h-2z" />
-    <path
-        android:fillColor="@color/white"
-        android:pathData="M8,13h2v2h-2z" />
-    <path
-        android:fillColor="@color/white"
-        android:pathData="M5,9h3v2h-3z" />
-    <path
-        android:fillColor="@color/white"
-        android:pathData="M14,9h5v2h-5z" />
+        android:pathData="M5,7H3V17H5V19H7V21H17V19H19V17H21V7H19V5H17V3H7V5H5V7ZM16,13H14V15H16V13ZM12,5H10V7H12V5ZM14,9V7H12V9H14ZM14,9V11H19V9H14ZM8,9H10V7H8V9ZM8,9H5V11H8V9ZM8,13H10V15H8V13Z" />
 </vector>

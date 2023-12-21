@@ -3,42 +3,21 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
-  <path
-      android:pathData="M12,14h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M4,14h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M6,14h6v2h-6z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M11,4H7V6H5V8V10H7V12H11V10H13V8V6H11V4ZM11,6V8V10H7V8V6H11Z"
-      android:fillColor="@color/gray_400"
-      android:fillType="evenOdd"/>
-  <path
-      android:pathData="M17,4H14V6H17V8V10H14V12H17V10H19V8V6H17V4Z"
-      android:fillColor="@color/gray_400"
-      android:fillType="evenOdd"/>
-  <path
-      android:pathData="M2,18h14v2h-14z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M2,16h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M14,16h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M18,18h4v2h-4z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M20,16h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M18,14h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M17,14h1v2h-1z"
-      android:fillColor="@color/gray_400"/>
+    <path
+        android:fillColor="@color/gray_400"
+        android:pathData="M4,14h10v2h-10z" />
+    <path
+        android:fillColor="@color/gray_400"
+        android:fillType="evenOdd"
+        android:pathData="M11,4H7V6H5V10H7V12H11V10H13V6H11V4ZM11,6V10H7V6H11Z" />
+    <path
+        android:fillColor="@color/gray_400"
+        android:fillType="evenOdd"
+        android:pathData="M17,4H14V6H17V10H14V12H17V10H19V6H17V4Z" />
+    <path
+        android:fillColor="@color/gray_400"
+        android:pathData="M4,16V18H14V16H16V20H2V16H4Z" />
+    <path
+        android:fillColor="@color/gray_400"
+        android:pathData="M20,16H17V14H20V16H22V20H18V18H20V16Z" />
 </vector>

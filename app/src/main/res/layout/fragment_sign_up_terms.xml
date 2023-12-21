@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 56 / 800 -->
+    <!-- h = 800 - 56(toolbar) - 56(bottom button) = 688 -->
+    <!-- 56 / 688 -->
     <Space
         android:id="@+id/space1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/terms_agreement_text"
-        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHeight_percent="0.08"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -22,13 +23,13 @@
         app:layout_constraintBottom_toTopOf="@+id/space2"
         app:layout_constraintTop_toBottomOf="@+id/space1" />
 
-    <!-- 48 / 800 -->
+    <!-- 48 / 688 -->
     <Space
         android:id="@+id/space2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/all_agree_layout"
-        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintHeight_percent="0.07"
         app:layout_constraintTop_toBottomOf="@+id/terms_agreement_text" />
 
     <LinearLayout

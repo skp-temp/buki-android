@@ -3,52 +3,8 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
-  <path
-      android:pathData="M10,2h4v2h-4z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M8,4h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M14,4h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M6,6h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M16,6h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M4,8h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M2,10h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M18,8h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M20,10h2v2h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M4,12h2v10h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M6,20h3v2h-3z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M9,16h2v6h-2z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M9,18l6,-0l0,-2l-6,-0z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M13,22l2,-0l0,-6l-2,-0z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M14,22l6,-0l0,-2l-6,-0z"
-      android:fillColor="@color/gray_400"/>
-  <path
-      android:pathData="M18,20l2,-0l0,-8l-2,-0z"
-      android:fillColor="@color/gray_400"/>
+    <path
+        android:fillColor="@color/gray_400"
+        android:fillType="evenOdd"
+        android:pathData="M4,12H6V20H9V16H15V20H18V12H20V10H18V8H16V6H14V4H10V6H8V8H6V10H4V12ZM4,12H2V10H4V8H6V6H8V4H10V2H14V4H16V6H18V8H20V10H22V12H20V22H13V18H11V22H4V12Z" />
 </vector>
