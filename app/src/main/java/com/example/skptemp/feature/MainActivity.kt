@@ -1,29 +1,27 @@
 package com.example.skptemp.feature
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.TooltipCompat
-import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.forEach
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.example.skptemp.R
-import com.example.skptemp.common.util.ViewUtil.convertPXtoDP
+import com.example.skptemp.common.util.showToast
 import com.example.skptemp.databinding.ActivityMainBinding
 import com.example.skptemp.feature.friends.FriendsFragment
 import com.example.skptemp.feature.home.HomeFragment
 import com.example.skptemp.feature.my.MyFragment
 import com.example.skptemp.feature.report.ReportFragment
-import com.google.android.material.shape.CornerFamily
-import com.google.android.material.shape.MaterialShapeDrawable
+import com.example.skptemp.feature.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,12 +30,7 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
-    private val mFragments = mapOf(
-        R.id.navigation_home to HomeFragment(),
-        R.id.navigation_report to ReportFragment(),
-        R.id.navigation_friends to FriendsFragment(),
-        R.id.navigation_my to MyFragment()
-    )
+    private var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         startSplashScreen()
+        addOnBackPressedCallback()
     }
 
     private fun startSplashScreen() {
@@ -69,19 +63,41 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun addOnBackPressedCallback() {
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (System.currentTimeMillis() - backPressedTime >= BACK_INTERVAL) {
+                    backPressedTime = System.currentTimeMillis()
+                    showToast(this@MainActivity, resources.getString(R.string.back_pressed))
+                    return
+                }
+
+                finish()
+            }
+        }
+
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
     override fun onResume() {
         super.onResume()
         setUpBottomNavigationBar()
     }
 
     private fun setUpBottomNavigationBar() = with(binding.bottomNavigationBar) {
-        findNavController(R.id.nav_host_fragment).let { navController ->
-            setupWithNavController(navController)
-        }
+        val navController = findNavController(R.id.nav_host_fragment)
+        setupWithNavController(navController)
+
         itemIconTintList = null
 
         menu.forEach { item ->
             findViewById<View>(item.itemId).setOnLongClickListener { true }
+        }
+
+        setOnItemSelectedListener { item ->
+            Log.d(TAG, "Bottom Navigation Bar selected $item")
+            backPressedTime = 0
+            onNavDestinationSelected(item, navController)
         }
     }
 
@@ -93,5 +109,6 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private val TAG = MainActivity::class.simpleName
         private const val SPLASH_DURATION: Long = 700
+        private const val BACK_INTERVAL = 2000
     }
 }

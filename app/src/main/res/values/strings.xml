@@ -16,4 +16,6 @@
     <string name="last_name">성</string>
     <string name="first_name">이름</string>
     <string name="name_input_incorrect">한글과 알파벳만 입력해주세요!</string>
+
+    <string name="back_pressed">뒤로 버튼을 한번 더 누르면 앱을 종료합니다.</string>
 </resources>
