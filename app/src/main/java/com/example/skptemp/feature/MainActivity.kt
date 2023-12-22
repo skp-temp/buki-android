@@ -1,16 +1,27 @@
 package com.example.skptemp.feature
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.databinding.DataBindingUtil
+import androidx.core.view.forEach
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import com.example.skptemp.R
+import com.example.skptemp.common.util.showToast
 import com.example.skptemp.databinding.ActivityMainBinding
+import com.example.skptemp.feature.friends.FriendsFragment
+import com.example.skptemp.feature.home.HomeFragment
+import com.example.skptemp.feature.my.MyFragment
+import com.example.skptemp.feature.report.ReportFragment
+import com.example.skptemp.feature.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,12 +30,16 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
+    private var backPressedTime: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
 
-        _binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         startSplashScreen()
+        addOnBackPressedCallback()
     }
 
     private fun startSplashScreen() {
@@ -48,6 +63,44 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun addOnBackPressedCallback() {
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (System.currentTimeMillis() - backPressedTime >= BACK_INTERVAL) {
+                    backPressedTime = System.currentTimeMillis()
+                    showToast(this@MainActivity, resources.getString(R.string.back_pressed))
+                    return
+                }
+
+                finish()
+            }
+        }
+
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setUpBottomNavigationBar()
+    }
+
+    private fun setUpBottomNavigationBar() = with(binding.bottomNavigationBar) {
+        val navController = findNavController(R.id.nav_host_fragment)
+        setupWithNavController(navController)
+
+        itemIconTintList = null
+
+        menu.forEach { item ->
+            findViewById<View>(item.itemId).setOnLongClickListener { true }
+        }
+
+        setOnItemSelectedListener { item ->
+            Log.d(TAG, "Bottom Navigation Bar selected $item")
+            backPressedTime = 0
+            onNavDestinationSelected(item, navController)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
@@ -56,5 +109,6 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private val TAG = MainActivity::class.simpleName
         private const val SPLASH_DURATION: Long = 700
+        private const val BACK_INTERVAL = 2000
     }
 }

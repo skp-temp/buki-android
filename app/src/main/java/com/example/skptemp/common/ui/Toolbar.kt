@@ -28,9 +28,10 @@ class Toolbar @JvmOverloads constructor(
 
     private val mButtonMap = mapOf(
         BACK_BUTTON to binding.backButton,
+        ACTION_BUTTON_LEFT to binding.actionButtonLeft,
         BELL_BUTTON to binding.bellButton,
         MEATBALL_BUTTON to binding.meatballButton,
-        ACTION_BUTTON to binding.actionButton
+        ACTION_BUTTON_RIGHT to binding.actionButtonRight
     )
 
     override fun onAttachedToWindow() {
@@ -50,6 +51,20 @@ class Toolbar @JvmOverloads constructor(
         getBoolean(R.styleable.Toolbar_back_button_visibility, false).let { visibility ->
             if (!visibility) return@let
             visibleButton(BACK_BUTTON)
+        }
+        getBoolean(R.styleable.Toolbar_action_button_left_visibility, false).let { visibility ->
+            if (!visibility) return@let
+            visibleButton(ACTION_BUTTON_LEFT)
+        }
+        getBoolean(R.styleable.Toolbar_action_button_right_visibility, false).let { visibility ->
+            if (!visibility) return@let
+            visibleButton(ACTION_BUTTON_RIGHT)
+        }
+        getString(R.styleable.Toolbar_action_button_left_text)?.let { titleText ->
+            binding.actionButtonLeft.text = titleText
+        }
+        getString(R.styleable.Toolbar_action_button_right_text)?.let { titleText ->
+            binding.actionButtonRight.text = titleText
         }
     }
 
@@ -108,8 +123,9 @@ class Toolbar @JvmOverloads constructor(
 
     companion object {
         const val BACK_BUTTON = 1
-        const val BELL_BUTTON = 2
-        const val MEATBALL_BUTTON = 3
-        const val ACTION_BUTTON = 4
+        const val ACTION_BUTTON_LEFT = 2
+        const val BELL_BUTTON = 3
+        const val MEATBALL_BUTTON = 4
+        const val ACTION_BUTTON_RIGHT = 5
     }
 }

@@ -4,6 +4,10 @@
         <attr name="title_text" format="reference|string" />
         <attr name="title_center" format="boolean" />
         <attr name="back_button_visibility" format="boolean" />
+        <attr name="action_button_left_visibility" format="boolean" />
+        <attr name="action_button_right_visibility" format="boolean" />
+        <attr name="action_button_left_text" format="reference|string" />
+        <attr name="action_button_right_text" format="reference|string" />
     </declare-styleable>
 
     <declare-styleable name="InputBoxView">

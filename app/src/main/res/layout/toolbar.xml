@@ -37,6 +37,12 @@
             android:src="@drawable/ic_arrow_back"
             android:visibility="gone" />
 
+        <TextView
+            android:id="@+id/action_button_left"
+            style="@style/toolbar_action_button_style"
+            android:gravity="center_vertical"
+            android:visibility="gone" />
+
         <Space
             android:id="@+id/space"
             android:layout_width="0dp"
@@ -56,10 +62,9 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/action_button"
+            android:id="@+id/action_button_right"
             style="@style/toolbar_action_button_style"
             android:gravity="center_vertical"
-            android:src="@drawable/ic_meatball"
             android:visibility="gone" />
 
     </LinearLayout>
