@@ -50,6 +50,12 @@
             android:layout_weight="1" />
 
         <ImageView
+            android:id="@+id/gift_button"
+            style="@style/toolbar_button_style"
+            android:src="@drawable/ic_gift"
+            android:visibility="gone" />
+
+        <ImageView
             android:id="@+id/bell_button"
             style="@style/toolbar_button_style"
             android:src="@drawable/ic_bell"

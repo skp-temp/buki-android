@@ -31,6 +31,7 @@ class Toolbar @JvmOverloads constructor(
         ACTION_BUTTON_LEFT to binding.actionButtonLeft,
         BELL_BUTTON to binding.bellButton,
         MEATBALL_BUTTON to binding.meatballButton,
+        GIFT_BUTTON to binding.giftButton,
         ACTION_BUTTON_RIGHT to binding.actionButtonRight
     )
 
@@ -80,6 +81,7 @@ class Toolbar @JvmOverloads constructor(
         binding.title.text = text
     }
 
+    // 툴바 오른쪽 버튼 순서 -> GIFT / BELL / MEATBALL
     fun visibleButton(buttonType: Int) = with(binding) {
         mButtonMap[buttonType]?.visibility = View.VISIBLE
 
@@ -96,10 +98,18 @@ class Toolbar @JvmOverloads constructor(
             }
 
             // 벨 버튼과 미트볼 버튼이 연속적으로 있는 경우 마진 설정
-            BELL_BUTTON, MEATBALL_BUTTON -> {
-                if (mButtonMap[MEATBALL_BUTTON]?.visibility == View.INVISIBLE ||
-                    mButtonMap[BELL_BUTTON]?.visibility == View.INVISIBLE
-                ) {
+            GIFT_BUTTON -> {
+                if (mButtonMap[BELL_BUTTON]?.visibility == View.INVISIBLE) {
+                    return@with
+                }
+
+                val marginDp = resources.getDimension(R.dimen.toolbar_button_margin).toInt()
+                bellButton.setMarginStart(marginDp)
+            }
+
+            // 벨 버튼과 미트볼 버튼이 연속적으로 있는 경우 마진 설정
+            BELL_BUTTON -> {
+                if (mButtonMap[MEATBALL_BUTTON]?.visibility == View.INVISIBLE) {
                     return@with
                 }
 
@@ -126,6 +136,7 @@ class Toolbar @JvmOverloads constructor(
         const val ACTION_BUTTON_LEFT = 2
         const val BELL_BUTTON = 3
         const val MEATBALL_BUTTON = 4
-        const val ACTION_BUTTON_RIGHT = 5
+        const val GIFT_BUTTON = 5
+        const val ACTION_BUTTON_RIGHT = 6
     }
 }

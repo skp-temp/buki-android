@@ -4,18 +4,7 @@
     <color name="green">#35C759</color>
     <color name="red">#FF3B2F</color>
     <color name="orange">#FF9500</color>
-
-    <color name="yellowgreen_100">#EBFD73</color>
-    <color name="yellowgreen_300">#B7CA39</color>
-    <color name="yellowgreen_500">#00724F</color>
-
-    <color name="orange_100">#FEC1A5</color>
-    <color name="orange_300">#FF8B56</color>
-    <color name="orange_500">#BA0000</color>
-
-    <color name="purple_100">#CEC2FF</color>
-    <color name="purple_300">#9148FF</color>
-    <color name="purple_500">#3D00BF</color>
+    <color name="yellow">#FFCC02</color>
 
     <color name="white">#FFFFFF</color>
     <color name="gray_100">#F9F9FB</color>
@@ -28,6 +17,46 @@
     <color name="gray_800">#3A3A3C</color>
     <color name="gray_900">#1C1C1E</color>
     <color name="black">#000000</color>
+
+    <color name="yellowgreen_100">#FCFFE8</color>
+    <color name="yellowgreen_200">#EBFD73</color>
+    <color name="yellowgreen_300">#94A520</color>
+    <color name="yellowgreen_400">#00724F</color>
+
+    <color name="yellow_100">#FFFBD8</color>
+    <color name="yellow_200">#FFEC55</color>
+    <color name="yellow_300">#F8A120</color>
+    <color name="yellow_400">#FF7A00</color>
+
+    <color name="orange_100">#FFF3E5</color>
+    <color name="orange_200">#FFCBB4</color>
+    <color name="orange_300">#F1805C</color>
+    <color name="orange_400">#BA0000</color>
+
+    <color name="pink_100">#FFF1FC</color>
+    <color name="pink_200">#FFCFF5</color>
+    <color name="pink_300">#DD7EE4</color>
+    <color name="pink_400">#A600AF</color>
+
+    <color name="green_100">#F3FFDF</color>
+    <color name="green_200">#BAF59F</color>
+    <color name="green_300">#64B961</color>
+    <color name="green_400">#30712E</color>
+
+    <color name="purple_100">#F3F0FF</color>
+    <color name="purple_200">#CFC8FF</color>
+    <color name="purple_300">#8F86CD</color>
+    <color name="purple_400">#5B50A7</color>
+
+    <color name="blue_100">#E6F1FF</color>
+    <color name="blue_200">#B1D5FF</color>
+    <color name="blue_300">#7A9DD2</color>
+    <color name="blue_400">#5C41E3</color>
+
+    <color name="brown_100">#FFEFE1</color>
+    <color name="brown_200">#F2C092</color>
+    <color name="brown_300">#B97D45</color>
+    <color name="brown_400">#703F12</color>
 
     <color name="dim_100">#1A1C1C1E</color>
     <color name="dim_500">#80000000</color>

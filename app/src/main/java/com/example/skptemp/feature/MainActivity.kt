@@ -1,6 +1,5 @@
 package com.example.skptemp.feature
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -17,11 +16,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.skptemp.R
 import com.example.skptemp.common.util.showToast
 import com.example.skptemp.databinding.ActivityMainBinding
-import com.example.skptemp.feature.friends.FriendsFragment
-import com.example.skptemp.feature.home.HomeFragment
-import com.example.skptemp.feature.my.MyFragment
-import com.example.skptemp.feature.report.ReportFragment
-import com.example.skptemp.feature.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
