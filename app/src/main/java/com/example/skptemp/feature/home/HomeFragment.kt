@@ -1,21 +1,23 @@
 package com.example.skptemp.feature.home
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
 import com.example.skptemp.R
 import com.example.skptemp.common.ui.Toolbar
+import com.example.skptemp.common.util.ColorUtil
+import com.example.skptemp.common.util.ViewPagerUtil.setPageChangeAnimation
+import com.example.skptemp.common.util.ViewPagerUtil.setSwipeAction
 import com.example.skptemp.databinding.FragmentHomeBinding
+import com.example.skptemp.feature.home.adapter.CharmImageListAdapter
+import com.example.skptemp.feature.home.adapter.CharmInfoListAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.abs
-import kotlin.math.max
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -23,12 +25,21 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private var mCheckedTextColor = 0
+    private var mUncheckedTextColor = 0
+
+    private lateinit var mContext: Context
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        mContext = requireContext()
+        mCheckedTextColor = ColorUtil.getColor(mContext, CHECKED_TEXT_COLOR)
+        mUncheckedTextColor = ColorUtil.getColor(mContext, UNCHECKED_TEXT_COLOR)
 
         updateViewPagerSize()
         return binding.root
@@ -52,6 +63,24 @@ class HomeFragment : Fragment() {
         super.onResume()
         composeToolbar()
         composeViewPager()
+        composeRecyclerView()
+
+        binding.charmSwitch.setOnCheckedChangeListener { _, isSelectedDone ->
+            changeSwitchText(isSelectedDone)
+        }
+        binding.doneText.text = "도전 완료 12"
+        binding.progressText.text = "도전 중 8"
+    }
+
+    private fun changeSwitchText(isSelectedDone: Boolean) = with(binding) {
+        if (isSelectedDone) {
+            binding.doneText.setTextColor(mCheckedTextColor)
+            binding.progressText.setTextColor(mUncheckedTextColor)
+            return
+        }
+
+        binding.progressText.setTextColor(mCheckedTextColor)
+        binding.doneText.setTextColor(mUncheckedTextColor)
     }
 
     private fun composeToolbar() = with(binding.toolbar) {
@@ -68,7 +97,7 @@ class HomeFragment : Fragment() {
 
     private fun composeViewPager() = with(binding.charmImageViewPager) {
         adapter = CharmImageListAdapter(
-            requireContext(),
+            mContext,
             listOf(
                 R.color.yellowgreen_200,
                 R.color.purple_200,
@@ -80,26 +109,15 @@ class HomeFragment : Fragment() {
         getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         binding.viewPagerIndicator.attachTo(this)
 
+        //setSwipeAction(binding.scrollView)
         setPageChangeAnimation()
     }
 
-    private fun ViewPager2.setPageChangeAnimation() {
-        val marginPx = resources.getDimensionPixelOffset(R.dimen.charm_pager_margin)
-
-        val transform = CompositePageTransformer().apply {
-            addTransformer(MarginPageTransformer(marginPx))
-            addTransformer { view, position ->
-                val scaleFactor = max(MIN_SCALE, 1 - abs(position))
-
-                view.scaleX = scaleFactor
-                view.scaleY = scaleFactor
-
-                view.alpha = (MIN_ALPHA +
-                        (((scaleFactor - MIN_SCALE) / (1 - MIN_SCALE)) * (1 - MIN_ALPHA)))
-            }
-        }
-
-        setPageTransformer(transform)
+    private fun composeRecyclerView() = with(binding.charmRecyclerView) {
+        layoutManager = LinearLayoutManager(mContext)
+        overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        adapter = CharmInfoListAdapter(listOf("1번째", "두번째"))
+        addItemDecoration(CharmInfoItemDecoration(mContext))
     }
 
     override fun onDestroyView() {
@@ -109,7 +127,7 @@ class HomeFragment : Fragment() {
 
     companion object {
         private val TAG = HomeFragment::class.simpleName
-        private const val MIN_SCALE = 0.9f
-        private const val MIN_ALPHA = 0.5f
+        private val CHECKED_TEXT_COLOR = R.color.white
+        private val UNCHECKED_TEXT_COLOR = R.color.gray_500
     }
 }

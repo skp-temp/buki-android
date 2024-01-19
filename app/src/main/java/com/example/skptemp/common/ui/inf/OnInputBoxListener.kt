@@ -1,4 +1,4 @@
-package com.example.skptemp.common.ui
+package com.example.skptemp.common.ui.inf
 
 interface OnInputRegexListener {
     fun onChangeCorrect(isCorrect: Boolean, isEmpty: Boolean)

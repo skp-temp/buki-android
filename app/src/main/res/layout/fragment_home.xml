@@ -21,6 +21,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/scroll_view"
         android:fillViewport="true"
         android:overScrollMode="never"
         android:scrollbars="none"
@@ -28,83 +29,99 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="640">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <!-- h = 382 -->
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="394">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <!-- h = 32 / 382 = 0.08 -->
                 <Space
-                    android:id="@+id/space1"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toTopOf="@+id/charm_image_view_pager"
-                    app:layout_constraintHeight_percent="0.08"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="32dp" />
 
-                <!--  h = 300 / 382 = 0.78 -->
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/charm_image_view_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="300dp"
                     android:clipChildren="false"
-                    android:clipToPadding="false"
-                    app:layout_constraintBottom_toTopOf="@+id/space2"
-                    app:layout_constraintHeight_percent="0.78"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/space1" />
+                    android:clipToPadding="false" />
 
-                <!--  h = 24 / 382 = 0.06 -->
                 <Space
-                    android:id="@+id/space2"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toTopOf="@+id/view_pager_indicator"
-                    app:layout_constraintHeight_percent="0.06"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="24dp" />
 
                 <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                     android:id="@+id/view_pager_indicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     app:dotsColor="@color/gray_300"
                     app:dotsSize="@dimen/indicator_dot"
                     app:dotsSpacing="@dimen/indicator_dot_margin"
                     app:dotsWidthFactor="1"
-                    app:layout_constraintBottom_toTopOf="@+id/space3"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/space2"
                     app:selectedDotColor="@color/blue" />
 
-                <!--  h = 20 / 382 = 0.05 -->
                 <Space
-                    android:id="@+id/space3"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHeight_percent="0.05"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_pager_indicator" />
+                    android:layout_height="20dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/switch_height">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/charm_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:thumb="@drawable/switch_thumb"
+                        app:switchMinWidth="@dimen/switch_width"
+                        app:track="@drawable/switch_track" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/progress_text"
+                            style="@style/switch_text_style"
+                            android:layout_marginEnd="@dimen/switch_text_margin"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/done_text"
+                            style="@style/switch_text_style"
+                            android:layout_marginStart="@dimen/switch_text_margin"
+                            android:textColor="@color/gray_500" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/charm_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

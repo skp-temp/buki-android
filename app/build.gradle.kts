@@ -74,6 +74,9 @@ dependencies {
 
     // viewpager dots indicator
     implementation("com.tbuonomo:dotsindicator:5.0")
+
+    // cardview
+    implementation("androidx.cardview:cardview:1.0.0")
 }
 
 kapt {

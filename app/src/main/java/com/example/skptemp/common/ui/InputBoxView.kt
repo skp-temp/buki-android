@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.example.skptemp.R
+import com.example.skptemp.common.ui.inf.OnInputFocusListener
+import com.example.skptemp.common.ui.inf.OnInputRegexListener
 import com.example.skptemp.common.util.ColorUtil.getColorStateList
 import com.example.skptemp.databinding.InputBoxBinding
 

@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.skptemp.R
 import com.example.skptemp.common.ui.InputBoxView
-import com.example.skptemp.common.ui.OnInputFocusListener
-import com.example.skptemp.common.ui.OnInputRegexListener
+import com.example.skptemp.common.ui.inf.OnInputFocusListener
+import com.example.skptemp.common.ui.inf.OnInputRegexListener
 import com.example.skptemp.databinding.FragmentSignUpNameBinding
 import dagger.hilt.android.AndroidEntryPoint
 

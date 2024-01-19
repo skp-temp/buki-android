@@ -39,9 +39,26 @@
         <item name="android:layout_marginTop">@dimen/input_box_message_top_margin</item>
     </style>
 
-    <style name="bottom_navigation_text_style">
+    <style name="small_text_style">
         <item name="android:textSize">@dimen/text_small_size</item>
         <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="BottomDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomDialog</item>
+    </style>
+
+    <style name="BottomDialog" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_marginHorizontal">20dp</item>
+    </style>
+
+    <style name="switch_text_style">
+        <item name="android:textSize">@dimen/switch_text_size</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 
 </resources>

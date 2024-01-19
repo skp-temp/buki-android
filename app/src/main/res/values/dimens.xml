@@ -40,6 +40,13 @@
     <dimen name="indicator_dot">6dp</dimen>
     <dimen name="indicator_dot_margin">4dp</dimen>
 
+    <dimen name="switch_text_size">14dp</dimen>
+    <dimen name="switch_width">216dp</dimen>
+    <dimen name="switch_height">42dp</dimen>
+    <dimen name="switch_thumb_margin">4dp</dimen>
+    <dimen name="switch_text_margin">14dp</dimen>
+
+    <dimen name="scroll_end_margin">56dp</dimen>
 
     <dimen name="bottom_dialog_radius">20dp</dimen>
 
