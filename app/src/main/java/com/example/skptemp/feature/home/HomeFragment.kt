@@ -14,6 +14,8 @@ import com.example.skptemp.common.ui.Toolbar
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewPagerUtil.setPageChangeAnimation
 import com.example.skptemp.common.util.ViewPagerUtil.setSwipeAction
+import com.example.skptemp.common.util.ViewUtil.getDeviceHeightPx
+import com.example.skptemp.common.util.ViewUtil.setHeightPx
 import com.example.skptemp.databinding.FragmentHomeBinding
 import com.example.skptemp.feature.home.adapter.CharmImageListAdapter
 import com.example.skptemp.feature.home.adapter.CharmInfoListAdapter
@@ -42,6 +44,7 @@ class HomeFragment : Fragment() {
         mUncheckedTextColor = ColorUtil.getColor(mContext, UNCHECKED_TEXT_COLOR)
 
         updateViewPagerSize()
+        updateLayoutSize()
         return binding.root
     }
 
@@ -57,6 +60,24 @@ class HomeFragment : Fragment() {
 
         val padding = ((screenWidthPx - widthPx) / 2).toInt()
         setPadding(padding, 0, padding, 0)
+    }
+
+    private fun updateLayoutSize() = with(binding.root) {
+        post { setLayoutHeight(height) }
+    }
+
+    private fun setLayoutHeight(fragmentHeightPx: Int) = with(binding) {
+        // fragment - empty layout - toolbar
+        val heightPx =
+            fragmentHeightPx - fragmentHeightPx * EMPTY_LAYOUT_RATIO - resources.getDimensionPixelOffset(
+                R.dimen.toolbar_height
+            )
+        val ratioHeight = resources.getDimension(R.dimen.home_fragment_ratio_height)
+        val viewPagerLayoutHeight = resources.getDimension(R.dimen.view_pager_layout_height)
+        val switchLayoutHeight = resources.getDimension(R.dimen.switch_layout_height)
+
+        viewPagerLayout.setHeightPx((heightPx * (viewPagerLayoutHeight / ratioHeight)).toInt())
+        switchLayout.setHeightPx((heightPx * (switchLayoutHeight / ratioHeight)).toInt())
     }
 
     override fun onResume() {
@@ -129,5 +150,6 @@ class HomeFragment : Fragment() {
         private val TAG = HomeFragment::class.simpleName
         private val CHECKED_TEXT_COLOR = R.color.white
         private val UNCHECKED_TEXT_COLOR = R.color.gray_500
+        private const val EMPTY_LAYOUT_RATIO = 0.3f
     }
 }

@@ -1,6 +1,7 @@
 package com.example.skptemp.feature.home.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewUtil.convertDPtoPX
 import com.example.skptemp.databinding.CharmImageListItemBinding
+import com.example.skptemp.feature.home.CharmDetailActivity
 
 // TODO: List 타입을 서버에서 내려오는 DTO로 변경
 class CharmImageListAdapter(
@@ -17,14 +19,22 @@ class CharmImageListAdapter(
 
     private val backgroundRadiusPx = BACKGROUND_RADIUS_DP.convertDPtoPX(context)
 
-    class ViewHolder(private val binding: CharmImageListItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(
+        private val binding: CharmImageListItemBinding,
+        private val context: Context
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         // TODO: 서버 이미지 로드 (glide)
         fun bind(radius: Float, color: Int) {
             binding.charmImage.background = GradientDrawable().apply {
                 cornerRadius = radius
                 setColor(color)
+            }
+            binding.charmImage.setOnClickListener {
+                Intent(context, CharmDetailActivity::class.java).run {
+                    //putExtra("", "")
+                    context.startActivity(this)
+                }
             }
         }
     }
@@ -33,7 +43,7 @@ class CharmImageListAdapter(
         val binding = CharmImageListItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        return ViewHolder(binding)
+        return ViewHolder(binding, context)
     }
 
     override fun getItemCount() = list.size
