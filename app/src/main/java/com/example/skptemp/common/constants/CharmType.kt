@@ -2,7 +2,7 @@ package com.example.skptemp.common.constants
 
 import com.example.skptemp.R
 
-enum class BukiBadgeType(val title: String, val backgroundColor: Int, val textColor: Int) {
+enum class CharmType(val title: String, val backgroundColor: Int, val textColor: Int) {
     EATING("식습관", R.color.orange_200, R.color.orange_400),
     HAPPINESS("행복", R.color.green_200, R.color.green_400),
     STUDY("공부", R.color.purple_200, R.color.purple_400),

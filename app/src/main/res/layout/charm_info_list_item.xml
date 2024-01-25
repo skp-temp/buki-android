@@ -29,15 +29,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp">
 
-                <com.example.skptemp.common.ui.BukiBadge
-                    android:id="@+id/type_badge"
+                <com.example.skptemp.common.ui.CharmTypeTag
+                    android:id="@+id/charm_type_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     app:small="true" />
 
-                <com.example.skptemp.common.ui.BukiBadge
-                    android:id="@+id/incomplete_badge"
+                <com.example.skptemp.common.ui.CharmTypeTag
+                    android:id="@+id/incomplete_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"

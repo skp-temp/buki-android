@@ -3,7 +3,7 @@ package com.example.skptemp.feature.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skptemp.common.constants.BukiBadgeType
+import com.example.skptemp.common.constants.CharmType
 import com.example.skptemp.databinding.CharmInfoListItemBinding
 
 // TODO: List 타입을 서버에서 내려오는 DTO로 변경
@@ -15,7 +15,7 @@ class CharmInfoListAdapter(private val list: List<String>) :
 
         fun bind(text: String) = with(binding) {
             title.text = "글자수제한테스트글자수제한테스트"
-            typeBadge.setBadgeType(BukiBadgeType.HAPPINESS)
+            charmTypeTag.setBadgeType(CharmType.HAPPINESS)
 
             continuousText.text = "3일째 도전중"
             progressBar.progress(50)
