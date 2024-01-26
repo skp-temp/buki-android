@@ -8,7 +8,7 @@ import com.example.skptemp.databinding.CharmMessageListItemBinding
 import com.example.skptemp.model.CharmMessage
 
 class CharmMessageListAdapter(
-    private val list: List<CharmMessage>,
+    private val charmMessages: List<CharmMessage>,
     private val charmTypeColor: Int
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -23,7 +23,7 @@ class CharmMessageListAdapter(
             name.text = charmMessage.name
             message.text = charmMessage.message
             date.text = charmMessage.date
-            giftImage.setImageResource(R.drawable.temp_gift)
+            gift.setImageResource(R.drawable.temp_gift)
         }
     }
 
@@ -34,10 +34,10 @@ class CharmMessageListAdapter(
         return ViewHolder(binding, charmTypeColor)
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount() = charmMessages.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ViewHolder).bind(list[position])
+        (holder as ViewHolder).bind(charmMessages[position])
     }
 
     override fun getItemViewType(position: Int) = position

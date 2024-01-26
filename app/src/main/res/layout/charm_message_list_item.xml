@@ -99,7 +99,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/gift_image"
+            android:id="@+id/gift"
             android:layout_width="@dimen/message_item_gift_image_size"
             android:layout_height="@dimen/message_item_gift_image_size"
             android:layout_gravity="bottom|end"
