@@ -71,6 +71,12 @@ dependencies {
     // navigation bar
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+
+    // viewpager dots indicator
+    implementation("com.tbuonomo:dotsindicator:5.0")
+
+    // cardview
+    implementation("androidx.cardview:cardview:1.0.0")
 }
 
 kapt {

@@ -68,7 +68,6 @@
 
             <ImageView
                 android:id="@+id/clear_button"
-                style="@style/medium_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:visibility="gone"

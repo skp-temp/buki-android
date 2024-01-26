@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.example.skptemp.common.ui.Toolbar
+    <com.example.skptemp.common.ui.component.Toolbar
         android:id="@+id/toolbar"
         style="@style/toolbar_size"
         app:back_button_visibility="true"
@@ -24,7 +24,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <com.example.skptemp.common.ui.LargeButton
+    <com.example.skptemp.common.ui.component.LargeButton
         android:id="@+id/next_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

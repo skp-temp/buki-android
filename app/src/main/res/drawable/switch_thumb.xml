@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:bottom="@dimen/switch_thumb_margin" android:left="@dimen/switch_thumb_margin"
+        android:right="@dimen/switch_thumb_margin" android:top="@dimen/switch_thumb_margin">
+        <shape android:shape="rectangle">
+            <corners android:radius="40dp" />
+
+            <size
+                android:width="104dp"
+                android:height="34dp" />
+
+            <solid android:color="@color/blue" />
+        </shape>
+    </item>
+</layer-list>

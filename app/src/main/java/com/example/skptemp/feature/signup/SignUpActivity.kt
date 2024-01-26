@@ -1,16 +1,14 @@
 package com.example.skptemp.feature.signup
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.skptemp.R
-import com.example.skptemp.common.ui.Toolbar
+import com.example.skptemp.common.ui.component.Toolbar
 import com.example.skptemp.common.ui.ViewPagerAdapter
 import com.example.skptemp.databinding.ActivitySignUpBinding
-import com.example.skptemp.feature.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

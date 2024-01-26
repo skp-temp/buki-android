@@ -9,9 +9,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.skptemp.R
-import com.example.skptemp.common.ui.InputBoxView
-import com.example.skptemp.common.ui.OnInputFocusListener
-import com.example.skptemp.common.ui.OnInputRegexListener
+import com.example.skptemp.common.ui.component.InputBox
+import com.example.skptemp.common.ui.inf.OnInputFocusListener
+import com.example.skptemp.common.ui.inf.OnInputRegexListener
 import com.example.skptemp.databinding.FragmentSignUpNameBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -74,7 +74,7 @@ class SignUpNameFragment : Fragment() {
         )
     }
 
-    private fun InputBoxView.addOnListener(textView: TextView, nameType: Int) {
+    private fun InputBox.addOnListener(textView: TextView, nameType: Int) {
         // inputbox 입력값 correct/incorrect 변경 리스너 등록
         addOnInputRegexListener(
             NAME_REGEX,
