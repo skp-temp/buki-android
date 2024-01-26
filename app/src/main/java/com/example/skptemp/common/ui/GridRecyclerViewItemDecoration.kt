@@ -41,11 +41,13 @@ class GridRecyclerViewItemDecoration(
         val maxRow = (state.itemCount - 1) / spanCount
 
         if (row == 0) outRect.top += mTopSpacePx
-        else outRect.top = mRowSpacePx
-
-        if (spanCount > 1 || col > 0) outRect.left = mColSpacePx
+        else outRect.top += mRowSpacePx
 
         if (row == maxRow) outRect.bottom += mEndSpacePx
+
+        if (spanCount == 1) return
+        if (col > 0) outRect.left += mColSpacePx / 2
+        if (col < spanCount - 1) outRect.right += mColSpacePx / 2
     }
 
 }
