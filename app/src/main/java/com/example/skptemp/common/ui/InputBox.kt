@@ -16,7 +16,7 @@ import com.example.skptemp.common.ui.inf.OnInputRegexListener
 import com.example.skptemp.common.util.ColorUtil.getColorStateList
 import com.example.skptemp.databinding.InputBoxBinding
 
-class InputBoxView @JvmOverloads constructor(
+class InputBox @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleArr: Int = 0,
@@ -29,7 +29,7 @@ class InputBoxView @JvmOverloads constructor(
 
     // styleAttr, styleRes, defStyleAttr, defStyleRes
     private val mTypedArray = context.theme.obtainStyledAttributes(
-        attrs, R.styleable.InputBoxView, 0, 0
+        attrs, R.styleable.InputBox, 0, 0
     )
 
     override fun onAttachedToWindow() {
@@ -42,10 +42,10 @@ class InputBoxView @JvmOverloads constructor(
     }
 
     private fun initializeViewAttrs(typedArray: TypedArray) = with(typedArray) {
-        getString(R.styleable.InputBoxView_hint)?.let { hint ->
+        getString(R.styleable.InputBox_hint)?.let { hint ->
             binding.editText.hint = hint
         }
-        getInt(R.styleable.InputBoxView_maxLength, 4).let { maxLength ->
+        getInt(R.styleable.InputBox_maxLength, 4).let { maxLength ->
             binding.editText.filters = arrayOf(InputFilter.LengthFilter(maxLength))
         }
     }

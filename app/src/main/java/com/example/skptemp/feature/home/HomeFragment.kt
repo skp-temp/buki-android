@@ -138,7 +138,14 @@ class HomeFragment : Fragment() {
         layoutManager = LinearLayoutManager(mContext)
         overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         adapter = CharmInfoListAdapter(listOf("1번째", "두번째"))
-        addItemDecoration(CharmInfoItemDecoration(mContext))
+        addItemDecoration(
+            GridRecyclerViewItemDecoration(
+                topSpace = ITEM_TOP_SPACE,
+                rowSpace = ITEM_SPACE,
+                endSpace = ITEM_END_SPACE,
+                context = mContext
+            )
+        )
     }
 
     override fun onDestroyView() {
@@ -151,5 +158,9 @@ class HomeFragment : Fragment() {
         private val CHECKED_TEXT_COLOR = R.color.white
         private val UNCHECKED_TEXT_COLOR = R.color.gray_500
         private const val EMPTY_LAYOUT_RATIO = 0.3f
+
+        private const val ITEM_TOP_SPACE = 16
+        private const val ITEM_SPACE = 12
+        private const val ITEM_END_SPACE = 56
     }
 }
