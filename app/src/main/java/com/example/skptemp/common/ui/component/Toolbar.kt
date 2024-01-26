@@ -1,4 +1,4 @@
-package com.example.skptemp.common.ui
+package com.example.skptemp.common.ui.component
 
 import android.content.Context
 import android.content.res.TypedArray

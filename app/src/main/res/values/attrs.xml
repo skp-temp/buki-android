@@ -10,7 +10,7 @@
         <attr name="action_button_right_text" format="reference|string" />
     </declare-styleable>
 
-    <declare-styleable name="InputBoxView">
+    <declare-styleable name="InputBox">
         <attr name="hint" format="reference|string" />
         <attr name="maxLength" format="reference|integer" />
     </declare-styleable>
@@ -19,7 +19,7 @@
         <attr name="text" format="reference|string" />
     </declare-styleable>
 
-    <declare-styleable name="BukiBadge">
+    <declare-styleable name="CharmTypeTag">
         <attr name="small" format="boolean" />
         <attr name="incomplete" format="boolean" />
     </declare-styleable>

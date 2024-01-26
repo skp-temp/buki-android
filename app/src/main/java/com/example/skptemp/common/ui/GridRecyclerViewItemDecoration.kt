@@ -1,4 +1,4 @@
-package com.example.skptemp.feature.home
+package com.example.skptemp.common.ui
 
 import android.content.Context
 import android.graphics.Rect

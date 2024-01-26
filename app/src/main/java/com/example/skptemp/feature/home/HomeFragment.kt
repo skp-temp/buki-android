@@ -10,11 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skptemp.R
-import com.example.skptemp.common.ui.Toolbar
+import com.example.skptemp.common.ui.GridRecyclerViewItemDecoration
+import com.example.skptemp.common.ui.component.Toolbar
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewPagerUtil.setPageChangeAnimation
-import com.example.skptemp.common.util.ViewPagerUtil.setSwipeAction
-import com.example.skptemp.common.util.ViewUtil.getDeviceHeightPx
 import com.example.skptemp.common.util.ViewUtil.setHeightPx
 import com.example.skptemp.databinding.FragmentHomeBinding
 import com.example.skptemp.feature.home.adapter.CharmImageListAdapter

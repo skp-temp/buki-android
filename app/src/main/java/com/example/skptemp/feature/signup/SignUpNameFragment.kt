@@ -9,7 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.skptemp.R
-import com.example.skptemp.common.ui.InputBox
+import com.example.skptemp.common.ui.component.InputBox
 import com.example.skptemp.common.ui.inf.OnInputFocusListener
 import com.example.skptemp.common.ui.inf.OnInputRegexListener
 import com.example.skptemp.databinding.FragmentSignUpNameBinding

@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <com.example.skptemp.common.ui.Toolbar
+                <com.example.skptemp.common.ui.component.Toolbar
                     android:id="@+id/toolbar"
                     style="@style/toolbar_size"
                     app:layout_constraintBottom_toTopOf="@+id/view_pager_layout"

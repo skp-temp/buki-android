@@ -29,14 +29,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp">
 
-                <com.example.skptemp.common.ui.CharmTypeTag
+                <com.example.skptemp.common.ui.component.CharmTypeTag
                     android:id="@+id/charm_type_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     app:small="true" />
 
-                <com.example.skptemp.common.ui.CharmTypeTag
+                <com.example.skptemp.common.ui.component.CharmTypeTag
                     android:id="@+id/incomplete_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/gray_500" />
 
-                <com.example.skptemp.common.ui.BukiProgressBar
+                <com.example.skptemp.common.ui.component.BukiProgressBar
                     android:id="@+id/progress_bar"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
