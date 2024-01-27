@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.skptemp.R
+import com.example.skptemp.common.ui.setOnSingleClickListener
 import com.example.skptemp.common.util.ViewUtil.convertPXtoDP
 import com.example.skptemp.databinding.ToolbarBinding
 
@@ -122,7 +123,7 @@ class Toolbar @JvmOverloads constructor(
     }
 
     fun setButtonOnClickListener(buttonType: Int, listener: (View) -> Unit) {
-        mButtonMap[buttonType]?.setOnClickListener(listener)
+        mButtonMap[buttonType]?.setOnSingleClickListener(listener)
     }
 
     private fun View.setMarginStart(marginDp: Int) {

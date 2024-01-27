@@ -8,6 +8,7 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.skptemp.R
 import com.example.skptemp.common.ui.component.Toolbar
 import com.example.skptemp.common.ui.ViewPagerAdapter
+import com.example.skptemp.common.ui.setOnSingleClickListener
 import com.example.skptemp.databinding.ActivitySignUpBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,7 +41,7 @@ class SignUpActivity : AppCompatActivity() {
             moveToPreviousPage()
         }
 
-        binding.nextButton.setOnClickListener {
+        binding.nextButton.setOnSingleClickListener {
             moveToNextPage()
         }
     }

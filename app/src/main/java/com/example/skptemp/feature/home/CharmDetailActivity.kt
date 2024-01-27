@@ -11,6 +11,7 @@ import com.example.skptemp.common.ui.component.StampWeek
 import com.example.skptemp.common.ui.inf.BottomDialogItem
 import com.example.skptemp.common.ui.inf.OnBottomDialogListener
 import com.example.skptemp.common.ui.component.Toolbar
+import com.example.skptemp.common.ui.setOnSingleClickListener
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewUtil.setHeightByRatio
 import com.example.skptemp.databinding.ActivityCharmDetailBinding
@@ -55,17 +56,16 @@ class CharmDetailActivity : AppCompatActivity() {
 
         toolbar.visibleButton(Toolbar.MEATBALL_BUTTON)
         toolbar.setButtonOnClickListener(Toolbar.MEATBALL_BUTTON) {
-            if (mDialog?.isAdded == true) {
-                supportFragmentManager.beginTransaction().remove(mDialog!!)
-                mDialog = CharmEditDialog()
-            }
-
             mDialog?.show(supportFragmentManager, DIALOG_TAG)
         }
 
         setLayoutHeightByRatio()
         setupStampList()
         setupMessageList()
+
+        charmEditButton.setOnSingleClickListener {
+            Log.d(TAG, "Charm edit button onClick()")
+        }
     }
 
     private fun setCharmEditDialogClickListener() {
