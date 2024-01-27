@@ -7,8 +7,8 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.skptemp.R
 import com.example.skptemp.common.ui.setOnSingleClickListener
 import com.example.skptemp.common.util.ViewUtil.convertPXtoDP
@@ -18,7 +18,7 @@ class Toolbar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleArr: Int = 0,
-) : ConstraintLayout(context, attrs, defStyleArr) {
+) : FrameLayout(context, attrs, defStyleArr) {
 
     private val binding = ToolbarBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -27,14 +27,16 @@ class Toolbar @JvmOverloads constructor(
         attrs, R.styleable.Toolbar, 0, 0
     )
 
-    private val mButtonMap = mapOf(
-        BACK_BUTTON to binding.backButton,
-        ACTION_BUTTON_LEFT to binding.actionButtonLeft,
-        BELL_BUTTON to binding.bellButton,
-        MEATBALL_BUTTON to binding.meatballButton,
-        GIFT_BUTTON to binding.giftButton,
-        ACTION_BUTTON_RIGHT to binding.actionButtonRight
-    )
+    private val mButtonMap by lazy {
+        mapOf(
+            BACK_BUTTON to binding.backButton,
+            ACTION_BUTTON_LEFT to binding.actionButtonLeft,
+            BELL_BUTTON to binding.bellButton,
+            MEATBALL_BUTTON to binding.meatballButton,
+            GIFT_BUTTON to binding.giftButton,
+            ACTION_BUTTON_RIGHT to binding.actionButtonRight,
+        )
+    }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -71,7 +73,13 @@ class Toolbar @JvmOverloads constructor(
     }
 
     private fun TextView.setGravityCenter() {
-        gravity = Gravity.CENTER
+        layoutParams =  LayoutParams(
+            LayoutParams.WRAP_CONTENT,
+            LayoutParams.MATCH_PARENT
+        ).apply {
+            gravity = Gravity.CENTER_HORIZONTAL
+        }
+
         setTextSize(
             TypedValue.COMPLEX_UNIT_DIP,
             resources.getDimension(R.dimen.text_medium_size).convertPXtoDP(context)
@@ -124,6 +132,10 @@ class Toolbar @JvmOverloads constructor(
 
     fun setButtonOnClickListener(buttonType: Int, listener: (View) -> Unit) {
         mButtonMap[buttonType]?.setOnSingleClickListener(listener)
+    }
+
+    fun setTitleOnClickListener(listener: (View) -> Unit) {
+        binding.title.setOnClickListener(listener)
     }
 
     private fun View.setMarginStart(marginDp: Int) {

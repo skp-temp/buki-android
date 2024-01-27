@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.NestedScrollView
 import com.example.skptemp.R
 import com.example.skptemp.common.constants.CharmType
 import com.example.skptemp.common.ui.GridRecyclerViewItemDecoration
@@ -29,7 +30,10 @@ class CharmDetailActivity : AppCompatActivity() {
     private val mContext: Context by lazy { this }
 
     private var mDialog: CharmEditDialog? = null
+    private val mToolbarTitle by lazy { resources.getString(R.string.charm_detail) }
+
     private lateinit var mCharmType: CharmType
+    private lateinit var mCharmTitle: String
     private lateinit var mStampWeeks: List<StampWeek>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +41,10 @@ class CharmDetailActivity : AppCompatActivity() {
 
         _binding = ActivityCharmDetailBinding.inflate(layoutInflater)
 
-        mCharmType = CharmType.WORKOUT // TODO: home_fragment에서 bundle 값 가져오기
+        // TODO: home_fragment에서 bundle 값 가져오기
+        mCharmType = CharmType.WORKOUT
+        mCharmTitle = "하루 한번 플랭크 하기"
+
         mStampWeeks = listOf(binding.week1, binding.week2, binding.week3)
 
         setContentView(binding.root)
@@ -51,21 +58,26 @@ class CharmDetailActivity : AppCompatActivity() {
 
     private fun composeUI() = with(binding) {
         charmTypeTag.setTagType(mCharmType)
-
-        setCharmEditDialogClickListener()
-
-        toolbar.visibleButton(Toolbar.MEATBALL_BUTTON)
-        toolbar.setButtonOnClickListener(Toolbar.MEATBALL_BUTTON) {
-            mDialog?.show(supportFragmentManager, DIALOG_TAG)
-        }
+        charmTitle.text = mCharmTitle
 
         setLayoutHeightByRatio()
+        setCharmEditDialogClickListener()
+        setToolbarAction()
         setupStampList()
         setupMessageList()
 
         charmEditButton.setOnSingleClickListener {
             Log.d(TAG, "Charm edit button onClick()")
         }
+    }
+
+    private fun setLayoutHeightByRatio() = with(binding) {
+        charmTitleLayout.setHeightByRatio(mContext, CHARM_TITLE_LAYOUT_RATIO)
+        charmProgressLayout.setHeightByRatio(mContext, CHARM_PROGRESS_LAYOUT_RATIO)
+        stampTitleLayout.setHeightByRatio(mContext, TITLE_LAYOUT_RATIO)
+        stampSpace.setHeightByRatio(mContext, STAMP_SPACE_RATIO)
+        messageTitleLayout.setHeightByRatio(mContext, TITLE_LAYOUT_RATIO)
+        messageSpace.setHeightByRatio(mContext, MESSAGE_SPACE_RATIO)
     }
 
     private fun setCharmEditDialogClickListener() {
@@ -96,13 +108,29 @@ class CharmDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setLayoutHeightByRatio() = with(binding) {
-        charmTitleLayout.setHeightByRatio(mContext, CHARM_TITLE_LAYOUT_RATIO)
-        charmProgressLayout.setHeightByRatio(mContext, CHARM_PROGRESS_LAYOUT_RATIO)
-        stampTitleLayout.setHeightByRatio(mContext, TITLE_LAYOUT_RATIO)
-        stampSpace.setHeightByRatio(mContext, STAMP_SPACE_RATIO)
-        messageTitleLayout.setHeightByRatio(mContext, TITLE_LAYOUT_RATIO)
-        messageSpace.setHeightByRatio(mContext, MESSAGE_SPACE_RATIO)
+    private fun setToolbarAction() = with(binding.toolbar) {
+        setButtonOnClickListener(Toolbar.BACK_BUTTON) { finish() }
+
+        visibleButton(Toolbar.MEATBALL_BUTTON)
+        setButtonOnClickListener(Toolbar.MEATBALL_BUTTON) {
+            mDialog?.show(supportFragmentManager, DIALOG_TAG)
+        }
+
+        binding.scrollLayout.setOnScrollChangeListener { _, _, _, _, _ ->
+            val charmTitleHeight = IntArray(2).run {
+                binding.charmTitle.getLocationOnScreen(this)
+                this[1]
+            }
+
+            setTitleText(
+                if (charmTitleHeight - height < 0) mCharmTitle
+                else mToolbarTitle
+            )
+        }
+
+        setTitleOnClickListener {
+            binding.scrollLayout.fullScroll(NestedScrollView.FOCUS_UP)
+        }
     }
 
     private fun setupStampList() {
