@@ -3,6 +3,7 @@ package com.example.skptemp.feature.home
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import com.example.skptemp.R
@@ -77,6 +78,7 @@ class CharmDetailActivity : AppCompatActivity() {
         stampTitleLayout.setHeightByRatio(mContext, TITLE_LAYOUT_RATIO)
         stampSpace.setHeightByRatio(mContext, STAMP_SPACE_RATIO)
         messageTitleLayout.setHeightByRatio(mContext, TITLE_LAYOUT_RATIO)
+        messageEmptyLayout.setHeightByRatio(mContext, MESSAGE_EMPTY_LAYOUT_RATIO)
         messageSpace.setHeightByRatio(mContext, MESSAGE_SPACE_RATIO)
     }
 
@@ -153,25 +155,19 @@ class CharmDetailActivity : AppCompatActivity() {
 
     private fun setupMessageList() = with(binding.messageRecyclerView) {
         val messageBackgroundColor = ColorUtil.getColor(mContext, mCharmType.subBackgroundColor)
+        val charmMessages = listOf<CharmMessage>(
+
+        )
+
+        if (charmMessages.size == 0) {
+            visibility = View.GONE
+            binding.messageEmptyLayout.visibility = View.VISIBLE
+            return@with
+        }
+
         adapter =
             CharmMessageListAdapter(
-                listOf(
-                    CharmMessage("", "김혜민", "테스트", "2024.01.26"),
-                    CharmMessage("", "김혜민", "테스트", "2024.01.26"),
-                    CharmMessage("", "김혜민", "테스트", "2024.01.26"),
-                    CharmMessage(
-                        "",
-                        "김혜민",
-                        "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트",
-                        "2024.01.26"
-                    ),
-                    CharmMessage(
-                        "",
-                        "김혜민",
-                        "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트",
-                        "2024.01.26"
-                    )
-                ),
+                charmMessages,
                 messageBackgroundColor
             )
 
@@ -201,6 +197,7 @@ class CharmDetailActivity : AppCompatActivity() {
         private const val CHARM_PROGRESS_LAYOUT_RATIO = 98
         private const val TITLE_LAYOUT_RATIO = 72
         private const val STAMP_SPACE_RATIO = 48
+        private const val MESSAGE_EMPTY_LAYOUT_RATIO = 200
         private const val MESSAGE_SPACE_RATIO = 152
 
         private const val WEEK = 7

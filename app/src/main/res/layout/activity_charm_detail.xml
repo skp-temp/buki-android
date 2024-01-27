@@ -185,7 +185,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@+id/process_bar"
-                        app:layout_constraintHeight_percent="0.20"
+                        app:layout_constraintHeight_percent="0.2"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -404,11 +404,84 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin_large"
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:layout_constraintBottom_toTopOf="@+id/message_space"
+                    app:layout_constraintBottom_toTopOf="@+id/message_empty_layout"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/message_title_layout"
                     app:spanCount="2" />
+
+                <!-- h = 200 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/message_empty_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/message_space"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/message_recycler_view">
+
+                    <!-- h = 88 / 200 -->
+                    <Space
+                        android:id="@+id/space7"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/empty_image"
+                        app:layout_constraintHeight_percent="0.44"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- h = 80 / 200 = 0.4 -->
+                    <ImageView
+                        android:id="@+id/empty_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/temp_empty_image"
+                        app:layout_constraintBottom_toTopOf="@+id/space8"
+                        app:layout_constraintHeight_percent="0.4"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/space7" />
+
+                    <!-- h = 16 / 200 - 0.08 -->
+                    <Space
+                        android:id="@+id/space8"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/empty_text"
+                        app:layout_constraintHeight_percent="0.08"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/empty_image" />
+
+                    <!-- h = 16 / 200 = 0.08 -->
+                    <TextView
+                        android:id="@+id/empty_text"
+                        style="@style/bold_medium_text_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/empty_message"
+                        android:textColor="@color/gray_400"
+                        app:layout_constraintBottom_toTopOf="@+id/space9"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/space8" />
+
+                    <!-- h = 40 / 200 = 0.2 -->
+                    <Space
+                        android:id="@+id/space9"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHeight_percent="0.2"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/empty_text" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- h = 152 -->
                 <Space
@@ -418,7 +491,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/message_recycler_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/message_empty_layout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
