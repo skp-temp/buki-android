@@ -3,6 +3,8 @@ package com.example.skptemp.common.util
 import android.content.Context
 import android.util.DisplayMetrics
 import android.view.View
+import com.example.skptemp.R
+import com.example.skptemp.common.util.ViewUtil.setHeightPx
 import kotlin.math.round
 
 object ViewUtil {
@@ -43,6 +45,22 @@ object ViewUtil {
         layoutParams = layoutParams.apply {
             height = heightPx
         }
+    }
+
+    fun View.setWidthByRatio(context: Context, widthDp: Int) {
+        val deviceWidthPx = context.getDeviceWidthPx()
+        val widthPx = widthDp.toFloat().convertDPtoPX(context)
+        val guideWidthPx = resources.getDimension(R.dimen.guide_width)
+
+        setWidthPx((deviceWidthPx * (widthPx / guideWidthPx)).toInt())
+    }
+
+    fun View.setHeightByRatio(context: Context, heightDp: Int) {
+        val deviceHeightPx = context.getDeviceHeightPx()
+        val heightPx = heightDp.toFloat().convertDPtoPX(context)
+        val guideHeightPx = resources.getDimension(R.dimen.guide_height)
+
+        setHeightPx((deviceHeightPx * (heightPx / guideHeightPx)).toInt())
     }
 
 }

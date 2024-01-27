@@ -69,6 +69,10 @@
 
     <!-- activity_charm_detail.xml -->
     <dimen name="charm_detail_image_horizontal_margin">44dp</dimen>
+    <dimen name="charm_detail_image_edit_size">48dp</dimen>
+    <dimen name="charm_detail_image_edit_margin">13dp</dimen>
+
+    <dimen name="charm_notification_image_size">18dp</dimen>
 
     <dimen name="stamp_item_width">80dp</dimen>
     <dimen name="stamp_list_bottom_margin">6dp</dimen>

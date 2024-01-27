@@ -38,7 +38,7 @@
                     android:layout_width="@dimen/message_item_profile_picture_size"
                     android:layout_height="@dimen/message_item_profile_picture_size"
                     android:layout_marginEnd="4dp"
-                    android:background="@drawable/user_profile_picture"
+                    android:background="@drawable/circle_user_profile_picture"
                     android:scaleType="fitCenter" />
 
                 <TextView
