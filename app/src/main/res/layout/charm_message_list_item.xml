@@ -8,7 +8,7 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:cardCornerRadius="@dimen/message_item_radius"
+        app:cardCornerRadius="@dimen/small_radius"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="152:180"
@@ -35,8 +35,8 @@
 
                 <ImageView
                     android:id="@+id/friend_profile_picture"
-                    android:layout_width="@dimen/message_friend_profile_picture_size"
-                    android:layout_height="@dimen/message_friend_profile_picture_size"
+                    android:layout_width="@dimen/message_item_profile_picture_size"
+                    android:layout_height="@dimen/message_item_profile_picture_size"
                     android:layout_marginEnd="4dp"
                     android:background="@drawable/user_profile_picture"
                     android:scaleType="fitCenter" />
@@ -55,7 +55,7 @@
                 android:id="@+id/space1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/message_text"
+                app:layout_constraintBottom_toTopOf="@+id/message"
                 app:layout_constraintHeight_percent="0.09"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -70,7 +70,7 @@
                 android:maxLines="3"
                 android:textColor="@color/gray_800"
                 android:textSize="@dimen/text_medium_small_size"
-                app:layout_constraintBottom_toTopOf="@+id/date_text"
+                app:layout_constraintBottom_toTopOf="@+id/date"
                 app:layout_constraintDimensionRatio="126:60"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -86,7 +86,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/space2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/message_text" />
+                app:layout_constraintTop_toBottomOf="@+id/message" />
 
             <Space
                 android:id="@+id/space2"
@@ -95,7 +95,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/date_text" />
+                app:layout_constraintTop_toBottomOf="@+id/date" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView

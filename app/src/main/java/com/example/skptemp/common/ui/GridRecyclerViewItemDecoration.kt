@@ -4,28 +4,27 @@ import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skptemp.common.util.ViewUtil.convertDPtoPX
 
 class GridRecyclerViewItemDecoration(
     private val spanCount: Int = 1,
-    topSpace: Int = 0,
-    rowSpace: Int = 0,
-    colSpace: Int = 0,
-    endSpace: Int = 0,
+    topSpaceId: Int? = null,
+    rowSpaceId: Int? = null,
+    colSpaceId: Int? = null,
+    endSpaceId: Int? = null,
     context: Context
 ) : RecyclerView.ItemDecoration() {
 
     private val mTopSpacePx =
-        topSpace.toFloat().convertDPtoPX(context).toInt()
+        topSpaceId?.run { context.resources.getDimensionPixelOffset(this) } ?: 0
 
     private val mRowSpacePx =
-        rowSpace.toFloat().convertDPtoPX(context).toInt()
+        rowSpaceId?.run { context.resources.getDimensionPixelOffset(this) } ?: 0
 
     private val mColSpacePx =
-        colSpace.toFloat().convertDPtoPX(context).toInt()
+        colSpaceId?.run { context.resources.getDimensionPixelOffset(this) } ?: 0
 
     private val mEndSpacePx =
-        endSpace.toFloat().convertDPtoPX(context).toInt()
+        endSpaceId?.run { context.resources.getDimensionPixelOffset(this) } ?: 0
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -49,5 +48,4 @@ class GridRecyclerViewItemDecoration(
         if (col > 0) outRect.left += mColSpacePx / 2
         if (col < spanCount - 1) outRect.right += mColSpacePx / 2
     }
-
 }
