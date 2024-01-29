@@ -61,4 +61,31 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+    <style name="bold_medium_text_style">
+        <item name="android:textSize">@dimen/text_medium_size</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="medium_small_text_style">
+        <item name="android:textSize">@dimen/text_medium_small_size</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textColor">@color/gray_900</item>
+    </style>
+
+    <style name="x_small_text_style">
+        <item name="android:textSize">@dimen/text_x_small_size</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textColor">@color/gray_900</item>
+    </style>
+
+    <style name="bottom_dialog_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/bottom_dialog_height</item>
+        <item name="android:textSize">@dimen/text_medium_size</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textColor">@color/gray_900</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

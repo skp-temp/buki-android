@@ -43,22 +43,39 @@ class CharmTypeTag @JvmOverloads constructor(
 
         val isIncompleteType = getBoolean(R.styleable.CharmTypeTag_incomplete, false)
         if (!isIncompleteType) return
-        setBadgeType(CharmType.INCOMPLETE)
+        setIncompleteTag()
     }
 
     private fun setBadgeSmallSize() = with(binding) {
         rectangle.layoutParams = rectangle.layoutParams.apply {
             height = SMALL_HEIGHT_DP.convertDPtoPX(context).toInt()
         }
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, SMALL_TEXT_SIZE_DP);
+        title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, SMALL_TEXT_SIZE_DP);
     }
 
-    fun setBadgeType(type: CharmType) = with(binding) {
-        rectangle.background = mRectangleBackground.apply {
-            setColor(ColorUtil.getColor(context, type.backgroundColor))
+    private fun setIncompleteTag() {
+        setTagBackgroundColor(INCOMPLETE_BACKGROUND_COLOR)
+        setTagTextColor(INCOMPLETE_TEXT_COLOR)
+        setTagTitle(INCOMPLETE_TITLE)
+    }
+
+    fun setTagType(type: CharmType) = with(binding) {
+        setTagBackgroundColor(type.subBackgroundColor)
+        setTagTextColor(type.textColor)
+        setTagTitle(type.title)
+    }
+
+    private fun setTagBackgroundColor(color: Int) {
+        binding.rectangle.background = mRectangleBackground.apply {
+            setColor(ColorUtil.getColor(context, color))
         }
-        textView.setTextColor(ColorUtil.getColor(context, type.textColor))
-        textView.text = type.title
+    }
+
+    private fun setTagTextColor(color: Int) =
+        binding.title.setTextColor(ColorUtil.getColor(context, color))
+
+    private fun setTagTitle(text: String) {
+        binding.title.text = text
     }
 
     companion object {
@@ -66,5 +83,9 @@ class CharmTypeTag @JvmOverloads constructor(
 
         private const val SMALL_TEXT_SIZE_DP = 10f
         private const val SMALL_HEIGHT_DP = 16f
+
+        private val INCOMPLETE_BACKGROUND_COLOR = R.color.gray_300
+        private val INCOMPLETE_TEXT_COLOR = R.color.gray_500
+        private const val INCOMPLETE_TITLE = "미완료"
     }
 }

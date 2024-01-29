@@ -6,6 +6,7 @@ import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.skptemp.common.ui.setOnSingleClickListener
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewUtil.convertDPtoPX
 import com.example.skptemp.databinding.CharmImageListItemBinding
@@ -30,7 +31,7 @@ class CharmImageListAdapter(
                 cornerRadius = radius
                 setColor(color)
             }
-            binding.charmImage.setOnClickListener {
+            binding.charmImage.setOnSingleClickListener {
                 Intent(context, CharmDetailActivity::class.java).run {
                     //putExtra("", "")
                     context.startActivity(this)

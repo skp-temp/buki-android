@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
-    private var backPressedTime: Long = 0
+    private var lastBackPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,13 +60,14 @@ class MainActivity : AppCompatActivity() {
     private fun addOnBackPressedCallback() {
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (System.currentTimeMillis() - backPressedTime >= BACK_INTERVAL) {
-                    backPressedTime = System.currentTimeMillis()
-                    showToast(this@MainActivity, resources.getString(R.string.back_pressed))
-                    return
+                val backPressedTime = System.currentTimeMillis()
+
+                if (backPressedTime - lastBackPressedTime < BACK_INTERVAL) {
+                    finish()
                 }
 
-                finish()
+                lastBackPressedTime = backPressedTime
+                showToast(this@MainActivity, resources.getString(R.string.back_pressed))
             }
         }
 
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
         setOnItemSelectedListener { item ->
             Log.d(TAG, "Bottom Navigation Bar selected $item")
-            backPressedTime = 0
+            lastBackPressedTime = 0
             onNavDestinationSelected(item, navController)
         }
     }

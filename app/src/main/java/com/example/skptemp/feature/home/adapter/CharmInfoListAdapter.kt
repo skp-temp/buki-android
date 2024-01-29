@@ -15,7 +15,7 @@ class CharmInfoListAdapter(private val list: List<String>) :
 
         fun bind(text: String) = with(binding) {
             title.text = "글자수제한테스트글자수제한테스트"
-            charmTypeTag.setBadgeType(CharmType.HAPPINESS)
+            charmTypeTag.setTagType(CharmType.HAPPY)
 
             continuousText.text = "3일째 도전중"
             progressBar.progress(50)

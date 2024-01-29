@@ -16,8 +16,9 @@ class LargeButton @JvmOverloads constructor(
     defStyleArr: Int = 0,
 ) : LinearLayout(context, attrs, defStyleArr) {
 
-    private var _binding: LargeButtonBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy {
+        LargeButtonBinding.inflate(LayoutInflater.from(context), this, true)
+    }
 
     // styleAttr, styleRes, defStyleAttr, defStyleRes
     private val mTypedArray = context.theme.obtainStyledAttributes(
@@ -26,8 +27,6 @@ class LargeButton @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-
-        _binding = LargeButtonBinding.inflate(LayoutInflater.from(context), this, true)
 
         initializeViewAttrs(mTypedArray)
         setColor()
@@ -61,11 +60,6 @@ class LargeButton @JvmOverloads constructor(
     private fun setTextColor(colorId: Int) {
         val color = getColor(context, colorId)
         binding.textView.setTextColor(color)
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        _binding = null
     }
 
     companion object {

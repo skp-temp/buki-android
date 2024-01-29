@@ -135,13 +135,12 @@ class HomeFragment : Fragment() {
 
     private fun composeRecyclerView() = with(binding.charmRecyclerView) {
         layoutManager = LinearLayoutManager(mContext)
-        overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         adapter = CharmInfoListAdapter(listOf("1번째", "두번째"))
         addItemDecoration(
             GridRecyclerViewItemDecoration(
-                topSpace = ITEM_TOP_SPACE,
-                rowSpace = ITEM_SPACE,
-                endSpace = ITEM_END_SPACE,
+                topSpaceId = R.dimen.charm_list_top_space,
+                rowSpaceId = R.dimen.charm_list_row_space,
+                endSpaceId = R.dimen.scroll_end_margin,
                 context = mContext
             )
         )
@@ -154,12 +153,9 @@ class HomeFragment : Fragment() {
 
     companion object {
         private val TAG = HomeFragment::class.simpleName
+
         private val CHECKED_TEXT_COLOR = R.color.white
         private val UNCHECKED_TEXT_COLOR = R.color.gray_500
         private const val EMPTY_LAYOUT_RATIO = 0.3f
-
-        private const val ITEM_TOP_SPACE = 16
-        private const val ITEM_SPACE = 12
-        private const val ITEM_END_SPACE = 56
     }
 }
