@@ -73,7 +73,7 @@ class Toolbar @JvmOverloads constructor(
     }
 
     private fun TextView.setGravityCenter() {
-        layoutParams =  LayoutParams(
+        layoutParams = LayoutParams(
             LayoutParams.WRAP_CONTENT,
             LayoutParams.MATCH_PARENT
         ).apply {
@@ -87,7 +87,8 @@ class Toolbar @JvmOverloads constructor(
     }
 
     fun setTitleText(text: String) {
-        binding.title.text = text
+        binding.title.text = if (text.length <= TITLE_MAX_LENGTH) text
+        else text.replaceRange(TITLE_MAX_LENGTH until text.length, TITLE_REPLACEMENT)
     }
 
     // 툴바 오른쪽 버튼 순서 -> GIFT / BELL / MEATBALL
@@ -145,6 +146,9 @@ class Toolbar @JvmOverloads constructor(
     }
 
     companion object {
+        private const val TITLE_MAX_LENGTH = 12
+        private const val TITLE_REPLACEMENT = "..."
+
         const val BACK_BUTTON = 1
         const val ACTION_BUTTON_LEFT = 2
         const val BELL_BUTTON = 3

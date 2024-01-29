@@ -12,8 +12,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title_center="true"
-        app:title_text="@string/charm_detail" />
+        app:title_center="true" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_layout"

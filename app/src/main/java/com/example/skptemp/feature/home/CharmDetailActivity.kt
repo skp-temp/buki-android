@@ -31,7 +31,6 @@ class CharmDetailActivity : AppCompatActivity() {
     private val mContext: Context by lazy { this }
 
     private var mDialog: CharmEditDialog? = null
-    private val mToolbarTitle by lazy { resources.getString(R.string.charm_detail) }
 
     private lateinit var mCharmType: CharmType
     private lateinit var mCharmTitle: String
@@ -126,7 +125,7 @@ class CharmDetailActivity : AppCompatActivity() {
 
             setTitleText(
                 if (charmTitleHeight - height < 0) mCharmTitle
-                else mToolbarTitle
+                else ""
             )
         }
 
@@ -155,8 +154,11 @@ class CharmDetailActivity : AppCompatActivity() {
 
     private fun setupMessageList() = with(binding.messageRecyclerView) {
         val messageBackgroundColor = ColorUtil.getColor(mContext, mCharmType.subBackgroundColor)
-        val charmMessages = listOf<CharmMessage>(
-
+        val charmMessages = listOf(
+            CharmMessage("", "김혜민", "테스트", "2024.01.10"),
+            CharmMessage("", "김혜민", "테스트", "2024.01.10"),
+            CharmMessage("", "김혜민", "테스트", "2024.01.10"),
+            CharmMessage("", "김혜민", "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트", "2024.01.10"),
         )
 
         if (charmMessages.size == 0) {
