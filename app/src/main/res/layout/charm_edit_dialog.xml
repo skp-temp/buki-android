@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/bottom_dialog_horizontal_margin"
+    android:orientation="vertical"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/edit_button"
+            style="@style/bottom_dialog_text_style"
+            android:background="@animator/bottom_dialog_top_selector"
+            android:text="@string/bottom_dialog_edit" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_300" />
+
+        <TextView
+            android:id="@+id/image_download_button"
+            style="@style/bottom_dialog_text_style"
+            android:background="@animator/bottom_dialog_middle_selector"
+            android:text="@string/bottom_dialog_image_download" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_300" />
+
+        <TextView
+            android:id="@+id/delete_button"
+            style="@style/bottom_dialog_text_style"
+            android:background="@animator/bottom_dialog_bottom_selector"
+            android:text="@string/bottom_dialog_delete"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/cancel_button"
+        style="@style/bottom_dialog_text_style"
+        android:layout_height="@dimen/bottom_dialog_end_height"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        android:background="@animator/bottom_dialog_selector"
+        android:text="@string/bottom_dialog_cancel" />
+</LinearLayout>

@@ -88,4 +88,10 @@
     <dimen name="message_list_top_space">16dp</dimen>
     <dimen name="message_list_row_space">10dp</dimen>
     <dimen name="message_list_col_space">8dp</dimen>
+
+    <dimen name="bottom_dialog_horizontal_margin">20dp</dimen>
+
+    <dimen name="bottom_dialog_height">56dp</dimen>
+    <dimen name="bottom_dialog_end_height">60dp</dimen>
+
 </resources>
