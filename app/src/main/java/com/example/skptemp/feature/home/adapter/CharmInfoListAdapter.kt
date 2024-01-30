@@ -1,29 +1,29 @@
 package com.example.skptemp.feature.home.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skptemp.common.constants.CharmType
+import com.example.skptemp.R
+import com.example.skptemp.common.util.CharmUtil.getProgressRatio
 import com.example.skptemp.databinding.CharmInfoListItemBinding
+import com.example.skptemp.model.CharmInfo
 
 // TODO: List 타입을 서버에서 내려오는 DTO로 변경
-class CharmInfoListAdapter(private val list: List<String>) :
+class CharmInfoListAdapter(private var charmInfos: MutableList<CharmInfo>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class ViewHolder(private val binding: CharmInfoListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(text: String) = with(binding) {
-            title.text = "글자수제한테스트글자수제한테스트"
-            charmTypeTag.setTagType(CharmType.HAPPY)
-
-            continuousText.text = "3일째 도전중"
-            progressBar.progress(50)
+        fun bind(charmInfo: CharmInfo) = with(binding) {
+            charmTypeTag.setTagType(charmInfo.type)
+            if (!charmInfo.isDoneToday) incompleteTag.visibility = View.VISIBLE
+            title.text = charmInfo.title
+            continuousText.text =
+                continuousText.resources.getString(R.string.progress_day, charmInfo.progress)
+            progressBar.progress(getProgressRatio(charmInfo.progress))
         }
-
-        private fun String.skip() =
-            if (length <= TITLE_MAX_LENGTH) this
-            else replaceRange(TITLE_MAX_LENGTH + 1, length, TITLE_SKIP_REPLACE)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -33,16 +33,17 @@ class CharmInfoListAdapter(private val list: List<String>) :
         return ViewHolder(binding)
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount() = charmInfos.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ViewHolder).bind(list[position])
+        (holder as ViewHolder).bind(charmInfos[position])
     }
 
     override fun getItemViewType(position: Int) = position
 
-    companion object {
-        private const val TITLE_MAX_LENGTH = 12
-        private const val TITLE_SKIP_REPLACE = "..."
+    fun updateAll(updatedCharmInfos: List<CharmInfo>) {
+        charmInfos.clear()
+        charmInfos.addAll(updatedCharmInfos)
+        notifyDataSetChanged()
     }
 }

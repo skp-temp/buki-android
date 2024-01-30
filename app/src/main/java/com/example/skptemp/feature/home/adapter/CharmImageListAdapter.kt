@@ -5,16 +5,16 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.skptemp.common.constants.CharmType
 import com.example.skptemp.common.ui.setOnSingleClickListener
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.databinding.CharmImageListItemBinding
 import com.example.skptemp.feature.home.CharmDetailActivity
+import com.example.skptemp.model.CharmInfo
 
-// TODO: List 타입을 서버에서 내려오는 DTO로 변경
+// TODO: List 타입 변경
 class CharmImageListAdapter(
     private val context: Context,
-    private val list: List<CharmType>
+    private val list: List<CharmInfo>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class ViewHolder(
@@ -44,8 +44,9 @@ class CharmImageListAdapter(
     override fun getItemCount() = list.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val backgroundColor = ColorUtil.getColor(context, list[position].backgroundColor)
-        val strokeColor = ColorUtil.getColor(context, list[position].subTextColor)
+        val charmType = list[position].type
+        val backgroundColor = ColorUtil.getColor(context, charmType.backgroundColor)
+        val strokeColor = ColorUtil.getColor(context, charmType.subTextColor)
 
         (holder as ViewHolder).bind(backgroundColor, strokeColor)
     }

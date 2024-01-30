@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skptemp.R
+import com.example.skptemp.common.util.CharmUtil.getTextLineByLetter
 import com.example.skptemp.databinding.CharmMessageListItemBinding
 import com.example.skptemp.model.CharmMessage
 
@@ -21,7 +22,7 @@ class CharmMessageListAdapter(
             cardView.setCardBackgroundColor(charmTypeColor)
             friendProfilePicture.setImageResource(R.drawable.temp_profile_picture)
             name.text = charmMessage.name
-            message.text = charmMessage.message
+            message.text = getTextLineByLetter(charmMessage.message)
             date.text = charmMessage.date
             gift.setImageResource(R.drawable.temp_gift)
         }
