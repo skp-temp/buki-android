@@ -23,6 +23,7 @@
         android:backgroundTint="@color/white"
         android:elevation="16dp"
         android:src="@drawable/ic_plus"
+        android:visibility="gone"
         app:borderWidth="0dp"
         app:fabCustomSize="@dimen/fab_size"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_bar"

@@ -8,7 +8,7 @@
         android:id="@+id/charm_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:cardCornerRadius="@dimen/charm_image_radius"
+        app:cardCornerRadius="@dimen/large_radius"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="2:3"

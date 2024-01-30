@@ -8,7 +8,6 @@
     <dimen name="horizontal_margin_large">24dp</dimen>
     <dimen name="horizontal_margin_medium">16dp</dimen>
 
-    <dimen name="charm_image_radius">17dp</dimen>
     <dimen name="charm_image_detail_radius">23dp</dimen>
     <dimen name="large_radius">20dp</dimen>
     <dimen name="medium_radius">12dp</dimen>
