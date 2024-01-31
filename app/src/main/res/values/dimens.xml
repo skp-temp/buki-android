@@ -71,6 +71,13 @@
     <dimen name="charm_list_top_space">16dp</dimen>
     <dimen name="charm_list_row_space">12dp</dimen>
 
+    <!-- activity_notification.xml -->
+    <dimen name="notification_image_size">20dp</dimen>
+    <dimen name="notification_image_margin">4dp</dimen>
+    <dimen name="notification_detail_text_start_margin">24dp</dimen>
+    <dimen name="notification_list_row_margin">24dp</dimen>
+    <dimen name="notification_list_start_margin">16dp</dimen>
+
     <!-- activity_charm_detail.xml -->
     <dimen name="charm_detail_image_horizontal_margin">44dp</dimen>
     <dimen name="charm_detail_image_edit_size">48dp</dimen>
