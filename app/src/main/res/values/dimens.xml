@@ -8,6 +8,7 @@
     <dimen name="horizontal_margin_large">24dp</dimen>
     <dimen name="horizontal_margin_medium">16dp</dimen>
 
+    <dimen name="charm_image_detail_radius">23dp</dimen>
     <dimen name="large_radius">20dp</dimen>
     <dimen name="medium_radius">12dp</dimen>
     <dimen name="small_radius">8dp</dimen>
@@ -20,6 +21,7 @@
 
     <dimen name="scroll_end_margin">56dp</dimen>
 
+    <dimen name="stroke_width">1dp</dimen>
     <dimen name="fab_size">48dp</dimen>
 
     <!-- /common/ui/component/ -->
@@ -62,6 +64,8 @@
     <dimen name="switch_width">216dp</dimen>
     <dimen name="switch_height">42dp</dimen>
     <dimen name="switch_thumb_margin">4dp</dimen>
+    <dimen name="switch_top_margin">36dp</dimen>
+    <dimen name="switch_bottom_margin">16dp</dimen>
     <dimen name="switch_text_margin">14dp</dimen>
 
     <dimen name="charm_list_top_space">16dp</dimen>

@@ -6,18 +6,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skptemp.R
+import com.example.skptemp.common.constants.CharmType
 import com.example.skptemp.common.ui.GridRecyclerViewItemDecoration
 import com.example.skptemp.common.ui.component.Toolbar
+import com.example.skptemp.common.ui.setOnSingleClickListener
 import com.example.skptemp.common.util.ColorUtil
-import com.example.skptemp.common.util.ViewPagerUtil.setPageChangeAnimation
-import com.example.skptemp.common.util.ViewUtil.setHeightPx
+import com.example.skptemp.feature.home.CharmViewPagerManager.setHorizontalPadding
+import com.example.skptemp.feature.home.CharmViewPagerManager.setPageChangeAnimation
+import com.example.skptemp.common.util.ViewUtil.getHeightPxByRatio
+import com.example.skptemp.common.util.ViewUtil.setHeightByRatio
 import com.example.skptemp.databinding.FragmentHomeBinding
 import com.example.skptemp.feature.home.adapter.CharmImageListAdapter
 import com.example.skptemp.feature.home.adapter.CharmInfoListAdapter
+import com.example.skptemp.model.CharmInfo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,10 +32,28 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private var mCheckedTextColor = 0
-    private var mUncheckedTextColor = 0
+    private val mCheckedTextColor by lazy { ColorUtil.getColor(mContext, CHECKED_TEXT_COLOR) }
+    private val mUncheckedTextColor by lazy { ColorUtil.getColor(mContext, UNCHECKED_TEXT_COLOR) }
 
     private lateinit var mContext: Context
+
+    // TODO: 서버 통신
+    private val mProgressCharms = listOf(
+        CharmInfo(CharmType.WORKOUT, false, "테스트1", 1),
+        CharmInfo(CharmType.HAPPY, false, "테스트2", 20),
+        CharmInfo(CharmType.MONEY, true, "테스트3", 15),
+        CharmInfo(CharmType.PET, true, "글자수테스트글자수테스트글자수테스트", 3),
+        CharmInfo(CharmType.WORKOUT, true, "글자수테스트글자수테스트글자수테스트", 5)
+    )
+    private val mDoneCharms = listOf<CharmInfo>(
+        CharmInfo(CharmType.WORKOUT, true, "테스트1", 1),
+        CharmInfo(CharmType.HAPPY, true, "테스트2", 20),
+        CharmInfo(CharmType.MONEY, true, "테스트3", 15)
+    )
+    private lateinit var mRecyclerViewCharms: List<CharmInfo>
+
+    private val mCharmImageListAdapter by lazy { CharmImageListAdapter(mContext, mProgressCharms) }
+    private val mCharmInfoListAdapter by lazy { CharmInfoListAdapter(mRecyclerViewCharms.toMutableList()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,60 +61,46 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         mContext = requireContext()
-        mCheckedTextColor = ColorUtil.getColor(mContext, CHECKED_TEXT_COLOR)
-        mUncheckedTextColor = ColorUtil.getColor(mContext, UNCHECKED_TEXT_COLOR)
 
-        updateViewPagerSize()
-        updateLayoutSize()
         return binding.root
     }
 
-    private fun updateViewPagerSize() = with(binding.charmImageViewPager) {
-        post { setHorizontalPadding(height) }
-    }
-
-    private fun setHorizontalPadding(viewPagerHeightPx: Int) = with(binding.charmImageViewPager) {
-        val screenWidthPx = resources.displayMetrics.widthPixels
-        val widthRatio = resources.getDimension(R.dimen.charm_pager_width) /
-                resources.getDimension(R.dimen.charm_pager_height)
-        val widthPx = widthRatio * viewPagerHeightPx
-
-        val padding = ((screenWidthPx - widthPx) / 2).toInt()
-        setPadding(padding, 0, padding, 0)
-    }
-
-    private fun updateLayoutSize() = with(binding.root) {
-        post { setLayoutHeight(height) }
-    }
-
-    private fun setLayoutHeight(fragmentHeightPx: Int) = with(binding) {
-        // fragment - empty layout - toolbar
-        val heightPx =
-            fragmentHeightPx - fragmentHeightPx * EMPTY_LAYOUT_RATIO - resources.getDimensionPixelOffset(
-                R.dimen.toolbar_height
-            )
-        val ratioHeight = resources.getDimension(R.dimen.home_fragment_ratio_height)
-        val viewPagerLayoutHeight = resources.getDimension(R.dimen.view_pager_layout_height)
-        val switchLayoutHeight = resources.getDimension(R.dimen.switch_layout_height)
-
-        viewPagerLayout.setHeightPx((heightPx * (viewPagerLayoutHeight / ratioHeight)).toInt())
-        switchLayout.setHeightPx((heightPx * (switchLayoutHeight / ratioHeight)).toInt())
-    }
-
-    override fun onResume() {
+    override fun onResume() = with(binding) {
         super.onResume()
+        setLayoutHeightByRatio()
+
+        progressText.text = resources.getString(R.string.switch_progress, mProgressCharms.size)
+        doneText.text = resources.getString(R.string.switch_done, mDoneCharms.size)
+
+        composeSwitch()
         composeToolbar()
         composeViewPager()
         composeRecyclerView()
 
-        binding.charmSwitch.setOnCheckedChangeListener { _, isSelectedDone ->
-            changeSwitchText(isSelectedDone)
+        emptyCharmImage.setOnSingleClickListener {
+            //startActivity(Intent(mContext, CharmCreatActivity::class.java))
         }
-        binding.doneText.text = "도전 완료 12"
-        binding.progressText.text = "도전 중 8"
     }
+
+    private fun setLayoutHeightByRatio() = with(binding) {
+        viewPagerLayout.setHeightByRatio(mContext, VIEW_PAGER_LAYOUT_RATIO)
+        indicatorLayout.setHeightByRatio(mContext, INDICATOR_LAYOUT_RATIO)
+    }
+
+    private fun composeSwitch() = with(binding.charmSwitch) {
+        changeSwitchText(isSelected)
+        mRecyclerViewCharms = getRecyclerViewCharms(isSelected)
+        updateRecyclerView(isSelected)
+
+        setOnCheckedChangeListener { _, isSelectedDone ->
+            changeSwitchText(isSelectedDone)
+            updateRecyclerView(isSelectedDone)
+        }
+    }
+
+    private fun getRecyclerViewCharms(isSelectedDone: Boolean) =
+        if (isSelectedDone) mDoneCharms else mProgressCharms
 
     private fun changeSwitchText(isSelectedDone: Boolean) = with(binding) {
         if (isSelectedDone) {
@@ -103,6 +113,33 @@ class HomeFragment : Fragment() {
         binding.doneText.setTextColor(mUncheckedTextColor)
     }
 
+    private fun updateRecyclerView(isSelectedDone: Boolean) {
+        if (setEmptyCharmLayout(isSelectedDone)) return
+        mCharmInfoListAdapter.updateAll(getRecyclerViewCharms(isSelectedDone))
+    }
+
+    private fun setEmptyCharmLayout(isSelectedDone: Boolean): Boolean {
+        val isEmptyCharms = mRecyclerViewCharms.isEmpty()
+        val emptyVisibility = if (isEmptyCharms) View.VISIBLE else View.GONE
+        val layoutVisibility = if (!isEmptyCharms) View.VISIBLE else View.GONE
+
+        with(binding) {
+            charmImageViewPager.visibility = layoutVisibility
+            indicatorLayout.visibility = layoutVisibility
+            charmRecyclerView.visibility = layoutVisibility
+
+            emptyLayout.visibility = emptyVisibility
+            emptyCharmImageLayout.visibility = emptyVisibility
+
+            if (!isEmptyCharms) return false
+            emptyText.text = resources.getString(
+                if (isSelectedDone) R.string.empty_done_charm else R.string.empty_progress_charm
+            )
+        }
+
+        return true
+    }
+
     private fun composeToolbar() = with(binding.toolbar) {
         visibleButton(Toolbar.BELL_BUTTON)
         visibleButton(Toolbar.GIFT_BUTTON)
@@ -113,29 +150,25 @@ class HomeFragment : Fragment() {
         setButtonOnClickListener(Toolbar.GIFT_BUTTON) {
             Log.d(TAG, "Toolbar Gift Button click")
         }
+
+        setTitleOnClickListener {
+            binding.scrollLayout.fullScroll(NestedScrollView.FOCUS_UP)
+        }
     }
 
     private fun composeViewPager() = with(binding.charmImageViewPager) {
-        adapter = CharmImageListAdapter(
-            mContext,
-            listOf(
-                R.color.yellowgreen_200,
-                R.color.purple_200,
-                R.color.brown_200
-            )
-        )
+        setHorizontalPadding(getHeightPxByRatio(mContext, VIEW_PAGER_RATIO - STROKE_WIDTH * 2))
+        //setSwipeAction(binding.scrollView)
+        setPageChangeAnimation()
 
+        adapter = mCharmImageListAdapter
         offscreenPageLimit = 3
         getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         binding.viewPagerIndicator.attachTo(this)
-
-        //setSwipeAction(binding.scrollView)
-        setPageChangeAnimation()
     }
 
     private fun composeRecyclerView() = with(binding.charmRecyclerView) {
-        layoutManager = LinearLayoutManager(mContext)
-        adapter = CharmInfoListAdapter(listOf("1번째", "두번째"))
+        adapter = mCharmInfoListAdapter
         addItemDecoration(
             GridRecyclerViewItemDecoration(
                 topSpaceId = R.dimen.charm_list_top_space,
@@ -156,6 +189,10 @@ class HomeFragment : Fragment() {
 
         private val CHECKED_TEXT_COLOR = R.color.white
         private val UNCHECKED_TEXT_COLOR = R.color.gray_500
-        private const val EMPTY_LAYOUT_RATIO = 0.3f
+
+        private const val STROKE_WIDTH = 2
+        private const val VIEW_PAGER_RATIO = 300
+        private const val VIEW_PAGER_LAYOUT_RATIO = 332
+        private const val INDICATOR_LAYOUT_RATIO = 30
     }
 }

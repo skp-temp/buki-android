@@ -22,7 +22,7 @@ object ViewUtil {
         applicationContext.resources.displayMetrics.widthPixels
 
     // device height - navigation bar - status bar
-    fun Context.getDeviceHeightPx() =
+    private fun Context.getDeviceHeightPx() =
         applicationContext.resources.displayMetrics.heightPixels - getNavigationBarHeightPx()
 
     fun Context.getStatusBarHeightPx(): Int {
@@ -61,6 +61,22 @@ object ViewUtil {
         val guideHeightPx = resources.getDimension(R.dimen.guide_height)
 
         setHeightPx((deviceHeightPx * (heightPx / guideHeightPx)).toInt())
+    }
+
+    fun getWidthPxByRatio(context: Context, widthDp: Int): Int {
+        val deviceWidthPx = context.getDeviceWidthPx()
+        val widthPx = widthDp.toFloat().convertDPtoPX(context)
+        val guideWidthPx = context.resources.getDimension(R.dimen.guide_width)
+
+        return (deviceWidthPx * (widthPx / guideWidthPx)).toInt()
+    }
+
+    fun getHeightPxByRatio(context: Context, heightDp: Int): Int {
+        val deviceHeightPx = context.getDeviceHeightPx()
+        val heightPx = heightDp.toFloat().convertDPtoPX(context)
+        val guideHeightPx = context.resources.getDimension(R.dimen.guide_height)
+
+        return (deviceHeightPx * (heightPx / guideHeightPx)).toInt()
     }
 
 }

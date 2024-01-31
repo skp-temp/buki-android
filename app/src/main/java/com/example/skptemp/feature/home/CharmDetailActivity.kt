@@ -153,7 +153,6 @@ class CharmDetailActivity : AppCompatActivity() {
     }
 
     private fun setupMessageList() = with(binding.messageRecyclerView) {
-        val messageBackgroundColor = ColorUtil.getColor(mContext, mCharmType.subBackgroundColor)
         val charmMessages = listOf(
             CharmMessage("", "김혜민", "테스트", "2024.01.10"),
             CharmMessage("", "김혜민", "테스트", "2024.01.10"),
@@ -161,12 +160,13 @@ class CharmDetailActivity : AppCompatActivity() {
             CharmMessage("", "김혜민", "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트", "2024.01.10"),
         )
 
-        if (charmMessages.size == 0) {
+        if (charmMessages.isEmpty()) {
             visibility = View.GONE
             binding.messageEmptyLayout.visibility = View.VISIBLE
             return@with
         }
 
+        val messageBackgroundColor = ColorUtil.getColor(mContext, mCharmType.subBackgroundColor)
         adapter =
             CharmMessageListAdapter(
                 charmMessages,
@@ -182,7 +182,6 @@ class CharmDetailActivity : AppCompatActivity() {
                 context = mContext
             )
         )
-
     }
 
     override fun onDestroy() {

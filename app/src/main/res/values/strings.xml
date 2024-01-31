@@ -23,6 +23,7 @@
     <string name="switch_progress">도전 중 </string>
 
     <string name="empty_progress_charm">만들고 있는 부적이 없어요</string>
+    <string name="create_empty_charm">눌러서 새로운 부적을\n만들어주세요!</string>
 
     <!-- activity_charm_detail.xml -->
     <string name="bottom_dialog_edit">수정</string>
@@ -35,6 +36,5 @@
     <string name="stamp_done">오늘 목표 완료 하기</string>
 
     <string name="empty_message">아직 받은 응원 메시지가 없어요</string>
-
 
 </resources>

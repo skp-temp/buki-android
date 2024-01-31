@@ -28,8 +28,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/charm_layout"
@@ -147,7 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     app:cardBackgroundColor="@color/gray_100"
-                    app:cardCornerRadius="@dimen/medium_radius"
+                    app:cardCornerRadius="@dimen/charm_image_detail_radius"
                     app:cardElevation="0dp"
                     app:layout_constraintBottom_toTopOf="@+id/charm_progress_layout"
                     app:layout_constraintDimensionRatio="2:3"
@@ -258,7 +257,6 @@
                 android:id="@+id/stamp_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/message_layout"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

@@ -1,4 +1,4 @@
-package com.example.skptemp.common.util
+package com.example.skptemp.feature.home
 
 import android.view.MotionEvent
 import androidx.core.widget.NestedScrollView
@@ -6,10 +6,11 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.skptemp.R
+import com.example.skptemp.common.util.ViewUtil.getDeviceWidthPx
 import kotlin.math.abs
 import kotlin.math.max
 
-object ViewPagerUtil {
+object CharmViewPagerManager {
 
     private const val MIN_SCALE = 0.9f
     private const val MIN_ALPHA = 0.5f
@@ -31,6 +32,17 @@ object ViewPagerUtil {
         }
 
         setPageTransformer(transform)
+    }
+
+    fun ViewPager2.setHorizontalPadding(viewPagerHeightPx: Int) {
+        val screenWidthPx = context.getDeviceWidthPx()
+        val widthRatio = resources.getDimension(R.dimen.charm_pager_width) /
+                resources.getDimension(R.dimen.charm_pager_height)
+        val widthPx = widthRatio * viewPagerHeightPx
+
+        val padding = ((screenWidthPx - widthPx) / 2).toInt()
+
+        setPadding(padding, 0, padding, 0)
     }
 
     fun ViewPager2.setSwipeAction(scrollView: NestedScrollView) {
