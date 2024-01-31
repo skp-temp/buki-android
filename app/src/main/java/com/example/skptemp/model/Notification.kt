@@ -7,5 +7,6 @@ data class Notification(
     val type: NotificationType,
     val name: String,
     val postedDate: String,
-    val charmType: CharmType? = null
+    val charmType: CharmType? = null,
+    val isAccept: Boolean? = null
 )

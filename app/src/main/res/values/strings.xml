@@ -41,11 +41,16 @@
 
     <!-- activity_notification.xml -->
     <string name="notification">알림</string>
-    <string name="noti_charm_growth">%s님 축하드려요🎉🎉 %s님의 %s부적이 성장했어요! 지금 바로 확인해보세요.\n내 부적 확인하러 가기</string>
+    <string name="noti_charm_growth">%s님 축하드려요🎉🎉 %s님의 %s부적이 성장했어요! 지금 바로 확인해보세요.</string>
     <string name="noti_charm_stamp">%s님 오늘 목표를 달성하셨나요? 오늘치 목표 달성을 체크해주세요!</string>
-    <string name="noti_message">똑똑👋👋 %s님이 %s부적에 응원 메세지를 남겼어요! %s님이 남긴 메세지를 확인해보세요.\n응원 메세지 확인하기</string>
-    <string name="noti_message_with_gift">똑똑👋👋 %s님이 %s부적에 응원 메세지와 선물을 남겼어요! %s님이 남긴 메세지를 확인해보세요.\n응원 메세지 확인하기</string>
+    <string name="noti_message">똑똑👋👋 %s님이 %s부적에 응원 메세지를 남겼어요! %s님이 남긴 메세지를 확인해보세요.</string>
+    <string name="noti_message_with_gift">똑똑👋👋 %s님이 %s부적에 응원 메세지와 선물을 남겼어요! %s님이 남긴 메세지를 확인해보세요.</string>
     <string name="noti_friend_accept">%s님이 친구맺기를 수락했어요. 친구가 된 %s님의 소원부적을 살펴보세요.</string>
     <string name="noti_friend_request">%s님이 친구 맺기를 신청했어요. 친구 신청을 수락하고 %s님의 소원부적을 살펴보세요.</string>
+
+    <string name="noti_charm_growth_action">내 부적 확인하러 가기</string>
+    <string name="noti_message_action">응원 메세지 확인하기</string>
+    <string name="noti_accept_button_enabled">수락</string>
+    <string name="noti_accept_button_disabled">수락됨</string>
 
 </resources>

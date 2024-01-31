@@ -28,7 +28,8 @@ class NotificationActivity : AppCompatActivity() {
         Notification(NotificationType.FRIEND_ACCEPT, "강동훈", "24분전"),
         Notification(NotificationType.CHARM_GROWTH, "김혜민", "5시간전"),
         Notification(NotificationType.CHARM_STAMP, "김혜민", "5시간전"),
-        Notification(NotificationType.FRIEND_REQUEST, "최영진", "2023.11.06"),
+        Notification(NotificationType.FRIEND_REQUEST, "최영진", "2023.11.06", isAccept = false),
+        Notification(NotificationType.FRIEND_REQUEST, "최영진", "2023.11.02", isAccept = true),
         Notification(NotificationType.MESSAGE, "최태규", "2023.11.02", CharmType.HAPPY)
     )
     private val mNotificationListAdapter by lazy { NotificationListAdapter(mNotifications, mContext) }
