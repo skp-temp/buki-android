@@ -141,8 +141,9 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/charm_image"
+                    style="@style/Widget.MaterialComponents.CardView"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     app:cardBackgroundColor="@color/gray_100"
@@ -153,6 +154,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/charm_title_layout"
+                    app:rippleColor="@android:color/transparent"
                     app:strokeWidth="0dp">
 
                     <ImageView
@@ -165,7 +167,7 @@
                         android:scaleType="center"
                         android:src="@drawable/ic_edit" />
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
                 <!--  h = 98 -->
                 <androidx.constraintlayout.widget.ConstraintLayout
