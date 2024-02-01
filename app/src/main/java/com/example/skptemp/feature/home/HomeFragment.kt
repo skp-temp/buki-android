@@ -1,6 +1,7 @@
 package com.example.skptemp.feature.home
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -146,11 +147,11 @@ class HomeFragment : Fragment() {
 
         setButtonOnClickListener(Toolbar.BELL_BUTTON) {
             Log.d(TAG, "Toolbar Bell Button click")
+            startActivity(Intent(mContext, NotificationActivity::class.java))
         }
         setButtonOnClickListener(Toolbar.GIFT_BUTTON) {
             Log.d(TAG, "Toolbar Gift Button click")
         }
-
         setTitleOnClickListener {
             binding.scrollLayout.fullScroll(NestedScrollView.FOCUS_UP)
         }

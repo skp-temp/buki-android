@@ -19,10 +19,12 @@
 
     <string name="back_pressed">뒤로 버튼을 한번 더 누르면 앱을 종료합니다.</string>
 
-    <string name="switch_done">도전 완료 </string>
-    <string name="switch_progress">도전 중 </string>
+    <string name="switch_done">도전 완료 %d</string>
+    <string name="switch_progress">도전 중 %d</string>
+    <string name="progress_day">%d일째 도전중</string>
 
-    <string name="empty_progress_charm">만들고 있는 부적이 없어요</string>
+    <string name="empty_done_charm">완성한 부적이 없어요.</string>
+    <string name="empty_progress_charm">만들고 있는 부적이 없어요.</string>
     <string name="create_empty_charm">눌러서 새로운 부적을\n만들어주세요!</string>
 
     <!-- activity_charm_detail.xml -->
@@ -36,5 +38,19 @@
     <string name="stamp_done">오늘 목표 완료 하기</string>
 
     <string name="empty_message">아직 받은 응원 메시지가 없어요</string>
+
+    <!-- activity_notification.xml -->
+    <string name="notification">알림</string>
+    <string name="noti_charm_growth">%s님 축하드려요🎉🎉 %s님의 %s부적이 성장했어요! 지금 바로 확인해보세요.</string>
+    <string name="noti_charm_stamp">%s님 오늘 목표를 달성하셨나요? 오늘치 목표 달성을 체크해주세요!</string>
+    <string name="noti_message">똑똑👋👋 %s님이 %s부적에 응원 메세지를 남겼어요! %s님이 남긴 메세지를 확인해보세요.</string>
+    <string name="noti_message_with_gift">똑똑👋👋 %s님이 %s부적에 응원 메세지와 선물을 남겼어요! %s님이 남긴 메세지를 확인해보세요.</string>
+    <string name="noti_friend_accept">%s님이 친구맺기를 수락했어요. 친구가 된 %s님의 소원부적을 살펴보세요.</string>
+    <string name="noti_friend_request">%s님이 친구 맺기를 신청했어요. 친구 신청을 수락하고 %s님의 소원부적을 살펴보세요.</string>
+
+    <string name="noti_charm_growth_action">내 부적 확인하러 가기</string>
+    <string name="noti_message_action">응원 메세지 확인하기</string>
+    <string name="noti_accept_button_enabled">수락</string>
+    <string name="noti_accept_button_disabled">수락됨</string>
 
 </resources>
