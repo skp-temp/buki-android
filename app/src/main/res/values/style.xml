@@ -54,10 +54,11 @@
     </style>
 
     <style name="switch_text_style">
-        <item name="android:textSize">@dimen/switch_text_size</item>
+        <item name="android:textSize">@dimen/text_medium_small_size</item>
         <item name="android:fontFamily">@font/pretendard_medium</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_height">match_parent</item>
     </style>
 

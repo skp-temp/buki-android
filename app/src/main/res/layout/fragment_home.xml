@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/switch_layout"
+                app:layout_constraintBottom_toTopOf="@+id/charm_switch"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_pager_layout">
@@ -144,46 +144,16 @@
             </LinearLayout>
 
             <!-- h = switch(42) + top margin(36) + bottom margin(16) = 94 -->
-            <FrameLayout
-                android:id="@+id/switch_layout"
-                android:layout_width="match_parent"
+            <com.example.skptemp.common.ui.component.BukiSwitch
+                android:id="@+id/charm_switch"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/switch_height"
                 android:layout_marginTop="@dimen/switch_top_margin"
                 android:layout_marginBottom="@dimen/switch_bottom_margin"
                 app:layout_constraintBottom_toTopOf="@+id/charm_recycler_view"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/indicator_layout">
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/charm_switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:thumb="@drawable/switch_thumb"
-                    app:switchMinWidth="@dimen/switch_width"
-                    app:track="@drawable/switch_track" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center">
-
-                    <TextView
-                        android:id="@+id/progress_text"
-                        style="@style/switch_text_style"
-                        android:layout_marginEnd="@dimen/switch_text_margin"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:id="@+id/done_text"
-                        style="@style/switch_text_style"
-                        android:layout_marginStart="@dimen/switch_text_margin"
-                        android:textColor="@color/gray_500" />
-
-                </LinearLayout>
-
-            </FrameLayout>
+                app:layout_constraintTop_toBottomOf="@+id/indicator_layout" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/charm_recycler_view"
@@ -194,7 +164,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/empty_layout"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/charm_switch" />
 
             <!-- h = 212 -->
             <androidx.constraintlayout.widget.ConstraintLayout

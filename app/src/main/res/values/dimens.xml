@@ -8,7 +8,6 @@
     <dimen name="horizontal_margin_large">24dp</dimen>
     <dimen name="horizontal_margin_medium">16dp</dimen>
 
-    <dimen name="charm_image_detail_radius">23dp</dimen>
     <dimen name="large_radius">20dp</dimen>
     <dimen name="medium_radius">12dp</dimen>
     <dimen name="small_radius">8dp</dimen>
@@ -51,7 +50,6 @@
     <!-- fragment_home.xml -->
     <dimen name="home_fragment_ratio_height">426dp</dimen>
     <dimen name="view_pager_layout_height">352dp</dimen>
-    <dimen name="switch_layout_height">74dp</dimen>
 
     <dimen name="charm_pager_width">200dp</dimen>
     <dimen name="charm_pager_height">300dp</dimen>
@@ -60,13 +58,17 @@
     <dimen name="indicator_dot">6dp</dimen>
     <dimen name="indicator_dot_margin">4dp</dimen>
 
-    <dimen name="switch_text_size">14dp</dimen>
     <dimen name="switch_width">216dp</dimen>
     <dimen name="switch_height">42dp</dimen>
+    <dimen name="switch_track_radius">30dp</dimen>
+
+    <dimen name="switch_thumb_radius">40dp</dimen>
+    <dimen name="switch_thumb_width">104dp</dimen>
+    <dimen name="switch_thumb_height">34dp</dimen>
     <dimen name="switch_thumb_margin">4dp</dimen>
+
     <dimen name="switch_top_margin">36dp</dimen>
     <dimen name="switch_bottom_margin">16dp</dimen>
-    <dimen name="switch_text_margin">14dp</dimen>
 
     <dimen name="charm_list_top_space">16dp</dimen>
     <dimen name="charm_list_row_space">12dp</dimen>
@@ -84,6 +86,7 @@
 
     <!-- activity_charm_detail.xml -->
     <dimen name="charm_detail_image_horizontal_margin">44dp</dimen>
+    <dimen name="charm_detail_image_radius">23dp</dimen>
     <dimen name="charm_detail_image_edit_size">48dp</dimen>
     <dimen name="charm_detail_image_edit_margin">13dp</dimen>
 

@@ -146,7 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     app:cardBackgroundColor="@color/gray_100"
-                    app:cardCornerRadius="@dimen/charm_image_detail_radius"
+                    app:cardCornerRadius="@dimen/charm_detail_image_radius"
                     app:cardElevation="0dp"
                     app:layout_constraintBottom_toTopOf="@+id/charm_progress_layout"
                     app:layout_constraintDimensionRatio="2:3"
