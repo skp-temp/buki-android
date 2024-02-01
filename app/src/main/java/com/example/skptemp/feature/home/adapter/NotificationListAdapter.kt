@@ -5,10 +5,10 @@ import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skptemp.R
 import com.example.skptemp.common.constants.NotificationType
-import com.example.skptemp.common.ui.setOnSingleClickListener
 import com.example.skptemp.common.util.CharmUtil.getTextLineByLetter
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewUtil.convertDPtoPX
@@ -35,33 +35,38 @@ class NotificationListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(notification: Notification) = with(binding) {
-            if (notification.type == NotificationType.FRIEND_REQUEST) {
-                acceptButton.visibility = View.VISIBLE
-                acceptButton.background = acceptButtonBackground
-
-                if (notification.isAccept == false) { // enable
-                    acceptButton.setTextColor(ColorUtil.getColor(context, R.color.blue))
-                    acceptButton.text = context.resources.getString(R.string.noti_accept_button_enabled)
-                    //acceptButton.setOnSingleClickListener {  }
-                } else { // disable
-                    acceptButton.text = context.resources.getString(R.string.noti_accept_button_disabled)
-                }
-            }
+            acceptButton.setAcceptButton(notification)
 
             image.setImageResource(notification.type.iconId)
             title.text = notification.type.title
             date.text = notification.postedDate
 
-            val detailText = notification.type.getDetailString(
-                context,
-                notification.name,
-                notification.charmType
-            )
-            detail.text = getTextLineByLetter(detailText)
+            detail.text = notification.type.getDetailString(
+                context, notification.name, notification.charmType
+            ).let { getTextLineByLetter(it) }
+
             notification.type.getActionString(context)?.let { actionText ->
                 action.visibility = View.VISIBLE
                 action.text = actionText
             }
+        }
+
+        private fun TextView.setAcceptButton(notification: Notification) {
+            if (notification.type != NotificationType.FRIEND_REQUEST) {
+                return
+            }
+
+            visibility = View.VISIBLE
+            background = acceptButtonBackground
+
+            var textId = R.string.noti_accept_button_disabled
+            if (notification.isAccept == false) { // enable
+                setTextColor(ColorUtil.getColor(context, R.color.blue))
+                textId = R.string.noti_accept_button_enabled
+                //acceptButton.setOnSingleClickListener {  }
+            }
+
+            text = context.resources.getString(textId)
         }
     }
 
