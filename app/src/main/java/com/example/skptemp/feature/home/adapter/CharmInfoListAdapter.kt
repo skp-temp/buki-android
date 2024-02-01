@@ -18,7 +18,8 @@ class CharmInfoListAdapter(private var charmInfos: MutableList<CharmInfo>) :
 
         fun bind(charmInfo: CharmInfo) = with(binding) {
             charmTypeTag.setTagType(charmInfo.type)
-            if (!charmInfo.isDoneToday) incompleteTag.visibility = View.VISIBLE
+            incompleteTag.visibility = if (charmInfo.isDoneToday) View.GONE else View.VISIBLE
+
             title.text = charmInfo.title
             continuousText.text =
                 continuousText.resources.getString(R.string.progress_day, charmInfo.progress)

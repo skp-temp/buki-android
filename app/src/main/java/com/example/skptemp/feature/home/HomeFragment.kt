@@ -41,14 +41,11 @@ class HomeFragment : Fragment() {
         CharmInfo(CharmType.PET, true, "글자수테스트글자수테스트글자수테스트", 3),
         CharmInfo(CharmType.WORKOUT, true, "글자수테스트글자수테스트글자수테스트", 5)
     )
-    private val mDoneCharms = listOf<CharmInfo>(
-        CharmInfo(CharmType.WORKOUT, true, "테스트1", 1),
-        CharmInfo(CharmType.HAPPY, true, "테스트2", 20),
-        CharmInfo(CharmType.MONEY, true, "테스트3", 15)
-    )
-    private lateinit var mRecyclerViewCharms: List<CharmInfo>
+    private val mDoneCharms = listOf<CharmInfo>()
+    private val mRecyclerViewCharms
+        get() = getRecyclerViewCharms(binding.charmSwitch.isChecked)
 
-    private val mCharmImageListAdapter by lazy { CharmImageListAdapter(mContext, mProgressCharms) }
+    private val mCharmImageListAdapter by lazy { CharmImageListAdapter(mContext, mRecyclerViewCharms.toMutableList()) }
     private val mCharmInfoListAdapter by lazy { CharmInfoListAdapter(mRecyclerViewCharms.toMutableList()) }
 
     override fun onCreateView(
@@ -86,12 +83,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun composeSwitch() = with(binding.charmSwitch) {
+        updateRecyclerView(isChecked)
         updateSwitchTextColor(isChecked)
         off = resources.getString(R.string.switch_progress, mProgressCharms.size)
         on = resources.getString(R.string.switch_done, mDoneCharms.size)
-
-        mRecyclerViewCharms = getRecyclerViewCharms(isChecked)
-        updateRecyclerView(isChecked)
 
         setOnCheckedChangeListener { _, isCheckedDone ->
             updateRecyclerView(isCheckedDone)
@@ -102,30 +97,32 @@ class HomeFragment : Fragment() {
         if (isCheckedDone) mDoneCharms else mProgressCharms
 
     private fun updateRecyclerView(isCheckedDone: Boolean) {
-        if (setEmptyCharmLayout(isCheckedDone)) return
-        mCharmInfoListAdapter.updateAll(getRecyclerViewCharms(isCheckedDone))
+        updateCharmEmptyLayout(isCheckedDone)
+
+        if (mRecyclerViewCharms.isEmpty()) return
+        mCharmImageListAdapter.updateAll(mRecyclerViewCharms)
+        mCharmInfoListAdapter.updateAll(mRecyclerViewCharms)
     }
 
-    private fun setEmptyCharmLayout(isCheckedDone: Boolean): Boolean {
-        val isEmptyCharms = mRecyclerViewCharms.isEmpty()
-        val emptyVisibility = if (isEmptyCharms) View.VISIBLE else View.GONE
-        val layoutVisibility = if (!isEmptyCharms) View.VISIBLE else View.GONE
+    private fun updateCharmEmptyLayout(isCheckedDone: Boolean) {
+        val charmsSize = mRecyclerViewCharms.size
+        val indicatorVisibility = if (charmsSize > 1) View.VISIBLE else View.GONE
+        val emptyVisibility = if (charmsSize == 0) View.VISIBLE else View.GONE
+        val layoutVisibility = if (charmsSize > 0) View.VISIBLE else View.GONE
 
         with(binding) {
-            charmImageViewPager.visibility = layoutVisibility
-            indicatorLayout.visibility = layoutVisibility
+                indicatorLayout.visibility = indicatorVisibility
+                charmImageViewPager.visibility = layoutVisibility
+
+            emptyCharmImageLayout.visibility = emptyVisibility
+            emptyLayout.visibility = emptyVisibility
             charmRecyclerView.visibility = layoutVisibility
 
-            emptyLayout.visibility = emptyVisibility
-            emptyCharmImageLayout.visibility = emptyVisibility
-
-            if (!isEmptyCharms) return false
+            if (charmsSize > 0) return
             emptyText.text = resources.getString(
                 if (isCheckedDone) R.string.empty_done_charm else R.string.empty_progress_charm
             )
         }
-
-        return true
     }
 
     private fun composeToolbar() = with(binding.toolbar) {
