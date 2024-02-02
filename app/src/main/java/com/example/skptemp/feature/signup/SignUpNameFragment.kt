@@ -12,6 +12,7 @@ import com.example.skptemp.R
 import com.example.skptemp.common.ui.component.InputBox
 import com.example.skptemp.common.ui.inf.OnInputFocusListener
 import com.example.skptemp.common.ui.inf.OnInputRegexListener
+import com.example.skptemp.common.util.ViewUtil.setHeightPx
 import com.example.skptemp.databinding.FragmentSignUpNameBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -111,12 +112,8 @@ class SignUpNameFragment : Fragment() {
     private fun resizeSpaceHeight(visibleKeyBoard: Boolean) {
         if (!visibleKeyBoard) return
 
-        binding.space1.resizeHeight(mFirstSpaceHeight)
-        binding.space2.resizeHeight(mSecondSpaceHeight)
-    }
-
-    private fun View.resizeHeight(changeHeight: Int) {
-        layoutParams = layoutParams.apply { height = changeHeight }
+        binding.space1.setHeightPx(mFirstSpaceHeight)
+        binding.space2.setHeightPx(mSecondSpaceHeight)
     }
 
     private fun updateNextButton() {

@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.DisplayMetrics
 import android.view.View
 import com.example.skptemp.R
-import com.example.skptemp.common.util.ViewUtil.setHeightPx
 import kotlin.math.round
 
 object ViewUtil {
