@@ -32,25 +32,23 @@ class NotificationActivity : AppCompatActivity() {
         Notification(NotificationType.FRIEND_REQUEST, "최영진", "2023.11.02", isAccept = true),
         Notification(NotificationType.MESSAGE, "최태규", "2023.11.02", CharmType.HAPPY)
     )
-    private val mNotificationListAdapter by lazy { NotificationListAdapter(mNotifications, mContext) }
+    private val mNotificationListAdapter by lazy {
+        NotificationListAdapter(
+            mNotifications,
+            mContext
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         _binding = ActivityNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setRecyclerViewItemDecoration()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        binding.toolbar.setButtonOnClickListener(Toolbar.BACK_BUTTON) { finish() }
-        setRecyclerView()
-    }
-
-    private fun setRecyclerView() = with(binding.notificationRecyclerView) {
-        adapter = mNotificationListAdapter
-        addItemDecoration(
+    private fun setRecyclerViewItemDecoration() {
+        binding.notificationRecyclerView.addItemDecoration(
             GridRecyclerViewItemDecoration(
                 topSpaceId = R.dimen.notification_list_start_margin,
                 rowSpaceId = R.dimen.notification_list_row_margin,
@@ -58,6 +56,13 @@ class NotificationActivity : AppCompatActivity() {
                 context = mContext
             )
         )
+    }
+
+    override fun onResume() = with(binding) {
+        super.onResume()
+
+        toolbar.setButtonOnClickListener(Toolbar.BACK_BUTTON) { finish() }
+        notificationRecyclerView.adapter = mNotificationListAdapter
     }
 
     override fun onDestroy() {

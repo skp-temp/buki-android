@@ -45,7 +45,12 @@ class HomeFragment : Fragment() {
     private val mRecyclerViewCharms
         get() = getRecyclerViewCharms(binding.charmSwitch.isChecked)
 
-    private val mCharmImageListAdapter by lazy { CharmImageListAdapter(mContext, mRecyclerViewCharms.toMutableList()) }
+    private val mCharmImageListAdapter by lazy {
+        CharmImageListAdapter(
+            mContext,
+            mRecyclerViewCharms.toMutableList()
+        )
+    }
     private val mCharmInfoListAdapter by lazy { CharmInfoListAdapter(mRecyclerViewCharms.toMutableList()) }
 
     override fun onCreateView(
@@ -59,6 +64,22 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setRecyclerViewItemDecoration()
+    }
+
+    private fun setRecyclerViewItemDecoration() {
+        binding.charmRecyclerView.addItemDecoration(
+            GridRecyclerViewItemDecoration(
+                topSpaceId = R.dimen.charm_list_top_space,
+                rowSpaceId = R.dimen.charm_list_row_space,
+                endSpaceId = R.dimen.scroll_end_margin,
+                context = mContext
+            )
+        )
+    }
+
     override fun onResume() = with(binding) {
         super.onResume()
         composeUI()
@@ -70,8 +91,8 @@ class HomeFragment : Fragment() {
         composeSwitch()
         composeToolbar()
         composeViewPager()
-        composeRecyclerView()
 
+        charmRecyclerView.adapter = mCharmInfoListAdapter
         emptyCharmImage.setOnSingleClickListener {
             //startActivity(Intent(mContext, CharmCreatActivity::class.java))
         }
@@ -111,8 +132,8 @@ class HomeFragment : Fragment() {
         val layoutVisibility = if (charmsSize > 0) View.VISIBLE else View.GONE
 
         with(binding) {
-                indicatorLayout.visibility = indicatorVisibility
-                charmImageViewPager.visibility = layoutVisibility
+            indicatorLayout.visibility = indicatorVisibility
+            charmImageViewPager.visibility = layoutVisibility
 
             emptyCharmImageLayout.visibility = emptyVisibility
             emptyLayout.visibility = emptyVisibility
@@ -150,18 +171,6 @@ class HomeFragment : Fragment() {
         offscreenPageLimit = 3
         getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         binding.viewPagerIndicator.attachTo(this)
-    }
-
-    private fun composeRecyclerView() = with(binding.charmRecyclerView) {
-        adapter = mCharmInfoListAdapter
-        addItemDecoration(
-            GridRecyclerViewItemDecoration(
-                topSpaceId = R.dimen.charm_list_top_space,
-                rowSpaceId = R.dimen.charm_list_row_space,
-                endSpaceId = R.dimen.scroll_end_margin,
-                context = mContext
-            )
-        )
     }
 
     override fun onDestroyView() {
