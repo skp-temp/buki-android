@@ -47,10 +47,10 @@ class BukiSwitch @JvmOverloads constructor(
         on.setTextColor(mUncheckedTextColor)
     }
 
-    fun setOnCheckedChangeListener(action: (CompoundButton, Boolean) -> Unit) {
-        binding.bukiSwitch.setOnCheckedChangeListener { view, isChecked ->
+    fun setOnCheckedChangeListener(action: () -> Unit) {
+        binding.bukiSwitch.setOnCheckedChangeListener { _, isChecked ->
             updateSwitchTextColor(isChecked)
-            action(view, isChecked)
+            action()
         }
     }
 

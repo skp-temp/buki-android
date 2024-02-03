@@ -53,9 +53,4 @@ class CharmImageListAdapter(
 
     override fun getItemViewType(position: Int) = position
 
-    fun updateAll(updatedCharmInfos: List<CharmInfo>) {
-        charmInfos.clear()
-        charmInfos.addAll(updatedCharmInfos)
-        notifyDataSetChanged()
-    }
 }
