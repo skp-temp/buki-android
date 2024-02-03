@@ -102,6 +102,7 @@ class HomeFragment : Fragment() {
     private fun setLayoutHeightByRatio() = with(binding) {
         viewPagerLayout.setHeightByRatio(mContext, VIEW_PAGER_LAYOUT_RATIO)
         indicatorLayout.setHeightByRatio(mContext, INDICATOR_LAYOUT_RATIO)
+        emptyLayout.setHeightByRatio(mContext, EMPTY_LAYOUT_RATIO)
     }
 
     private fun composeSwitch() = with(binding.charmSwitch) {
@@ -209,5 +210,6 @@ class HomeFragment : Fragment() {
         private const val VIEW_PAGER_RATIO = 300
         private const val VIEW_PAGER_LAYOUT_RATIO = 332
         private const val INDICATOR_LAYOUT_RATIO = 30
+        private const val EMPTY_LAYOUT_RATIO = 212
     }
 }
