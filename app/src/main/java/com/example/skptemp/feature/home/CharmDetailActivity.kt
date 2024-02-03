@@ -65,7 +65,6 @@ class CharmDetailActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         composeUI()
     }
 
@@ -84,12 +83,20 @@ class CharmDetailActivity : AppCompatActivity() {
         }
     }
 
+    // TODO: item 별로 레이아웃 분리 (뷰홀더)
     private fun setLayoutHeightByRatio() = with(binding) {
-        charmTitleLayout.setHeightByRatio(mContext, CHARM_TITLE_LAYOUT_RATIO)
-        charmProgressLayout.setHeightByRatio(mContext, CHARM_PROGRESS_LAYOUT_RATIO)
-        stampTitleLayout.setHeightByRatio(mContext, TITLE_LAYOUT_RATIO)
-        stampSpace.setHeightByRatio(mContext, STAMP_SPACE_RATIO)
-        messageTitleLayout.setHeightByRatio(mContext, TITLE_LAYOUT_RATIO)
+        space1.setHeightByRatio(mContext, CHARM_TITLE_TOP_RATIO)
+        space2.setHeightByRatio(mContext, CHARM_TITLE_MIDDLE_RATIO)
+        space3.setHeightByRatio(mContext, CHARM_TITLE_BOTTOM_RATIO)
+
+        space4.setHeightByRatio(mContext, PROGRESS_TOP_RATIO)
+        space5.setHeightByRatio(mContext, PROGRESS_MIDDLE_RATIO)
+        space6.setHeightByRatio(mContext, PROGRESS_BOTTOM_RATIO)
+
+        space7.setHeightByRatio(mContext, TITLE_SPACE_RATIO)
+        space8.setHeightByRatio(mContext, TITLE_SPACE_RATIO)
+
+        stampSpace.setHeightByRatio(mContext, TITLE_SPACE_RATIO)
         messageEmptyLayout.setHeightByRatio(mContext, MESSAGE_EMPTY_LAYOUT_RATIO)
         messageSpace.setHeightByRatio(mContext, MESSAGE_SPACE_RATIO)
     }
@@ -197,10 +204,15 @@ class CharmDetailActivity : AppCompatActivity() {
         private val TAG = CharmDetailActivity::class.simpleName
         private const val DIALOG_TAG = "dialog"
 
-        private const val CHARM_TITLE_LAYOUT_RATIO = 88
-        private const val CHARM_PROGRESS_LAYOUT_RATIO = 98
-        private const val TITLE_LAYOUT_RATIO = 72
-        private const val STAMP_SPACE_RATIO = 48
+        private const val CHARM_TITLE_TOP_RATIO = 16
+        private const val CHARM_TITLE_MIDDLE_RATIO = 10
+        private const val CHARM_TITLE_BOTTOM_RATIO = 20
+
+        private const val PROGRESS_TOP_RATIO = 20
+        private const val PROGRESS_MIDDLE_RATIO = 8
+        private const val PROGRESS_BOTTOM_RATIO = 46
+
+        private const val TITLE_SPACE_RATIO = 48
         private const val MESSAGE_EMPTY_LAYOUT_RATIO = 200
         private const val MESSAGE_SPACE_RATIO = 152
 

@@ -44,7 +44,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/charm_title_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toTopOf="@+id/charm_image"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -56,7 +56,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@+id/title_layout"
-                        app:layout_constraintHeight_percent="0.18"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +93,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@+id/notification_layout"
-                        app:layout_constraintHeight_percent="0.11"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/title_layout" />
@@ -134,7 +132,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintHeight_percent="0.22"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/notification_layout" />
@@ -173,7 +170,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/charm_progress_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -185,7 +182,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@+id/process_bar"
-                        app:layout_constraintHeight_percent="0.2"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -207,7 +203,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@+id/process_text_layout"
-                        app:layout_constraintHeight_percent="0.08"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/process_bar" />
@@ -268,7 +263,7 @@
                 <LinearLayout
                     android:id="@+id/stamp_title_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toTopOf="@+id/stamp_list_layout"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -276,9 +271,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <Space
+                        android:id="@+id/space7"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
+                        android:layout_height="0dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -363,7 +358,7 @@
                 <LinearLayout
                     android:id="@+id/message_title_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toTopOf="@+id/message_recycler_view"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -371,9 +366,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <Space
+                        android:id="@+id/space8"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
+                        android:layout_height="0dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -422,7 +417,7 @@
 
                     <!-- h = 88 / 200 -->
                     <Space
-                        android:id="@+id/space7"
+                        android:id="@+id/space9"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@+id/empty_image"
@@ -438,15 +433,15 @@
                         android:layout_height="0dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/temp_empty_image"
-                        app:layout_constraintBottom_toTopOf="@+id/space8"
+                        app:layout_constraintBottom_toTopOf="@+id/space10"
                         app:layout_constraintHeight_percent="0.4"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/space7" />
+                        app:layout_constraintTop_toBottomOf="@+id/space9" />
 
                     <!-- h = 16 / 200 - 0.08 -->
                     <Space
-                        android:id="@+id/space8"
+                        android:id="@+id/space10"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@+id/empty_text"
@@ -464,14 +459,14 @@
                         android:gravity="center"
                         android:text="@string/empty_message"
                         android:textColor="@color/gray_400"
-                        app:layout_constraintBottom_toTopOf="@+id/space9"
+                        app:layout_constraintBottom_toTopOf="@+id/space11"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/space8" />
+                        app:layout_constraintTop_toBottomOf="@+id/space10" />
 
                     <!-- h = 40 / 200 = 0.2 -->
                     <Space
-                        android:id="@+id/space9"
+                        android:id="@+id/space11"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
