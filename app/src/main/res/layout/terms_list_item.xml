@@ -14,10 +14,11 @@
 
     <TextView
         android:id="@+id/terms_title"
-        style="@style/medium_text_style"
+        style="@style/KR_subhead_16_medium"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        android:textColor="@color/gray_900" />
 
     <Space
         android:layout_width="0dp"

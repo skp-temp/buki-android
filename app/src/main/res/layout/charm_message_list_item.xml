@@ -42,7 +42,7 @@
 
                 <TextView
                     android:id="@+id/name"
-                    style="@style/small_text_style"
+                    style="@style/KR_caption_12_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center" />
@@ -54,7 +54,7 @@
 
                 <TextView
                     android:id="@+id/date"
-                    style="@style/x_small_text_style"
+                    style="@style/KR_caption_8_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center" />
@@ -74,12 +74,12 @@
 
             <TextView
                 android:id="@+id/message"
-                style="@style/medium_small_regular_text_style"
+                style="@style/KR_body_14_regular"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:ellipsize="end"
-                android:maxLines="5"
-                android:textColor="@color/gray_800"
+                android:maxLines="4"
+                android:textColor="@color/gray_900"
                 app:layout_constraintBottom_toTopOf="@+id/space2"
                 app:layout_constraintDimensionRatio="128:100"
                 app:layout_constraintLeft_toLeftOf="parent"

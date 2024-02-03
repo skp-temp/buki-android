@@ -81,10 +81,11 @@
 
                         <TextView
                             android:id="@+id/charm_title"
-                            style="@style/large_text_style"
+                            style="@style/KR_headline_20_bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical" />
+                            android:gravity="center_vertical"
+                            android:textColor="@color/gray_900" />
                     </LinearLayout>
 
                     <!--  h = 10 / 88 = 0.11 -->
@@ -111,7 +112,7 @@
 
                         <TextView
                             android:id="@+id/notification_text"
-                            style="@style/medium_text_style"
+                            style="@style/KR_subhead_16_medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="2dp"
@@ -219,14 +220,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/space5">
 
                         <TextView
-                            style="@style/small_text_style"
+                            style="@style/KR_caption_12_medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="4일째 계속 도전중!"
                             android:textColor="@color/blue" />
 
                         <TextView
-                            style="@style/small_text_style"
+                            style="@style/KR_caption_12_medium"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -282,12 +283,13 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            style="@style/large_text_style"
+                            style="@style/KR_headline_20_bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/charm_detail_title_start_margin"
                             android:layout_marginEnd="@dimen/charm_detail_title_end_margin"
-                            android:text="@string/stamp_title" />
+                            android:text="@string/stamp_title"
+                            android:textColor="@color/gray_900" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -377,12 +379,13 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            style="@style/large_text_style"
+                            style="@style/KR_headline_20_bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/charm_detail_title_start_margin"
                             android:layout_marginEnd="@dimen/charm_detail_title_end_margin"
-                            android:text="@string/message_title" />
+                            android:text="@string/message_title"
+                            android:textColor="@color/gray_900" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -453,7 +456,7 @@
                     <!-- h = 16 / 200 = 0.08 -->
                     <TextView
                         android:id="@+id/empty_text"
-                        style="@style/bold_medium_text_style"
+                        style="@style/KR_headline_16_bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"

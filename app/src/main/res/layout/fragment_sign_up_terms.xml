@@ -16,10 +16,11 @@
 
     <TextView
         android:id="@+id/terms_agreement_text"
-        style="@style/large_text_style"
+        style="@style/KR_headline_20_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/terms_agreement_message"
+        android:textColor="@color/gray_900"
         app:layout_constraintBottom_toTopOf="@+id/space2"
         app:layout_constraintTop_toBottomOf="@+id/space1" />
 

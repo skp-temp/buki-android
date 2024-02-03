@@ -80,10 +80,7 @@ class Toolbar @JvmOverloads constructor(
             gravity = Gravity.CENTER_HORIZONTAL
         }
 
-        setTextSize(
-            TypedValue.COMPLEX_UNIT_DIP,
-            resources.getDimension(R.dimen.text_medium_size).convertPXtoDP(context)
-        )
+        setTextAppearance(R.style.KR_headline_16_bold)
     }
 
     fun setTitleText(text: String) {

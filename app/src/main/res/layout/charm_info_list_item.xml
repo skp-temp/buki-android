@@ -47,7 +47,7 @@
 
             <TextView
                 android:id="@+id/title"
-                style="@style/medium_text_style"
+                style="@style/KR_subhead_16_medium"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:ellipsize="end"
@@ -63,7 +63,7 @@
 
                 <TextView
                     android:id="@+id/continuous_text"
-                    style="@style/small_text_style"
+                    style="@style/KR_caption_12_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"

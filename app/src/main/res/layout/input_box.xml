@@ -45,14 +45,14 @@
 
         <EditText
             android:id="@+id/edit_text"
-            style="@style/medium_text_style"
+            style="@style/KR_subhead_16_medium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:textCursorDrawable="@drawable/cursor_color_blue"
             android:layout_marginEnd="34dp"
             android:background="@android:color/transparent"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textCursorDrawable="@drawable/cursor_color_blue" />
 
         <LinearLayout
             android:id="@+id/clear_button_layout"
@@ -70,9 +70,9 @@
                 android:id="@+id/clear_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:visibility="gone"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_clear" />
+                android:src="@drawable/ic_clear"
+                android:visibility="gone" />
 
         </LinearLayout>
 

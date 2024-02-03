@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/title"
-        style="@style/medium_text_style"
+        style="@style/KR_subhead_16_medium"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="7dp"

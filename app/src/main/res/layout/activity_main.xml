@@ -36,7 +36,7 @@
         android:layout_height="@dimen/bottom_navigation_bar_height"
         android:background="@drawable/bottom_navigation_bar"
         android:backgroundTint="@android:color/transparent"
-        android:theme="@style/small_text_style"
+        android:theme="@style/KR_caption_12_medium"
         app:elevation="0dp"
         app:itemBackground="@android:color/transparent"
         app:itemPaddingBottom="@dimen/bottom_navigation_bar_bottom_margin"

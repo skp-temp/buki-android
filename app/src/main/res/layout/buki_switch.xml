@@ -19,12 +19,20 @@
 
         <TextView
             android:id="@+id/off"
-            style="@style/switch_text_style"
+            style="@style/KR_subhead_14_medium"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
             android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/on"
-            style="@style/switch_text_style"
+            style="@style/KR_subhead_14_medium"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
             android:textColor="@color/gray_500" />
 
     </LinearLayout>

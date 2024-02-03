@@ -12,12 +12,6 @@
     <dimen name="medium_radius">12dp</dimen>
     <dimen name="small_radius">8dp</dimen>
 
-    <dimen name="text_large_size">20dp</dimen>
-    <dimen name="text_medium_size">16dp</dimen>
-    <dimen name="text_medium_small_size">14dp</dimen>
-    <dimen name="text_small_size">12dp</dimen>
-    <dimen name="text_x_small_size">8dp</dimen>
-
     <dimen name="scroll_end_margin">56dp</dimen>
 
     <dimen name="stroke_width">1dp</dimen>

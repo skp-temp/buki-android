@@ -6,42 +6,9 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="toolbar_action_button_style">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/toolbar_button</item>
-        <item name="android:textSize">@dimen/text_medium_size</item>
-        <item name="android:textColor">@color/gray_900</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-    </style>
-
-    <style name="large_text_style">
-        <item name="android:textSize">@dimen/text_large_size</item>
-        <item name="android:textColor">@color/gray_900</item>
-        <item name="android:fontFamily">@font/pretendard_bold</item>
-    </style>
-
     <style name="toolbar_size">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/toolbar_height</item>
-    </style>
-
-    <style name="medium_text_style">
-        <item name="android:textSize">@dimen/text_medium_size</item>
-        <item name="android:textColor">@color/gray_900</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-    </style>
-
-    <style name="input_box_message_style">
-        <item name="android:textSize">@dimen/text_small_size</item>
-        <item name="android:textColor">@color/red</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:layout_marginStart">@dimen/input_box_message_start_margin</item>
-        <item name="android:layout_marginTop">@dimen/input_box_message_top_margin</item>
-    </style>
-
-    <style name="small_text_style">
-        <item name="android:textSize">@dimen/text_small_size</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
     </style>
 
     <style name="BottomDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
@@ -53,46 +20,213 @@
         <item name="android:layout_marginHorizontal">20dp</item>
     </style>
 
-    <style name="switch_text_style">
-        <item name="android:textSize">@dimen/text_medium_small_size</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
-
-    <style name="bold_medium_text_style">
-        <item name="android:textSize">@dimen/text_medium_size</item>
-        <item name="android:fontFamily">@font/pretendard_bold</item>
-        <item name="android:gravity">center</item>
-    </style>
-
-    <style name="medium_small_text_style">
-        <item name="android:textSize">@dimen/text_medium_small_size</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textColor">@color/gray_900</item>
-    </style>
-
-    <style name="x_small_text_style">
-        <item name="android:textSize">@dimen/text_x_small_size</item>
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textColor">@color/gray_900</item>
-    </style>
-
     <style name="bottom_dialog_text_style">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/bottom_dialog_height</item>
-        <item name="android:textSize">@dimen/text_medium_size</item>
-        <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:textColor">@color/gray_900</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="medium_small_regular_text_style">
-        <item name="android:textSize">@dimen/text_medium_small_size</item>
+    <style name="notification_text_style">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">5.6dp</item>
+        <item name="android:letterSpacing">-0.02</item>
         <item name="android:fontFamily">@font/pretendard_regular</item>
-        <item name="android:textColor">@color/gray_900</item>
+    </style>
+
+    <style name="KR_display_28_bold">
+        <item name="android:textSize">28dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+    </style>
+
+    <style name="KR_display_24_bold">
+        <item name="android:textSize">24dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+    </style>
+
+    <style name="KR_headline_20_bold">
+        <item name="android:textSize">20dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+    </style>
+
+    <style name="KR_headline_16_bold">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+    </style>
+
+    <style name="KR_subhead_16_medium">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="KR_subhead_14_medium">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="KR_caption_12_medium">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="KR_caption_10_medium">
+        <item name="android:textSize">10dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="KR_caption_8_medium">
+        <item name="android:textSize">8dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="KR_body_24_bold">
+        <item name="android:textSize">24dp</item>
+        <item name="android:lineSpacingExtra">10dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+    </style>
+
+    <style name="KR_body_20_bold">
+        <item name="android:textSize">20dp</item>
+        <item name="android:lineSpacingExtra">10dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+    </style>
+
+    <style name="KR_body_16_regular">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="KR_body_14_regular">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="EN_display_28_bold">
+        <item name="android:textSize">28dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="EN_display_24_bold">
+        <item name="android:textSize">24dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="EN_headline_20_bold">
+        <item name="android:textSize">20dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="EN_headline_16_bold">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="EN_subhead_16_medium">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="EN_subhead_14_medium">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="EN_caption_12_medium">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="EN_caption_10_medium">
+        <item name="android:textSize">10dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="EN_caption_8_medium">
+        <item name="android:textSize">8dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="EN_body_24_bold">
+        <item name="android:textSize">24dp</item>
+        <item name="android:lineSpacingExtra">10dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="EN_body_20_bold">
+        <item name="android:textSize">20dp</item>
+        <item name="android:lineSpacingExtra">10dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="EN_body_16_regular">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="EN_body_14_regular">
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="new_charm_text_style">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

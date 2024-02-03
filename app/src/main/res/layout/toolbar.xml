@@ -7,11 +7,12 @@
 
     <TextView
         android:id="@+id/title"
-        style="@style/large_text_style"
+        style="@style/KR_headline_20_bold"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="@dimen/horizontal_margin_medium"
         android:gravity="center"
+        android:textColor="@color/gray_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -33,8 +34,11 @@
 
         <TextView
             android:id="@+id/action_button_left"
-            style="@style/toolbar_action_button_style"
+            style="@style/KR_subhead_16_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/toolbar_button"
             android:gravity="center_vertical"
+            android:textColor="@color/gray_900"
             android:visibility="gone" />
 
         <Space
@@ -63,8 +67,11 @@
 
         <TextView
             android:id="@+id/action_button_right"
-            style="@style/toolbar_action_button_style"
+            style="@style/KR_subhead_16_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/toolbar_button"
             android:gravity="center_vertical"
+            android:textColor="@color/gray_900"
             android:visibility="gone" />
 
     </LinearLayout>

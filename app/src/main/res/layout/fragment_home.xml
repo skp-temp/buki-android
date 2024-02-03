@@ -97,13 +97,11 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        style="@style/medium_text_style"
+                        style="@style/new_charm_text_style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:gravity="center"
                         android:text="@string/create_empty_charm"
-                        android:textColor="@color/blue"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -202,7 +200,7 @@
                 <!-- h = 48 / 212 = 0.23 -->
                 <TextView
                     android:id="@+id/empty_text"
-                    style="@style/bold_medium_text_style"
+                    style="@style/KR_headline_16_bold"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:gravity="center"

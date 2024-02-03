@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/small_text_style"
+            style="@style/KR_caption_12_medium"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/date"
-            style="@style/small_text_style"
+            style="@style/KR_caption_12_medium"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -64,13 +64,14 @@
 
             <TextView
                 android:id="@+id/detail"
-                style="@style/medium_small_regular_text_style"
+                style="@style/notification_text_style"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_900" />
 
             <TextView
                 android:id="@+id/action"
-                style="@style/medium_small_regular_text_style"
+                style="@style/notification_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/blue"
@@ -80,7 +81,7 @@
 
         <TextView
             android:id="@+id/accept_button"
-            style="@style/medium_text_style"
+            style="@style/KR_subhead_16_medium"
             android:layout_width="@dimen/notification_accept_button_width"
             android:layout_height="@dimen/notification_accept_button_height"
             android:layout_gravity="center_vertical"
