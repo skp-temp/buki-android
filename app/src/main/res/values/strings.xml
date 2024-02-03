@@ -28,9 +28,9 @@
     <string name="create_empty_charm">눌러서 새로운 부적을\n만들어주세요!</string>
 
     <!-- activity_charm_detail.xml -->
-    <string name="bottom_dialog_edit">수정</string>
+    <string name="bottom_dialog_edit">설정 변경하기</string>
     <string name="bottom_dialog_image_download">이미지 다운</string>
-    <string name="bottom_dialog_delete">삭제</string>
+    <string name="bottom_dialog_delete">부적 삭제</string>
     <string name="bottom_dialog_cancel">취소</string>
 
     <string name="stamp_title">목표달성 스템프</string>
