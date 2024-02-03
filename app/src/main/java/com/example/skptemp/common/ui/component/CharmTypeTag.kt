@@ -11,6 +11,7 @@ import com.example.skptemp.R
 import com.example.skptemp.common.constants.CharmType
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewUtil.convertDPtoPX
+import com.example.skptemp.common.util.ViewUtil.setHeightPx
 import com.example.skptemp.databinding.CharmTypeTagBinding
 
 class CharmTypeTag @JvmOverloads constructor(
@@ -47,9 +48,7 @@ class CharmTypeTag @JvmOverloads constructor(
     }
 
     private fun setBadgeSmallSize() = with(binding) {
-        rectangle.layoutParams = rectangle.layoutParams.apply {
-            height = SMALL_HEIGHT_DP.convertDPtoPX(context).toInt()
-        }
+        rectangle.setHeightPx(SMALL_HEIGHT_DP.convertDPtoPX(context).toInt())
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, SMALL_TEXT_SIZE_DP);
     }
 

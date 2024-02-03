@@ -41,7 +41,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
-                    android:visibility="gone"
                     app:incomplete="true"
                     app:small="true" />
             </LinearLayout>

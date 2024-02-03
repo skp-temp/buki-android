@@ -48,6 +48,19 @@ class CharmDetailActivity : AppCompatActivity() {
         mStampWeeks = listOf(binding.week1, binding.week2, binding.week3)
 
         setContentView(binding.root)
+        setRecyclerViewItemDecoration()
+    }
+
+    private fun setRecyclerViewItemDecoration() {
+        binding.messageRecyclerView.addItemDecoration(
+            GridRecyclerViewItemDecoration(
+                spanCount = 2,
+                topSpaceId = R.dimen.message_list_top_space,
+                rowSpaceId = R.dimen.message_list_row_space,
+                colSpaceId = R.dimen.message_list_col_space,
+                context = mContext
+            )
+        )
     }
 
     override fun onResume() {
@@ -172,16 +185,6 @@ class CharmDetailActivity : AppCompatActivity() {
                 charmMessages,
                 messageBackgroundColor
             )
-
-        addItemDecoration(
-            GridRecyclerViewItemDecoration(
-                spanCount = 2,
-                topSpaceId = R.dimen.message_list_top_space,
-                rowSpaceId = R.dimen.message_list_row_space,
-                colSpaceId = R.dimen.message_list_col_space,
-                context = mContext
-            )
-        )
     }
 
     override fun onDestroy() {

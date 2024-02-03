@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import com.example.skptemp.R
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewUtil.convertDPtoPX
+import com.example.skptemp.common.util.ViewUtil.setHeightPx
 import com.example.skptemp.databinding.BukiProgressBarBinding
 
 class BukiProgressBar @JvmOverloads constructor(
@@ -63,9 +64,7 @@ class BukiProgressBar @JvmOverloads constructor(
 
         with(binding.progressBar) {
             progressDrawable = layers
-            layoutParams = layoutParams.apply {
-                height = radiusPx.toInt()
-            }
+            setHeightPx(radiusPx.toInt())
         }
     }
 

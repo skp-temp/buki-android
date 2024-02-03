@@ -14,7 +14,7 @@ import com.example.skptemp.model.CharmInfo
 // TODO: List 타입 변경
 class CharmImageListAdapter(
     private val context: Context,
-    private val list: List<CharmInfo>
+    private val charmInfos: MutableList<CharmInfo>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class ViewHolder(
@@ -41,10 +41,10 @@ class CharmImageListAdapter(
         return ViewHolder(binding)
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount() = charmInfos.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val charmType = list[position].type
+        val charmType = charmInfos[position].type
         val backgroundColor = ColorUtil.getColor(context, charmType.backgroundColor)
         val strokeColor = ColorUtil.getColor(context, charmType.subTextColor)
 
@@ -53,4 +53,9 @@ class CharmImageListAdapter(
 
     override fun getItemViewType(position: Int) = position
 
+    fun updateAll(updatedCharmInfos: List<CharmInfo>) {
+        charmInfos.clear()
+        charmInfos.addAll(updatedCharmInfos)
+        notifyDataSetChanged()
+    }
 }
