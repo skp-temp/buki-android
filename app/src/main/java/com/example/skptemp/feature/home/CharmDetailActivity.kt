@@ -174,10 +174,11 @@ class CharmDetailActivity : AppCompatActivity() {
 
     private fun setupMessageList() = with(binding.messageRecyclerView) {
         val charmMessages = listOf(
-            CharmMessage("", "김혜민", "테스트", "2024.01.10"),
-            CharmMessage("", "김혜민", "테스트", "2024.01.10"),
-            CharmMessage("", "김혜민", "테스트", "2024.01.10"),
-            CharmMessage("", "김혜민", "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트", "2024.01.10"),
+            CharmMessage("", "김혜민", "테스트", "2024.01.10", false),
+            CharmMessage("", "김혜민", "테스트", "2024.01.10", false),
+            CharmMessage("", "김혜민", "테스트", "2024.01.10", true ),
+            CharmMessage("", "김혜민", "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트", "2024.01.10", true),
+            CharmMessage("", "김혜민", "글자수 테스트 글자수 테스트 글자수 테스트 글자수 테스트 글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트", "2024.01.10", false)
         )
 
         if (charmMessages.isEmpty()) {
@@ -186,12 +187,10 @@ class CharmDetailActivity : AppCompatActivity() {
             return@with
         }
 
-        val messageBackgroundColor = ColorUtil.getColor(mContext, mCharmType.subBackgroundColor)
-        adapter =
-            CharmMessageListAdapter(
-                charmMessages,
-                messageBackgroundColor
-            )
+        val backgroundColor = ColorUtil.getColor(mContext, mCharmType.subBackgroundColor)
+        val textColor = ColorUtil.getColor(mContext, mCharmType.subTextColor)
+
+        adapter = CharmMessageListAdapter(charmMessages, backgroundColor, textColor)
     }
 
     override fun onDestroy() {

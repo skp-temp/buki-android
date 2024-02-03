@@ -86,7 +86,6 @@
 
     <!-- activity_charm_detail.xml -->
     <dimen name="charm_detail_image_horizontal_margin">44dp</dimen>
-    <dimen name="charm_detail_image_radius">23dp</dimen>
     <dimen name="charm_detail_image_edit_size">48dp</dimen>
     <dimen name="charm_detail_image_edit_margin">13dp</dimen>
 
@@ -99,9 +98,12 @@
     <dimen name="charm_detail_title_start_margin">24dp</dimen>
     <dimen name="charm_detail_title_end_margin">4dp</dimen>
 
-    <dimen name="message_item_profile_picture_size">24dp</dimen>
-    <dimen name="message_item_gift_image_size">48dp</dimen>
-    <dimen name="message_item_gift_image_margin">6dp</dimen>
+    <dimen name="message_item_layout_margin">12dp</dimen>
+    <dimen name="message_item_profile_picture_size">16dp</dimen>
+    <dimen name="message_item_profile_picture_border">0.5dp</dimen>
+    <dimen name="message_item_gift_background_size">24dp</dimen>
+    <dimen name="message_item_gift_icon_size">16dp</dimen>
+    <dimen name="message_item_gift_image_margin">8dp</dimen>
 
     <dimen name="message_list_top_space">16dp</dimen>
     <dimen name="message_list_row_space">10dp</dimen>

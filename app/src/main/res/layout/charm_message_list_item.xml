@@ -20,8 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginVertical="12dp">
+            android:layout_margin="@dimen/message_item_layout_margin">
 
             <LinearLayout
                 android:id="@+id/friend_layout"
@@ -43,50 +42,49 @@
 
                 <TextView
                     android:id="@+id/name"
-                    style="@style/medium_small_text_style"
+                    style="@style/small_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/date"
+                    style="@style/x_small_text_style"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center" />
 
             </LinearLayout>
 
-            <!-- h = 16 / 180 = 0.09 -->
+            <!-- h = 12 / 180 = 0.07 -->
             <Space
                 android:id="@+id/space1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/message"
-                app:layout_constraintHeight_percent="0.09"
+                app:layout_constraintHeight_percent="0.07"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/friend_layout" />
 
             <TextView
                 android:id="@+id/message"
+                style="@style/medium_small_regular_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:ellipsize="end"
-                android:fontFamily="@font/pretendard_regular"
-                android:maxLines="3"
+                android:maxLines="5"
                 android:textColor="@color/gray_800"
-                android:textSize="@dimen/text_medium_small_size"
-                app:layout_constraintBottom_toTopOf="@+id/date"
-                app:layout_constraintDimensionRatio="126:60"
+                app:layout_constraintBottom_toTopOf="@+id/space2"
+                app:layout_constraintDimensionRatio="128:100"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/space1" />
-
-            <TextView
-                android:id="@+id/date"
-                style="@style/x_small_text_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/gray_500"
-                app:layout_constraintBottom_toTopOf="@+id/space2"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/message" />
 
             <Space
                 android:id="@+id/space2"
@@ -95,15 +93,31 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/date" />
+                app:layout_constraintTop_toBottomOf="@+id/message" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/gift"
-            android:layout_width="@dimen/message_item_gift_image_size"
-            android:layout_height="@dimen/message_item_gift_image_size"
+        <FrameLayout
+            android:id="@+id/gift_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/message_item_gift_image_margin" />
+            android:layout_margin="@dimen/message_item_gift_image_margin"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/gift"
+                android:layout_width="@dimen/message_item_gift_icon_size"
+                android:layout_height="@dimen/message_item_gift_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_gift" />
+
+            <ImageView
+                android:id="@+id/gift_background"
+                android:layout_width="@dimen/message_item_gift_background_size"
+                android:layout_height="@dimen/message_item_gift_background_size"
+                android:background="@drawable/circle_message_gift" />
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 
