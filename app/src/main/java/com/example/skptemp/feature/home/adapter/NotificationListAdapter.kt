@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skptemp.R
 import com.example.skptemp.common.constants.NotificationType
-import com.example.skptemp.common.util.CharmUtil.getTextLineByLetter
+import com.example.skptemp.common.util.TextViewUtil.getTextLineByLetter
 import com.example.skptemp.common.util.ColorUtil
 import com.example.skptemp.common.util.ViewUtil.convertDPtoPX
 import com.example.skptemp.databinding.NotiListItemBinding

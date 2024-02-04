@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skptemp.R
-import com.example.skptemp.common.util.CharmUtil.getTextLineByLetter
+import com.example.skptemp.common.util.TextViewUtil.getTextLineByLetter
+import com.example.skptemp.common.util.TextViewUtil.setWrapContentMaxLines
 import com.example.skptemp.databinding.CharmMessageListItemBinding
-import com.example.skptemp.feature.home.CharmDetailActivity
 import com.example.skptemp.model.CharmMessage
 
 class CharmMessageListAdapter(
@@ -24,6 +24,7 @@ class CharmMessageListAdapter(
 
         fun bind(charmMessage: CharmMessage) = with(binding) {
             setViewColor()
+            message.setWrapContentMaxLines()
 
             friendProfilePicture.setImageResource(R.drawable.temp_profile_picture)
             name.text = charmMessage.name

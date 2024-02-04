@@ -45,7 +45,8 @@
                     style="@style/KR_caption_12_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:includeFontPadding="false" />
 
                 <Space
                     android:layout_width="0dp"
@@ -57,7 +58,8 @@
                     style="@style/KR_caption_8_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:includeFontPadding="false" />
 
             </LinearLayout>
 
@@ -78,7 +80,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:ellipsize="end"
-                android:maxLines="4"
                 android:textColor="@color/gray_900"
                 app:layout_constraintBottom_toTopOf="@+id/space2"
                 app:layout_constraintDimensionRatio="128:100"
@@ -106,17 +107,17 @@
             android:visibility="gone">
 
             <ImageView
+                android:id="@+id/gift_background"
+                android:layout_width="@dimen/message_item_gift_background_size"
+                android:layout_height="@dimen/message_item_gift_background_size"
+                android:background="@drawable/circle_message_gift" />
+
+            <ImageView
                 android:id="@+id/gift"
                 android:layout_width="@dimen/message_item_gift_icon_size"
                 android:layout_height="@dimen/message_item_gift_icon_size"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_gift" />
-
-            <ImageView
-                android:id="@+id/gift_background"
-                android:layout_width="@dimen/message_item_gift_background_size"
-                android:layout_height="@dimen/message_item_gift_background_size"
-                android:background="@drawable/circle_message_gift" />
         </FrameLayout>
 
     </androidx.cardview.widget.CardView>
