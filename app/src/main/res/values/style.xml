@@ -229,4 +229,10 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="emotion_layout_image_style">
+        <item name="android:layout_width">@dimen/not_select_emotion_size</item>
+        <item name="android:layout_height">@dimen/not_select_emotion_size</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
 </resources>

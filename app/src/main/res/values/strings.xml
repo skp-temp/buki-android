@@ -35,7 +35,12 @@
 
     <string name="stamp_title">목표달성 스템프</string>
     <string name="message_title">친구들이 남긴 응원 메시지</string>
-    <string name="stamp_done">오늘 목표 완료 하기</string>
+    <string name="today_record_done">오늘 목표 완료 하기</string>
+
+    <string name="record">기록</string>
+    <string name="record_edit_hint">목표를 수행하면서 들었던 감정을 기록해보세요.</string>
+    <string name="charm_record_title">오늘 목표는 잘 수행하셨나요?</string>
+    <string name="record_done">기록 완료</string>
 
     <string name="empty_message">아직 받은 응원 메시지가 없어요</string>
 
