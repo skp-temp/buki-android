@@ -45,8 +45,8 @@ class CharmImageListAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val charmType = charmInfos[position].type
-        val backgroundColor = ColorUtil.getColor(context, charmType.backgroundColor)
-        val strokeColor = ColorUtil.getColor(context, charmType.subTextColor)
+        val backgroundColor = ColorUtil.getColor(context, charmType.color.background)
+        val strokeColor = ColorUtil.getColor(context, charmType.color.subText)
 
         (holder as ViewHolder).bind(backgroundColor, strokeColor)
     }

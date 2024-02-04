@@ -59,8 +59,8 @@ class CharmTypeTag @JvmOverloads constructor(
     }
 
     fun setTagType(type: CharmType) = with(binding) {
-        setTagBackgroundColor(type.subBackgroundColor)
-        setTagTextColor(type.textColor)
+        setTagBackgroundColor(type.color.subBackground)
+        setTagTextColor(type.color.text)
         setTagTitle(type.title)
     }
 

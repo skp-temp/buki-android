@@ -33,7 +33,7 @@ class StampWeek @JvmOverloads constructor(
             deviceWidthPx * (resources.getDimensionPixelOffset(R.dimen.stamp_item_width) /
                     resources.getDimension(R.dimen.guide_width))
 
-        val stampDateColor = ColorUtil.getColor(context, charmType.subTextColor)
+        val stampDateColor = ColorUtil.getColor(context, charmType.color.subText)
 
         binding.first.adapter =
             CharmStampListAdapter(

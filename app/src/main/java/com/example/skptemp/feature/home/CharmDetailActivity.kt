@@ -155,7 +155,7 @@ class CharmDetailActivity : AppCompatActivity() {
     }
 
     private fun setupStampList() {
-        val backgroundColor = ColorUtil.getColor(mContext, mCharmType.backgroundColor)
+        val backgroundColor = ColorUtil.getColor(mContext, mCharmType.color.background)
         binding.stampLayout.setBackgroundColor(backgroundColor)
 
         val charmStamps = listOf(
@@ -187,8 +187,8 @@ class CharmDetailActivity : AppCompatActivity() {
             return@with
         }
 
-        val backgroundColor = ColorUtil.getColor(mContext, mCharmType.subBackgroundColor)
-        val textColor = ColorUtil.getColor(mContext, mCharmType.subTextColor)
+        val backgroundColor = ColorUtil.getColor(mContext, mCharmType.color.subBackground)
+        val textColor = ColorUtil.getColor(mContext, mCharmType.color.subText)
 
         adapter = CharmMessageListAdapter(charmMessages, backgroundColor, textColor)
     }
