@@ -38,6 +38,12 @@ class Toolbar @JvmOverloads constructor(
         )
     }
 
+    var title: String = ""
+        get() = binding.title.text.toString()
+        set(value) {
+            field = value
+            setTitleText(value) }
+
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 

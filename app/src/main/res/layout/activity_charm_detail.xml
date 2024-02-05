@@ -8,13 +8,12 @@
         android:id="@+id/toolbar"
         style="@style/toolbar_size"
         app:back_button_visibility="true"
-        app:layout_constraintBottom_toTopOf="@+id/scroll_layout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title_center="true" />
 
-    <androidx.core.widget.NestedScrollView
+    <com.example.skptemp.common.ui.component.LockableNestedScrollView
         android:id="@+id/scroll_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -399,6 +398,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin_large"
+                    android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintBottom_toTopOf="@+id/message_empty_layout"
@@ -494,14 +494,24 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </com.example.skptemp.common.ui.component.LockableNestedScrollView>
 
     <com.example.skptemp.common.ui.component.LargeButton
+        android:id="@+id/large_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:text="@string/today_record_done" />
+
+    <FrameLayout
+        android:id="@+id/record_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

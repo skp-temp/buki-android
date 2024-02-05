@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import com.example.skptemp.R
 import com.example.skptemp.common.constants.CharmType
+import com.example.skptemp.common.constants.EmotionType
 import com.example.skptemp.common.ui.GridRecyclerViewItemDecoration
 import com.example.skptemp.common.ui.component.StampWeek
 import com.example.skptemp.common.ui.inf.BottomDialogItem
@@ -32,9 +33,12 @@ class CharmDetailActivity : AppCompatActivity() {
 
     private var mDialog: CharmEditDialog? = null
 
-    private lateinit var mCharmType: CharmType
+    lateinit var mCharmType: CharmType
     private lateinit var mCharmTitle: String
     private lateinit var mStampWeeks: List<StampWeek>
+
+    private var mRecordFragment: CharmRecordFragment? = null
+    private var mToolbarTitle = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +84,10 @@ class CharmDetailActivity : AppCompatActivity() {
 
         charmEditButton.setOnSingleClickListener {
             Log.d(TAG, "Charm edit button onClick()")
+        }
+
+        largeButton.setOnSingleClickListener {
+            startRecordFragment()
         }
     }
 
@@ -176,9 +184,21 @@ class CharmDetailActivity : AppCompatActivity() {
         val charmMessages = listOf(
             CharmMessage("", "김혜민", "테스트", "2024.01.10", false),
             CharmMessage("", "김혜민", "테스트", "2024.01.10", false),
-            CharmMessage("", "김혜민", "테스트", "2024.01.10", true ),
-            CharmMessage("", "김혜민", "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트", "2024.01.10", true),
-            CharmMessage("", "김혜민", "글자수 테스트 글자수 테스트 글자수 테스트 글자수 테스트 글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트", "2024.01.10", false)
+            CharmMessage("", "김혜민", "테스트", "2024.01.10", true),
+            CharmMessage(
+                "",
+                "김혜민",
+                "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트",
+                "2024.01.10",
+                true
+            ),
+            CharmMessage(
+                "",
+                "김혜민",
+                "글자수 테스트 글자수 테스트 글자수 테스트 글자수 테스트 글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트",
+                "2024.01.10",
+                false
+            )
         )
 
         if (charmMessages.isEmpty()) {
@@ -191,6 +211,40 @@ class CharmDetailActivity : AppCompatActivity() {
         val textColor = ColorUtil.getColor(mContext, mCharmType.color.subText)
 
         adapter = CharmMessageListAdapter(charmMessages, backgroundColor, textColor)
+    }
+
+    fun setBackButtonOnClickListener(onClickListener: (View) -> Unit) {
+        binding.toolbar.setButtonOnClickListener(Toolbar.BACK_BUTTON, onClickListener)
+    }
+
+    private fun startRecordFragment() {
+        mRecordFragment = mRecordFragment ?: CharmRecordFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.record_fragment, mRecordFragment!!)
+            .commit()
+
+        binding.scrollLayout.scrollable = false
+        mToolbarTitle = binding.toolbar.title
+        binding.toolbar.title = ""
+    }
+
+    fun finishFragment() {
+        mRecordFragment ?: return
+        supportFragmentManager
+            .beginTransaction()
+            .remove(mRecordFragment!!)
+            .commit()
+        mRecordFragment = null
+
+        binding.toolbar.setButtonOnClickListener(Toolbar.BACK_BUTTON) { finish() }
+        binding.scrollLayout.scrollable = true
+        binding.toolbar.title = mToolbarTitle
+    }
+
+    fun finishRecord(selectedEmotionType: EmotionType, recordMessage: String?) {
+        finishFragment()
+        // TODO: (스탬프 레이아웃에 반영, 서버 통신)
     }
 
     override fun onDestroy() {
