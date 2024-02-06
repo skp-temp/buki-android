@@ -60,6 +60,8 @@
     <color name="brown_400">#703F12</color>
 
     <color name="dim_100">#1A1C1C1E</color>
-    <color name="dim_500">#80000000</color>
-    <color name="dim_700">#B3000000</color>
+    <color name="dim_500">#801C1C1E</color>
+    <color name="dim_700">#B31C1C1E</color>
+    <color name="dim_800">#CC1C1C1E</color>
+
 </resources>

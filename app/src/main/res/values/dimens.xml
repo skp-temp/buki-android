@@ -116,4 +116,9 @@
     <dimen name="emotion_layout_height">168dp</dimen>
     <dimen name="record_edit_padding">16dp</dimen>
 
+    <!-- dialog_fragment_record.xml -->
+    <dimen name="record_dialog_margin">16dp</dimen>
+    <dimen name="record_dialog_radius">10dp</dimen>
+    <dimen name="emotion_size">140dp</dimen>
+
 </resources>
