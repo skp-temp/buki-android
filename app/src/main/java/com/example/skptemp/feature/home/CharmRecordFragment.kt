@@ -21,6 +21,7 @@ class CharmRecordFragment : Fragment() {
 
     private lateinit var mActivity: CharmDetailActivity
     private val mCharmType by lazy { mActivity.mCharmType }
+
     private var mSelectedEmotionType: EmotionType? = null
     private val selectedEmotionDrawableId: Int
         get() = mCharmType.emotion.getEmotionDrawableId(mSelectedEmotionType!!)
@@ -47,8 +48,20 @@ class CharmRecordFragment : Fragment() {
     }
 
     private fun composeUI() = with(binding) {
-        emotionLayout.setCharmType(mCharmType)
-        emotionLayout.setOnSelectEmotionListener(
+        setEmotionLayout()
+        setOnClickListenerSelectedEmotion()
+        setOnBackPressedCallback()
+
+        largeButton.setEnabledButton(mSelectedEmotionType != null)
+        largeButton.setOnSingleClickListener {
+            mSelectedEmotionType ?: return@setOnSingleClickListener
+            mActivity.finishRecord(mSelectedEmotionType!!, mRecordMessage)
+        }
+    }
+
+    private fun setEmotionLayout() = with(binding.emotionLayout) {
+        setCharmType(mCharmType)
+        setOnSelectEmotionListener(
             object : OnSelectEmotionListener {
                 override fun onSelectEmotion(selectedEmotion: EmotionType) {
                     mSelectedEmotionType = selectedEmotion
@@ -56,50 +69,57 @@ class CharmRecordFragment : Fragment() {
                 }
             }
         )
+    }
 
-        mActivity.setBackButtonOnClickListener {
-            pressedBackButton()
-        }
-
-        largeButton.setEnabledButton(mSelectedEmotionType != null)
-        largeButton.setOnSingleClickListener {
-            mSelectedEmotionType ?: return@setOnSingleClickListener
-            mActivity.finishRecord(mSelectedEmotionType!!, mRecordMessage)
-        }
-
+    private fun setOnClickListenerSelectedEmotion() = with(binding.selectedEmotion) {
         val emotionTypes = EmotionType.entries
         val emotionSize = emotionTypes.size
 
-        selectedEmotion.setOnClickListener {
+        setOnClickListener {
             mSelectedEmotionType?.run {
                 mSelectedEmotionType = emotionTypes[(ordinal + 1) % emotionSize]
-                binding.selectedEmotion.setImageResource(selectedEmotionDrawableId)
+                setImageResource(selectedEmotionDrawableId)
             }
         }
+    }
 
+    private fun setOnBackPressedCallback() {
+        // toolbar back button
+        mActivity.setToolbarBackButtonOnClickListener {
+            pressedBackButton()
+        }
+
+        // device nav bar back button
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 pressedBackButton()
             }
         }
-        mActivity.onBackPressedDispatcher.addCallback(this@CharmRecordFragment, onBackPressedCallback)
+        mActivity.onBackPressedDispatcher.addCallback(
+            this@CharmRecordFragment,
+            onBackPressedCallback
+        )
     }
 
-    private fun updateLayout() {
+    private fun updateLayout() = with(binding) {
+        var isEnabledLargeButton = true
+        var selectedEmotionVisibility = View.VISIBLE
+        var emotionLayoutVisibility = View.GONE
+
         mSelectedEmotionType?.run {
-            binding.largeButton.setEnabledButton(true)
-            binding.emotionLayout.visibility = View.GONE
-            binding.selectedEmotionLayout.visibility = View.VISIBLE
-            binding.selectedEmotion.setImageResource(selectedEmotionDrawableId)
-            binding.recordLayout.visibility = View.VISIBLE
+            selectedEmotion.setImageResource(selectedEmotionDrawableId)
             mRecordMessage?.run { binding.recordEdit.setText(this) }
             Unit
         } ?: run {
-            binding.largeButton.setEnabledButton(false)
-            binding.emotionLayout.visibility = View.VISIBLE
-            binding.selectedEmotionLayout.visibility = View.GONE
-            binding.recordLayout.visibility = View.GONE
+            isEnabledLargeButton = false
+            selectedEmotionVisibility = View.GONE
+            emotionLayoutVisibility = View.VISIBLE
         }
+
+        largeButton.setEnabledButton(isEnabledLargeButton)
+        emotionLayout.visibility = emotionLayoutVisibility
+        selectedEmotionLayout.visibility = selectedEmotionVisibility
+        recordLayout.visibility = selectedEmotionVisibility
     }
 
     private fun pressedBackButton() {

@@ -213,7 +213,7 @@ class CharmDetailActivity : AppCompatActivity() {
         adapter = CharmMessageListAdapter(charmMessages, backgroundColor, textColor)
     }
 
-    fun setBackButtonOnClickListener(onClickListener: (View) -> Unit) {
+    fun setToolbarBackButtonOnClickListener(onClickListener: (View) -> Unit) {
         binding.toolbar.setButtonOnClickListener(Toolbar.BACK_BUTTON, onClickListener)
     }
 
