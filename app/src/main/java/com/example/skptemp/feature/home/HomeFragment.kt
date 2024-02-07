@@ -20,6 +20,7 @@ import com.example.skptemp.feature.home.CharmViewPagerManager.setPageChangeAnima
 import com.example.skptemp.common.util.ViewUtil.getHeightPxByRatio
 import com.example.skptemp.common.util.ViewUtil.setHeightByRatio
 import com.example.skptemp.databinding.FragmentHomeBinding
+import com.example.skptemp.feature.home.CharmViewPagerManager.expandSwipeArea
 import com.example.skptemp.feature.home.adapter.CharmImageListAdapter
 import com.example.skptemp.feature.home.adapter.CharmInfoListAdapter
 import com.example.skptemp.model.CharmInfo
@@ -186,8 +187,8 @@ class HomeFragment : Fragment() {
 
     private fun composeViewPager() = with(binding.charmImageViewPager) {
         setHorizontalPadding(getHeightPxByRatio(mContext, VIEW_PAGER_RATIO - STROKE_WIDTH * 2))
-        //setSwipeAction(binding.scrollView)
         setPageChangeAnimation()
+        expandSwipeArea(binding.viewPagerTouchLayout)
 
         adapter = mCharmImageListAdapter
         offscreenPageLimit = 3

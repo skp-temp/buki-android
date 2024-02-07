@@ -1,7 +1,7 @@
 package com.example.skptemp.feature.home
 
 import android.view.MotionEvent
-import androidx.core.widget.NestedScrollView
+import android.view.View
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
@@ -45,25 +45,29 @@ object CharmViewPagerManager {
         setPadding(padding, 0, padding, 0)
     }
 
-    fun ViewPager2.setSwipeAction(scrollView: NestedScrollView) {
-        var startX = 0f
-
-        setOnTouchListener { _, event ->
+    fun ViewPager2.expandSwipeArea(parentView: View) =
+        parentView.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    scrollView.requestDisallowInterceptTouchEvent(true)
-                    startX = event.rawX
+                    requestDisallowInterceptTouchEvent(true)
+                    beginFakeDrag()
+                    true
                 }
-
+                MotionEvent.ACTION_MOVE -> {
+                    if (event.historySize > 0) {
+                        fakeDragBy(event.x - event.getHistoricalX(0))
+                    }
+                    true
+                }
                 MotionEvent.ACTION_UP -> {
-                    if (event.rawX - startX > 100) currentItem--
-                    else if (startX - event.rawX > 100) currentItem++
+                    endFakeDrag()
+                    requestDisallowInterceptTouchEvent(false)
+                    performClick()
+                    true
                 }
-
-                MotionEvent.ACTION_CANCEL ->
-                    scrollView.requestDisallowInterceptTouchEvent(false)
+                else -> {
+                    false
+                }
             }
-            onTouchEvent(event)
         }
-    }
 }
