@@ -40,6 +40,33 @@ class CharmDetailActivity : AppCompatActivity() {
     private var mRecordFragment: CharmRecordFragment? = null
     private var mToolbarTitle = ""
 
+    private val mCharmStamps = listOf(
+        CharmStamp(EmotionType.PLEASURE, "23. 10. 1", "메시지"),
+        CharmStamp(EmotionType.ANGER, "23. 10. 2", "메시지테스트111"),
+        CharmStamp(EmotionType.HAPPY, "23. 10. 3", "메시지222"),
+        CharmStamp(EmotionType.HAPPY, "23. 10. 4", "메시지333"),
+    )
+
+    private val mCharmMessages = listOf(
+        CharmMessage("", "김혜민", "테스트", "2024.01.10", false),
+        CharmMessage("", "김혜민", "테스트", "2024.01.10", false),
+        CharmMessage("", "김혜민", "테스트", "2024.01.10", true),
+        CharmMessage(
+            "",
+            "김혜민",
+            "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트",
+            "2024.01.10",
+            true
+        ),
+        CharmMessage(
+            "",
+            "김혜민",
+            "글자수 테스트 글자수 테스트 글자수 테스트 글자수 테스트 글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트",
+            "2024.01.10",
+            false
+        )
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -166,42 +193,20 @@ class CharmDetailActivity : AppCompatActivity() {
         val backgroundColor = ColorUtil.getColor(mContext, mCharmType.color.background)
         binding.stampLayout.setBackgroundColor(backgroundColor)
 
-        val charmStamps = listOf(
-            CharmStamp("23. 10.1"),
-            CharmStamp("23. 10.2"),
-            CharmStamp("23. 10.3"),
-            CharmStamp("23. 10.4")
-        )
-        val fillCharmStamps = charmStamps + List(WEEK * 3 - charmStamps.size) { CharmStamp() }
+        val fillCharmStamps = mCharmStamps + List(WEEK * 3 - mCharmStamps.size) { CharmStamp() }
 
         var week = 0
         mStampWeeks.forEach { stampWeek ->
-            stampWeek.setAdapter(fillCharmStamps.slice(week * WEEK until ++week * WEEK), mCharmType)
+            stampWeek.setAdapter(
+                this,
+                fillCharmStamps.slice(week * WEEK until ++week * WEEK),
+                mCharmType
+            )
         }
     }
 
     private fun setupMessageList() = with(binding.messageRecyclerView) {
-        val charmMessages = listOf(
-            CharmMessage("", "김혜민", "테스트", "2024.01.10", false),
-            CharmMessage("", "김혜민", "테스트", "2024.01.10", false),
-            CharmMessage("", "김혜민", "테스트", "2024.01.10", true),
-            CharmMessage(
-                "",
-                "김혜민",
-                "글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트",
-                "2024.01.10",
-                true
-            ),
-            CharmMessage(
-                "",
-                "김혜민",
-                "글자수 테스트 글자수 테스트 글자수 테스트 글자수 테스트 글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트글자수테스트",
-                "2024.01.10",
-                false
-            )
-        )
-
-        if (charmMessages.isEmpty()) {
+        if (mCharmMessages.isEmpty()) {
             visibility = View.GONE
             binding.messageEmptyLayout.visibility = View.VISIBLE
             return@with
@@ -210,7 +215,7 @@ class CharmDetailActivity : AppCompatActivity() {
         val backgroundColor = ColorUtil.getColor(mContext, mCharmType.color.subBackground)
         val textColor = ColorUtil.getColor(mContext, mCharmType.color.subText)
 
-        adapter = CharmMessageListAdapter(charmMessages, backgroundColor, textColor)
+        adapter = CharmMessageListAdapter(mCharmMessages, backgroundColor, textColor)
     }
 
     fun setToolbarBackButtonOnClickListener(onClickListener: (View) -> Unit) {
@@ -244,8 +249,20 @@ class CharmDetailActivity : AppCompatActivity() {
 
     fun finishRecord(selectedEmotionType: EmotionType, recordMessage: String?) {
         finishFragment()
-        // TODO: (스탬프 레이아웃에 반영, 서버 통신)
+        val recordNumber = mCharmStamps.size
+        val stampWeek = getStampWeek(recordNumber)
+        stampWeek.updateStampRecord(
+            recordNumber % WEEK,
+            selectedEmotionType,
+            recordMessage
+        )
+        // TODO: (서버 통신)
     }
+
+    private fun getStampWeek(recordNumber: Int) =
+        if (recordNumber in 0 until 7) binding.week1
+        else if (recordNumber in 7 until 14) binding.week2
+        else binding.week3
 
     override fun onDestroy() {
         super.onDestroy()

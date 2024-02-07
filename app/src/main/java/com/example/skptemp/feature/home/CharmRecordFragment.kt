@@ -77,7 +77,8 @@ class CharmRecordFragment : Fragment() {
 
         setOnClickListener {
             mSelectedEmotionType?.run {
-                mSelectedEmotionType = emotionTypes[(ordinal + 1) % emotionSize]
+                val nextEmotionTypeIdx = if (ordinal + 1 == emotionSize - 1) 0 else ordinal + 1
+                mSelectedEmotionType = emotionTypes[nextEmotionTypeIdx]
                 setImageResource(selectedEmotionDrawableId)
             }
         }
